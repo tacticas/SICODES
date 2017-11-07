@@ -11459,7 +11459,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total entries)",
+			"sInfoFiltered": "(Filtrado de _MAX_ total registros)",
 	
 	
 			/**
@@ -11577,7 +11577,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "Mostrar _MENU_ registros",
 	
 	
 			/**
@@ -11622,7 +11622,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sProcessing": "Processing...",
+			"sProcessing": "Procesando...",
 	
 	
 			/**
