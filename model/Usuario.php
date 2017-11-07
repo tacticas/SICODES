@@ -23,6 +23,7 @@ class Usuario extends Connection
 	public function getAllUsuario($limInf,$sizePage){
 		return $this->con->query("SELECT * FROM usuario ORDER BY idUsuario DESC LIMIT ".$limInf.",".$sizePage."")->fetchAll(PDO::FETCH_ASSOC);
 	}
+	
 	public function getFilterUsuario($clave,$limInf,$sizePage){
 		return $this->con->query("SELECT * FROM usuario WHERE matricula LIKE '%".$clave."%' or apPaterno like '%".$clave."%' or apMaterno Like '%".$clave."%' or nombre LIKE '%".$clave."%' ORDER BY idUsuario DESC LIMIT ".$limInf.",".$sizePage."")->fetchAll(PDO::FETCH_ASSOC);
 	}

@@ -51,3 +51,12 @@ body {
 .thead-inverse th{
   background-color: #0275d8;
 }
+.container-fluid{
+  padding-left:0px ;
+  padding-rigth: 0px ;
+}
+.sin-padding{
+  
+  margin-right: 15px ;
+
+}

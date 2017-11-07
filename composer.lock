@@ -1,0 +1,54 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "8148117ef3eaa1db1e7b99f5e3c4bcc8",
+    "packages": [
+        {
+            "name": "ozdemir/datatables",
+            "version": "1.6.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/n1crack/datatables.git",
+                "reference": "31314af862cc8311f4d84fac408081b819455844"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/n1crack/datatables/zipball/31314af862cc8311f4d84fac408081b819455844",
+                "reference": "31314af862cc8311f4d84fac408081b819455844",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ozdemir\\Datatables\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yusuf Özdemir",
+                    "email": "yusuf@ozdemir.be"
+                }
+            ],
+            "description": "PHP Library to handle server-side processing for Datatables, in a fast and simple way.",
+            "time": "2017-09-25T19:29:25+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
