@@ -25,7 +25,7 @@
 							<th></th>
 							</tr>
 				        </thead>
-				        <?=$tabla?>
+				        
 				        
 				    </table>
 			</div>

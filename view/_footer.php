@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="assets/Buttons-1.4.2/js/vfs_fonts.js"></script>
 	<script type="text/javascript" src="assets/Buttons-1.4.2/js/buttons.html5.min.js"></script>
 	<script type="text/javascript" src="assets/Buttons-1.4.2/js/buttons.print.min.js"></script>
+	<script type="text/javascript" src="assets/Buttons-1.4.2/js/dataTables.editor.js"></script>
 
 
 	
