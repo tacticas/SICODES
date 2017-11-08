@@ -11,7 +11,7 @@
 			</div>						
 			<br>
 			<div class="table-responsive">
-				<table data-order='[[ 1, "DESC" ]]' id="example" class="table table-bordered table-striped display" cellspacing="0" width="100%">
+				<table data-order='[[ 0, "DESC" ]]' id="example" class="table table-bordered table-striped display" cellspacing="0" width="100%">
 				        <thead class="thead-inverse">
 				            <tr>
 							<th>id</th>
@@ -155,24 +155,28 @@
   </div>
 </div>
 
-<!-- conformar -->
+<!-- confirmar -->
 
 <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+    <form id="formEliminar">  
+    	<input class="form-control" id="accion" type="hidden" name="task" value="">
+		<input class="form-control" type="hidden" name="idUsuario" value="" id="idusuario">	
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <p>¿Desea Eliminar este elemento?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="Submit" class="btn btn-primary">Eliminar</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

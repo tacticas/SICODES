@@ -24,6 +24,7 @@ $(document).ready(function() {
               
         } );
         obtener_data_editar('#example tbody',table);
+        obtener_id_eliminar('#example tbody',table);
     } 
  
 
@@ -31,17 +32,30 @@ $(document).ready(function() {
         $(tbody).on('click','button.editar', function(){
         var data = table.row( $(this).parents('tr') ).data();
         console.log(data);
+        $('#accion').val('editar');
         $('#idusuario').val(data.idUsuario);
         $('#matricula').val(data.matricula);
-        $('#matricula').val(data.matricula);
-        $('#matricula').val(data.matricula);
-        $('#matricula').val(data.matricula);
-        $('#matricula').val(data.matricula);
-        $('#matricula').val(data.matricula);
-        $('#matricula').val(data.matricula);
-    });
+        $('#nombre').val(data.nombre);
+        $('#ap1').val(data.apPaterno);
+        $('#ap2').val(data.apMaterno);
+        $('#mail').val(data.eMail);
+        $('#tel').val(data.telefono);
+        $('#contra').val(data.contrasena);
+        $('#escuela').val(data.idEscuela);
+        });
+    }
+
+    function obtener_id_eliminar(tbody, table){
+        $(tbody).on('click','button.eliminar', function(){
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        $('#accion').val('eliminar');
+        $('#formEliminar #idusuario').val(data.idUsuario);
+        
+        });
+    }
 
     $('#editar').on('shown.bs.modal', function () {
         $('#matricula').focus()
-    })
-}
+    });
+
