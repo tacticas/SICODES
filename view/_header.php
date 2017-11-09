@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Eminus2</title>
+	<title>MiEscuela</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
