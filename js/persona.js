@@ -1,10 +1,14 @@
 $(document).ready(function() {
-    Listar();
+    listar();
+    guardar();
+    eliminar();
 });     
 
-     function Listar() {
+    function listar() {
+       
        var table = $('#example').DataTable( {
-        ajax: 'controller/persona.php',
+
+        ajax: 'controller/persona.php?get=1',
         dom: '<"col-xs-12 text-center"B><"row"<"col-sm-6"l><"col-sm-6"fr>>t<"row"<"col-xs-12 text-center"p>><"row"<"col-xs-12 pull-"i>>',
         columns: [
             { data: 'idUsuario' },
@@ -20,18 +24,29 @@ $(document).ready(function() {
         select: true,
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-              
+        ]
+                      
         } );
         obtener_data_editar('#example tbody',table);
         obtener_id_eliminar('#example tbody',table);
+        nuevo_registro();
     } 
  
+
+    function nuevo_registro(){
+        $('button.agregar').click(function(){
+            $('#formGuardar')[0].reset();
+            console.log('Estoy agregando');
+            $('#accion').val('agregar');
+            $('#tituloModal').html('Agregar nuevo registro');
+        });
+    }
 
     function obtener_data_editar(tbody, table){
         $(tbody).on('click','button.editar', function(){
         var data = table.row( $(this).parents('tr') ).data();
         console.log(data);
+        $('#tituloModal').html('Editando Datos de '+data.matricula);
         $('#accion').val('editar');
         $('#idusuario').val(data.idUsuario);
         $('#matricula').val(data.matricula);
@@ -59,3 +74,38 @@ $(document).ready(function() {
         $('#matricula').focus()
     });
 
+    function guardar(){
+        $('#formGuardar').on('submit', function(e){
+            e.preventDefault();
+            var frm = $(this).serialize();
+            $.ajax({
+                method: 'POST',
+                url: 'controller/persona.php',
+                data: frm
+            }).done( function( info ){
+                $('#editar').modal('hide');
+                console.log('Se quiere listar');
+                $('#example').dataTable().fnDestroy();
+                listar();
+                toastr.success('Guardado Correctamente');
+            });
+        });
+    }
+    function eliminar(){
+         $('#formEliminar').on('submit', function(e){
+            e.preventDefault();
+            var frm = $(this).serialize();
+            console.log(frm);
+            $.ajax({
+                method: 'POST',
+                url: 'controller/persona.php',
+                data: frm
+            }).done( function( info ){
+                $('#confirmar').modal('hide');
+                console.log('Se quiere listar al eliminar');
+                $('#example').dataTable().fnDestroy();
+                listar();
+                toastr.success('Eliminado Correctamente');
+            });
+        });   
+    }

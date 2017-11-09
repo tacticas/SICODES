@@ -8,6 +8,7 @@
 <script type="text/javascript" src="assets/bootstrap4/js/tether.min.js"></script>
 	<script type="text/javascript" src="assets/bootstrap4/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/bootstrap4/js/notify.min.js"></script>
+	<script type="text/javascript" src="assets/bootstrap4/js/custom.js"></script>
 	
 	
 	
@@ -23,7 +24,7 @@
 	<script type="text/javascript" src="assets/Buttons-1.4.2/js/vfs_fonts.js"></script>
 	<script type="text/javascript" src="assets/Buttons-1.4.2/js/buttons.html5.min.js"></script>
 	<script type="text/javascript" src="assets/Buttons-1.4.2/js/buttons.print.min.js"></script>
-	<script type="text/javascript" src="assets/DataEdit/dataTables.editor.js"></script>
+
 
 
 	
