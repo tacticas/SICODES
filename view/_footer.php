@@ -1,6 +1,6 @@
 <footer class="footer">
 	<div class="container">
-        <span class="text-muted pull-right">© Copyright 2018 - Automatix. All rights reserved.</span>
+        <span class="text-muted pull-right">© Copyright 2018 - LaWebApp. All rights reserved.</span>
     </div>
 </footer>
 <!-- SCRIPTS -->
