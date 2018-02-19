@@ -14,16 +14,16 @@
 				<table data-order='[[ 0, "DESC" ]]' id="example" class="table table-bordered table-striped display" cellspacing="0" width="100%">
 				        <thead class="thead-inverse">
 				            <tr>
-							<th>id</th>
-							<th>Matricula</th>
-							<th>Nombre</th>
-							<th>Apellido</th>
-							<th>Apellido</th>
-							<th>Correo</th>
-							<th>Teléfono</th>
-							<th>Escuela</th>
-							<th></th>
-							</tr>
+										<th>id</th>
+										<th>Matricula</th>
+										<th>Nombre</th>
+										<th>Apellido</th>
+										<th>Apellido</th>
+										<th>Correo</th>
+										<th>Teléfono</th>
+										<th>Escuela</th>
+										<th></th>
+										</tr>
 				        </thead>
 				        
 				        

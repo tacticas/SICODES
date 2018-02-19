@@ -4,14 +4,14 @@
   <a class="navbar-brand" href="#">MiEscuela</a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="dashboard.php">DashBoard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Alumnos</a>
+        <a class="nav-link" href="persona.php">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profesores</a>
+        <a class="nav-link" href="mensajes.php">Mensajes</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
