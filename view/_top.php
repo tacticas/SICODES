@@ -11,7 +11,7 @@
         <a class="nav-link" href="persona.php">Usuarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="mensajes.php">Mensajes</a>
+        <a class="nav-link" href="mensaje.php">Mensajes</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

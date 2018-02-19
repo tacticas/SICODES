@@ -28,8 +28,8 @@
 
 
 	
-
-	<script type="text/javascript" src="js/persona.js"></script>
+	
+	
 
 	
 
