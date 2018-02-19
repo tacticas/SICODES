@@ -17,7 +17,7 @@ $(document).ready(function() {
             { data: 'titulo' },
             { data: 'contenido' },
             { data: 'fechaHora' },
-            { defaultContent: '<button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>'},
+            { defaultContent: '<button onclick="hola();" data-toggle="modal" class="eliminar btn btn-info btn-sm"><i class="fa fa-search"></i></button>'},
         ],
         select: true,
         buttons: [
@@ -30,6 +30,9 @@ $(document).ready(function() {
         nuevo_registro();
     } 
  
+    function hola(){
+        alert("Hola");
+    }
 
     function nuevo_registro(){
         $('button.agregar').click(function(){
