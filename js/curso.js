@@ -8,17 +8,12 @@ $(document).ready(function() {
        
        var table = $('#example').DataTable( {
 
-        ajax: 'controller/persona.php?get=1',
+        ajax: 'controller/curso.php?get=1',
         dom: '<"col-xs-12 text-center"B><"row"<"col-sm-6"l><"col-sm-6"fr>>t<"row"<"col-xs-12 text-center"p>><"row"<"col-xs-12 pull-"i>>',
         columns: [
-            { data: 'idUsuario' },
-            { data: 'matricula' },
+            { data: 'idCurso' },
             { data: 'nombre' },
-            { data: 'apPaterno' },
-            { data: 'apMaterno' },
-            { data: 'eMail' },
-            { data: 'telefono' },
-            { data: 'idEscuela' },
+            { data: 'descrip' },
             { defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>'},
         ],
         select: true,
@@ -46,17 +41,11 @@ $(document).ready(function() {
         $(tbody).on('click','button.editar', function(){
         var data = table.row( $(this).parents('tr') ).data();
         console.log(data);
-        $('#tituloModal').html('Editando Datos de '+data.matricula);
+        $('#tituloModal').html('Editando Datos de '+data.nombre); //editando titulo
         $('#accion').val('editar');
-        $('#idusuario').val(data.idUsuario);
-        $('#matricula').val(data.matricula);
+        $('#idCurso').val(data.idCurso);
         $('#nombre').val(data.nombre);
-        $('#ap1').val(data.apPaterno);
-        $('#ap2').val(data.apMaterno);
-        $('#mail').val(data.eMail);
-        $('#tel').val(data.telefono);
-        $('#contra').val(data.contrasena);
-        $('#escuela').val(data.idEscuela);
+        $('#descrip').val(data.descrip);
         });
     }
 
@@ -65,13 +54,13 @@ $(document).ready(function() {
         var data = table.row( $(this).parents('tr') ).data();
         console.log(data);
         $('#accion').val('eliminar');
-        $('#formEliminar #idusuario').val(data.idUsuario);
+        $('#formEliminar #idusuario').val(data.idCurso);
         
         });
     }
 
     $('#editar').on('shown.bs.modal', function () {
-        $('#matricula').focus()
+        $('#nombre').focus()
     });
 
     function guardar(){
@@ -80,7 +69,7 @@ $(document).ready(function() {
             var frm = $(this).serialize();
             $.ajax({
                 method: 'POST',
-                url: 'controller/persona.php',
+                url: 'controller/curso.php',
                 data: frm
             }).done( function( info ){
                 $('#editar').modal('hide');
@@ -98,7 +87,7 @@ $(document).ready(function() {
             console.log(frm);
             $.ajax({
                 method: 'POST',
-                url: 'controller/persona.php',
+                url: 'controller/curso.php',
                 data: frm
             }).done( function( info ){
                 $('#confirmar').modal('hide');

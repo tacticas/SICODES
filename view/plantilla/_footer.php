@@ -1,5 +1,5 @@
 <footer class="footer">
-	<div class="container">
+	<div class="container-fluid">
         <span class="text-muted pull-right">© Copyright 2018 - WebMakers Team. All rights reserved.</span>
     </div>
 </footer>
