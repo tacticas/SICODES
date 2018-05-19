@@ -43,12 +43,12 @@
 			<input class="form-control" id="accion" type="hidden" name="task" value="">
 			<input class="form-control" type="hidden" name="id" value="" id="id">
 			<div class="form-group">
-				<label for="nombre" >Nombre de Curso: </label>
+				<label for="nombre" >Nombre de Grupo: </label>
 				<input class="form-control" required="" type="text" name="nombre" value="" id="nombre">
 			</div>
 			<div class="form-group">
-				<label for="escuela">Escuela:</label>
-				<select class="form-control" id="escuela" name="idEscuela" value="">
+				<label for="escuela">Curso:</label>
+				<select class="form-control" id="escuela" name="idCurso" value="">
 				</select>
 			</div>
 		</div>
@@ -69,7 +69,7 @@
 	<div class="modal-content">
 	<form id="formEliminar">  
 		<input class="form-control" id="accion" type="hidden" name="task" value="eliminar">
-		<input class="form-control" type="hidden" name="idCurso" value="" id="id">	
+		<input class="form-control" type="hidden" name="idGrupo" value="" id="idGrupo">	
 	  <div class="modal-header">
 		<h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
