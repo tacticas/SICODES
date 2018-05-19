@@ -18,7 +18,7 @@ if (isset($_POST['task'])) {
 			$control = $obj->alta($nombre,$descrip);
 			break;
 		case 'editar':
-			$id=$_POST['idCurso'];
+			$id=$_POST['id'];
 			$nombre=$_POST['nombre'];
 			$descrip=$_POST['descrip'];
 			$control = $obj->editar($id,$nombre,$descrip);

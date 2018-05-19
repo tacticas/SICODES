@@ -13,6 +13,9 @@
       <li class="nav-item">
         <a class="nav-link" href="curso.php">Cursos</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="grupo.php">Grupo</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Promociones

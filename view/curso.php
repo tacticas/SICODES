@@ -67,7 +67,7 @@
     <div class="modal-content">
     <form id="formEliminar">  
     	<input class="form-control" id="accion" type="hidden" name="task" value="eliminar">
-		<input class="form-control" type="hidden" name="idUsuario" value="" id="idusuario">	
+		<input class="form-control" type="hidden" name="idCurso" value="" id="id">	
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

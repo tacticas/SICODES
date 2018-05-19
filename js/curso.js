@@ -54,7 +54,7 @@ $(document).ready(function() {
         var data = table.row( $(this).parents('tr') ).data();
         console.log(data);
         $('#accion').val('eliminar');
-        $('#formEliminar #idusuario').val(data.idCurso);
+        $('#formEliminar #id').val(data.idCurso);
         
         });
     }

@@ -2,6 +2,7 @@ $(document).ready(function() {
     listar();
     guardar();
     eliminar();
+    preCarga();
 });     
 
     function listar() {
@@ -13,9 +14,9 @@ $(document).ready(function() {
         
         columns: [
             { data: 'idAlumno' },
-            //{ data: 'foto' },
             {
                 data : 'foto',
+                width: '15%',
                 render: function(data, type, row) {
                     return '<img class="img-thumbnail" alt="No encontrada" src="'+data+'" />';
                 }
@@ -44,7 +45,7 @@ $(document).ready(function() {
         ],
         "columnDefs": [
             {
-                "targets": [ 0 ],
+                "targets": [ 0,3,8,9,10,11,14,15,16 ],
                 "visible": false
             },
             
@@ -56,6 +57,21 @@ $(document).ready(function() {
         nuevo_registro();
     } 
  
+    function preCarga(){
+        $.ajax({
+            method: 'POST',
+            url: "controller/alumno.php?carga=1",
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+                $.each( data, function( key, registro ) {
+                    $("#escuela").append('<option value='+registro.idEscuela+'>'+registro.nombre+' - '+registro.ciudad+'</option>');
+                    console.log(registro);
+                });
+            }
+
+        });
+    }
 
     function nuevo_registro(){
         $('button.agregar').click(function(){

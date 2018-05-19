@@ -46,4 +46,7 @@ class Alumno extends Connection
 			return false;
 		}
 	}
+	public function getEscuela(){
+		return $this->con->query("SELECT idEscuela, nombre, ciudad FROM escuela")->fetchAll(PDO::FETCH_ASSOC);
+	}
 }

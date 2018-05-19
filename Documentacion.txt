@@ -5,3 +5,14 @@ Permisos
 4 profesor
 5 alumno
 6 padre
+
+
+tipos de formularios
+
+select
+
+<div class="form-group">
+	<label for="escuela">Escuela:</label>
+        <select class="form-control" id="escuela" name="idEscuela" value="">
+	    </select>
+</div>

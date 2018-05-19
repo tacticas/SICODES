@@ -9,6 +9,11 @@ if (isset($_GET['get'])) {
 	}
 	echo json_encode($data);
 }
+//obtener datos para formulario
+if(isset($_GET['carga'])){
+	$escuelas = $obj->getEscuela();
+	echo json_encode($escuelas);
+}
 
 if (isset($_POST['task'])) {
 	switch ($_POST['task']) {
