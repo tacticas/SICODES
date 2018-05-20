@@ -16,8 +16,8 @@
 						<tr>
 							<th>id</th>
 							<th>Nombre</th>
+							<th>idCurso</th>
 							<th>Curso</th>
-							<th>Horario</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -41,14 +41,14 @@
 	  <form id="formGuardar">
 	  	<div class="modal-body">
 			<input class="form-control" id="accion" type="hidden" name="task" value="">
-			<input class="form-control" type="hidden" name="id" value="" id="id">
+			<input class="form-control" type="hidden" name="idGrupo" value="" id="idGrupo">
 			<div class="form-group">
 				<label for="nombre" >Nombre de Grupo: </label>
 				<input class="form-control" required="" type="text" name="nombre" value="" id="nombre">
 			</div>
 			<div class="form-group">
-				<label for="escuela">Curso:</label>
-				<select class="form-control" id="escuela" name="idCurso" value="">
+				<label for="curso">Curso:</label>
+				<select class="form-control" id="idCurso" name="idCurso" value="">
 				</select>
 			</div>
 		</div>

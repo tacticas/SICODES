@@ -4,7 +4,7 @@ class Grupo extends Connection
 {	
 	//query para obtener todo los campos
 	public function getAll(){
-		return $this->con->query("SELECT * FROM grupo")->fetchAll(PDO::FETCH_ASSOC);
+		return $this->con->query("SELECT idGrupo,grupo.nombre as ngrupo,curso.idCurso,curso.nombre as ncurso FROM grupo JOIN curso where grupo.idCurso=curso.idCurso")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	//query para dar de alta
 	public function alta($nombre,$idCurso){
@@ -17,9 +17,9 @@ class Grupo extends Connection
 		}
 	}
 	//query para editar 
-	public function editar(){
-		$query = $this->con->prepare("UPDATE grupo SET  WHERE id=?");
-		$exc = $query->execute(array());
+	public function editar($id,$nombre,$idCurso){
+		$query = $this->con->prepare("UPDATE grupo SET nombre=?, idCurso=?  WHERE idGrupo=?");
+		$exc = $query->execute(array($nombre,$idCurso,$id));
 		if ($exc) {
 			return true;
 		}else{
