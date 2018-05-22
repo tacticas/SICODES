@@ -8,14 +8,14 @@
         <a class="nav-link" href="dashboard.php">DashBoard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="alumno.php">Alumno</a>
+        <a class="nav-link" href="alumno.php">Alumnos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="curso.php">Cursos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="grupo.php">Grupo</a>
-      </li>
+        <a class="nav-link" href="grupo.php">Grupos</a>
+      </li> 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Promociones

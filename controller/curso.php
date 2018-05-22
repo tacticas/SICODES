@@ -10,6 +10,7 @@ if (isset($_GET['get'])) {
 	echo json_encode($data);
 }
 
+
 if (isset($_POST['task'])) {
 	switch ($_POST['task']) {
 		case 'agregar':
@@ -18,7 +19,7 @@ if (isset($_POST['task'])) {
 			$control = $obj->alta($nombre,$descrip);
 			break;
 		case 'editar':
-			$id=$_POST['id'];
+			$id=$_POST['idCurso'];
 			$nombre=$_POST['nombre'];
 			$descrip=$_POST['descrip'];
 			$control = $obj->editar($id,$nombre,$descrip);

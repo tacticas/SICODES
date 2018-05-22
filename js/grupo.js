@@ -4,6 +4,45 @@ $(document).ready(function() {
     eliminar();
     preCarga();
 });     
+    
+   /* $('#example').on('click','button.getGrupo ', function( event, ){
+        event.preventDefault();
+        var data = table.row( $(this).parents('tr') ).data();
+        altable2.sAjaxSource('controller/grupo.php?grupo='+data.idGrupo);
+        console.log(data);
+        this.disabled= true;
+    }); */
+
+   
+
+    $('#dtList').on('click','button.lieditar', function( event, ){
+        event.preventDefault();
+        var data = altable2.row( $(this).parents('tr') ).data();
+        altable2.sAjaxSource('controller/grupo.php?grupo='+data.idGrupo);
+        console.log(data);
+        this.disabled= true;
+    });
+
+    var altable = $('#dtAlumnos').DataTable( {
+        ajax : 'controller/grupo.php?get=2',
+        columns: [
+            {data: 'idAlumno'},
+            {data: 'matricula'},
+            { data: 'nombre' },
+            { data: 'ap1' },
+            { data: 'ap2' },
+            { defaultContent: '<button class="aleditar btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>'}
+        ]
+    } );
+
+    $('#dtAlumnos').on('click','button.aleditar', function( event ){
+        event.preventDefault();
+        var data = altable.row( $(this).parents('tr') ).data();
+        console.log(data);
+        this.disabled= true;
+
+    });
+    
 
     function listar() {
        
@@ -22,7 +61,7 @@ $(document).ready(function() {
                     return data;
                 }
             },
-            { defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>'}
+            { defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <button data-toggle="modal" data-target="#add" class="eliminar btn btn-success btn-sm"><i class="fa fa-users"></i></button> <button data-toggle="modal" data-target="#del" class="getGrupo btn btn-danger btn-sm"><i class="fa fa-list"></i></button> '}
         ],
         select: true,
         buttons: [
@@ -38,16 +77,19 @@ $(document).ready(function() {
         } );
         obtener_data_editar('#example tbody',table);
         obtener_id_eliminar('#example tbody',table);
+        obtener_grupo('#example tbody',table);
         nuevo_registro();
     } 
  
     function preCarga(){
+        console.log("Sandy2");
         $.ajax({
             method: 'POST',
             url: "controller/grupo.php?carga=1",
             dataType: "json",
             success: function(data){
-                //console.log(data);
+                console.log(data);
+                
                 $.each( data, function( key, registro ) {
                     $("#idCurso").append('<option value='+registro.idCurso+'>'+registro.nombre+'</option>');
                 });
@@ -75,6 +117,28 @@ $(document).ready(function() {
         $('#idGrupo').val(data.idGrupo);
         $('#nombre').val(data.ngrupo);
         $('#idCurso').val(data.idCurso);
+        });
+    }
+
+    function obtener_grupo(tbody, table){
+        $(tbody).on('click','button.getGrupo', function(){
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        console.log("Te quiero Sandy");
+        var dir = data.idGrupo;
+        $('#dtList').dataTable().fnDestroy();
+        var altable2 = $('#dtList').DataTable( {
+            ajax : 'controller/grupo.php?grupo='+dir,
+            columns: [
+                {data: 'idAlumno'},
+                {data: 'matricula'},
+                { data: 'nombre' },
+                { data: 'ap1' },
+                { data: 'ap2' },
+                { defaultContent: '<button class="lieditar btn btn-danger btn-sm"><i class="fa fa-minus"></i></button>'}
+            ]
+        } );
+
         });
     }
 
@@ -108,6 +172,7 @@ $(document).ready(function() {
                 $('#example').dataTable().fnDestroy();
                 listar();
                 toastr.success('Guardado Correctamente');
+                location.reload();
             });
         });
     }

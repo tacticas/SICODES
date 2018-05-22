@@ -22,11 +22,12 @@ $(document).ready(function() {
         ]
                       
         } );
+        
         obtener_data_editar('#example tbody',table);
         obtener_id_eliminar('#example tbody',table);
-        nuevo_registro();
+        nuevo_registro(); 
+        
     } 
- 
 
     function nuevo_registro(){
         $('button.agregar').click(function(){
@@ -54,7 +55,7 @@ $(document).ready(function() {
         var data = table.row( $(this).parents('tr') ).data();
         console.log(data);
         $('#accion').val('eliminar');
-        $('#formEliminar #id').val(data.idCurso);
+        $('#formEliminar #idCurso').val(data.idCurso);
         
         });
     }
@@ -77,6 +78,7 @@ $(document).ready(function() {
                 $('#example').dataTable().fnDestroy();
                 listar();
                 toastr.success('Guardado Correctamente');
+                location.reload();
             });
         });
     }

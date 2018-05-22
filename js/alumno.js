@@ -144,6 +144,7 @@ $(document).ready(function() {
                 $('#example').dataTable().fnDestroy();
                 listar();
                 toastr.success('Guardado Correctamente');
+                location.reload();
             });
         });
     }

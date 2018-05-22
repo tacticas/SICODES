@@ -6,6 +6,12 @@ class Grupo extends Connection
 	public function getAll(){
 		return $this->con->query("SELECT idGrupo,grupo.nombre as ngrupo,curso.idCurso,curso.nombre as ncurso FROM grupo JOIN curso where grupo.idCurso=curso.idCurso")->fetchAll(PDO::FETCH_ASSOC);
 	}
+	public function getAllAlumnos(){
+		return $this->con->query("SELECT * FROM alumno")->fetchAll(PDO::FETCH_ASSOC);
+	}
+	public function getAllRelacion($id){
+		return $this->con->query("SELECT * from alumno JOIN alumnogrupo WHERE alumno.idAlumno = alumnogrupo.idAlumno AND alumnogrupo.idGrupo =".$id)->fetchAll(PDO::FETCH_ASSOC);
+	}
 	//query para dar de alta
 	public function alta($nombre,$idCurso){
 		$query = $this->con->prepare("INSERT INTO grupo (nombre,idCurso) values(?,?)");

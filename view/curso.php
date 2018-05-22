@@ -10,7 +10,7 @@
 				</div>
 			</div>						
 			<br>
-			<div class="table-responsive">
+			<div id="tb" class="table-responsive">
 					<table data-order='[[ 0, "DESC" ]]' id="example" class="table table-bordered table-striped display" cellspacing="0" width="100%">
 				        <thead class="thead-inverse">
 				            <tr>
@@ -67,7 +67,7 @@
     <div class="modal-content">
     <form id="formEliminar">  
     	<input class="form-control" id="accion" type="hidden" name="task" value="eliminar">
-		<input class="form-control" type="hidden" name="idCurso" value="" id="id">	
+		<input class="form-control" type="hidden" name="idCurso" value="" id="idCurso">	
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
