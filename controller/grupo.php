@@ -15,26 +15,67 @@ if (isset($_GET['grupo'])) {
 	
 	echo json_encode($data);
 }
+
+if (isset($_GET['grupo2'])) {
+	$id = $_GET['grupo2'];
+	$tabla = $obj->getAlumno($id);
+	if($tabla != false){
+		foreach ($tabla as $key) {
+			$data["data"][] = $key;
+		}
+	}else{
+		$data = "";
+	}
+	
+	echo json_encode($data);
+}
 if (isset($_GET['get'])) {
 	if ($_GET['get']==1) {
 		$tabla = $obj->getAll();
-		foreach ($tabla as $key) {
-			$data["data"][] = $key;
+		if($tabla != false){
+			foreach ($tabla as $key) {
+				$data["data"][] = $key;
+			}
+		}else{
+			$data = "";
 		}
 		echo json_encode($data);
 	}
 	if ($_GET['get']==2) {
 		$tabla = $obj->getAllAlumnos();
-		foreach ($tabla as $key) {
-			$data["data"][] = $key;
+		if($tabla != false){
+			foreach ($tabla as $key) {
+				$data["data"][] = $key;
+			}
+		}else{
+			$data = "";
 		}
 		echo json_encode($data);
 	}
 }
+//agregar alumnos
+if(isset($_GET['acc'])){
+	if($_GET['acc']='add'){
+		$grupo=$_GET['grupo'];
+		$idAlumno=$_POST['idAlumno'];
+		$obj->addAlumnoToGrupo($idAlumno,$grupo);
+	}
+	if($_GET['acc']='del'){
+		$id=$_GET['reg'];
+		$obj->delAlumnoToGrupo($id);
+	}
+
+}
+//elimianr alumnos de grupo
+
+
 
 //obtener datos para formulario
 if(isset($_GET['carga'])){
 	$cursos = $obj->getCurso();
+	if($cursos == false){
+		$cursos = "";
+	}
 	echo json_encode($cursos);
 }
 
@@ -54,6 +95,9 @@ if (isset($_POST['task'])) {
 		case 'eliminar':
 			$id=$_POST['idGrupo'];
 			$control = $obj->eliminar($id);
+			break;
+		case 'agregarAln':
+			
 			break;
 		default:
 			echo 'problema';

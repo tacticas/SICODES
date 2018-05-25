@@ -12,6 +12,30 @@ class Grupo extends Connection
 	public function getAllRelacion($id){
 		return $this->con->query("SELECT * from alumno JOIN alumnogrupo WHERE alumno.idAlumno = alumnogrupo.idAlumno AND alumnogrupo.idGrupo =".$id)->fetchAll(PDO::FETCH_ASSOC);
 	}
+
+	public function getAlumno($id){
+		return $this->con->query("SELECT * FROM alumno WHERE alumno.idAlumno NOT IN (SELECT alumno.idAlumno FROM alumno JOIN alumnogrupo ON alumno.idAlumno = alumnogrupo.idAlumno WHERE alumnogrupo.idGrupo = '$id')")->fetchAll(PDO::FETCH_ASSOC);
+	}
+//Agregar alumno a grupo
+	public function addAlumnoToGrupo($alumno,$grupo){
+		$query = $this->con->prepare("INSERT INTO alumnogrupo (idAlumno,idGrupo) values(?,?)");
+		$exc = $query->execute(array($alumno,$grupo));
+		if ($exc) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function delAlumnoToGrupo($id){
+		$query = $this->con->prepare("DELETE FROM alumnogrupo WHERE idR = ?");
+		$exc = $query->execute(array($id));
+		if ($exc) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	//query para dar de alta
 	public function alta($nombre,$idCurso){
 		$query = $this->con->prepare("INSERT INTO grupo (nombre,idCurso) values(?,?)");

@@ -4,14 +4,21 @@ $obj = new Alumno();
 //genera el json para la tabla
 if (isset($_GET['get'])) {
 	$tabla = $obj->getAll();
-	foreach ($tabla as $key) {
-		$data["data"][] = $key;
+	if($tabla != false){
+		foreach ($tabla as $key) {
+			$data["data"][] = $key;
+		}
+	}else{
+		$data = "";
 	}
 	echo json_encode($data);
 }
 //obtener datos para formulario
 if(isset($_GET['carga'])){
 	$escuelas = $obj->getEscuela();
+	if($escuelas == false){
+		$escuelas = "";
+	}
 	echo json_encode($escuelas);
 }
 
