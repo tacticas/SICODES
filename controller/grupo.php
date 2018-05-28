@@ -55,12 +55,11 @@ if (isset($_GET['get'])) {
 }
 //agregar alumnos
 if(isset($_GET['acc'])){
-	if($_GET['acc']='add'){
+	if($_GET['acc']=='add'){
 		$grupo=$_GET['grupo'];
 		$idAlumno=$_POST['idAlumno'];
 		$obj->addAlumnoToGrupo($idAlumno,$grupo);
-	}
-	if($_GET['acc']='del'){
+	}else if($_GET['acc']=='del'){
 		$id=$_GET['reg'];
 		$obj->delAlumnoToGrupo($id);
 	}
