@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	preCarga();
-   
+});  
 
 	var table = $('#example').DataTable( {
 		ajax: 'controller/grupo.php?get=1',
@@ -44,6 +44,12 @@ $(document).ready(function() {
 		});
 	}
 
+	$("#add").on('hidden.bs.modal', function () {
+		location.reload();
+	});
+	$("#del").on('hidden.bs.modal', function () {
+		location.reload();
+	});
 
 	$('button.agregar').click(function(){
 		$('#formGuardar')[0].reset();
@@ -61,7 +67,6 @@ $(document).ready(function() {
 	});
 
     $('#example tbody').on('click','button.getGrupo', function(){
-		
 		var data = table.row( $(this).parents('tr') ).data();
         var dir = data.idGrupo;
         $('#dtList').dataTable().fnDestroy();
@@ -76,10 +81,8 @@ $(document).ready(function() {
                 { defaultContent: '<button class="lieditar btn btn-danger btn-sm"><i class="fa fa-minus"></i></button>'}
             ]
 		} );
-		altable2.ajax.reload();
         $('#dtList').on ('click','button.lieditar', function( event ){
 			event.preventDefault();
-			event.stopImmediatePropagation();
 			var data = altable2.row( $(this).parents('tr') ).data();
             console.log(data.idR);
             $.ajax({
@@ -88,7 +91,6 @@ $(document).ready(function() {
                 data: data
               })
                 .done(function( msg ) {
-					
                     toastr.success('Eliminado Correctamente');
                 });
             this.disabled= true;
@@ -96,11 +98,8 @@ $(document).ready(function() {
         });
 
     });
-    
-
 
     $('#example tbody').on('click','button.agregarAl', function(){
-		
 		var data = table.row( $(this).parents('tr') ).data();
         var dir = data.idGrupo;
         $('#dtAlumnos').dataTable().fnDestroy();
@@ -115,10 +114,8 @@ $(document).ready(function() {
                 { defaultContent: '<button class="addAln btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>'}
             ]
 		} );
-		altable.ajax.reload();
         $('#dtAlumnos').on('click','button.addAln', function( event ){
 			event.preventDefault();
-			event.stopImmediatePropagation();
             var data = altable.row( $(this).parents('tr') ).data();
             console.log(data);
             $.ajax({
@@ -127,7 +124,6 @@ $(document).ready(function() {
                 data: data
               })
                 .done(function( msg ) {
-					
                     toastr.success('Guardado Correctamente');
                 });
             this.disabled= true;
@@ -174,4 +170,3 @@ $(document).ready(function() {
 				toastr.success('Eliminado Correctamente');
 			});
 	});   
-});  
