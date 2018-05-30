@@ -16,19 +16,15 @@
       <li class="nav-item">
         <a class="nav-link" href="grupo.php">Grupos</a>
       </li> 
-      <li class="nav-item">
-        <a class="nav-link" href="escuela.php">Escuela</a>
-      </li> 
-      <!--<li class="nav-item dropdown">
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Promociones
+          Configuración
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Promoción 1</a>
-          <a class="dropdown-item" href="#">Promoción 2</a>
-          <a class="dropdown-item" href="#">Promoción 3</a>
+          <a class="dropdown-item" href="escuela.php">Escuelas</a>
+          <a class="dropdown-item" href="profesor.php">Profesores</a>
         </div>
-      </li>-->
+      </li>
     </ul>
   </div>  
 </nav>
