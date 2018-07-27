@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/DataTables-1.10.16/css/dataTables.bootstrap4.css">
 	<link rel="stylesheet" type="text/css" href="assets/Buttons-1.4.2/css/buttons.bootstrap4.css">
 	
-
+	<link href="assets/img/favicon.ico" rel="icon" type="image/x-icon" />
 
 	
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">

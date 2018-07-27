@@ -1,6 +1,6 @@
 <footer class="footer">
-	<div class="container-fluid">
-        <span class="text-muted pull-right">© Copyright 2018 - WebMakers Team. All rights reserved.</span>
+	<div class="container-fluid text-center">
+        <span class="text-muted text-center">© Copyright 2018 - Odisea Desing. All rights reserved.</span>
     </div>
 </footer>
 <!-- SCRIPTS -->
@@ -36,18 +36,3 @@
 </div>
 </body>
 </html>
-
-<?php 
-
-	if (isset($_GET['alerta'])) {
-			if ($_GET['alerta'] == 1) {
-				echo '<script language="javascript">toastr.success("Agregado Correctamente.");</script>'; 
-			}
-			if ($_GET['alerta'] == 2) {
-				echo '<script language="javascript">toastr.success("Editado Correctamente.");</script>';  
-			}
-			if ($_GET['alerta'] == 3) {
-				echo '<script language="javascript">toastr.success("Eliminado Correctamente.");</script>'; 
-			}
-	}
-?>

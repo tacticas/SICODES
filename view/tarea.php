@@ -10,25 +10,25 @@
 				</div>
 			</div>						
 			<br>
-			<div class="table-responsive">
-				<table data-order='[[ 0, "DESC" ]]' id="example" class="table table-bordered table-striped display" cellspacing="0" width="100%">
-								<thead class="thead-inverse">
-										<tr>
-											<th>id</th>
-											<th>idGrupo</th>
-											<th>Grupo</th>
-											<th>idProfesor</th>
-											<th>Profesor</th>
-											<th>Tema</th>
-											<th>Descripción</th>
-											<th>Tipo</th>
-											<th>archivo</th>
-											<th>Fecha de Entrega</th>
-											<th>Status</th>
-											<th></th>
-										</tr>
-								</thead>
-						</table>
+			<div id="tb" class="table-responsive">
+				<table data-order='[[ 0, "DESC" ]]' id="example" class="table table-bordered table-striped display dataTable no-footer" cellspacing="0" width="100%">
+					<thead class="thead-inverse">
+						<tr>
+							<th>id</th>
+							<th>idGrupo</th>
+							<th>Grupo</th>
+							<th>idProfesor</th>
+							<th>Profesor</th>
+							<th>Tema</th>
+							<th>Descripción</th>
+							<th>Tipo</th>
+							<th>archivo</th>
+							<th>Fecha de Alta</th>
+							<th>Status</th>
+							<th></th>
+						</tr>
+					</thead>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -48,10 +48,24 @@
 				<div class="modal-body">
 					<input class="form-control" id="accion" type="hidden" name="task" value="">
 					<input class="form-control" type="hidden" name="idTarea" value="" id="idTarea">
-					<input class="form-control" required=""  type="hidden" name="idProfesor" value="" id="idProfesor">
+					<input class="form-control" required=""  type="hidden" name="idProfesor" value="<?=$_SESSION['idMaster'];?>" id="idProfesor">
+					<div class="form-group">
+						<label for="escuela">Alcance:</label>
+						<select class="form-control" id="alcance" name="alcance" value="">
+							<option value="n">Grupal</option>
+							<option value="1">Indivudual</option>
+						</select>
+					</div>
 					<div class="form-group">
 						<label for="escuela">Grupo:</label>
 						<select class="form-control" id="grupo" name="idGrupo" value="">
+						<option selected value="">Selecciona un grupo</option>
+						</select>
+					</div>
+					<div class="form-group" id="divAlumno" >
+						<label for="nombre" >Alumno: </label>
+						<select class="form-control" id="idAlumno" name="idAlumno" value="">
+						<option selected value="">Selecciona un Alumno</option>
 						</select>
 					</div>
 							<div class="form-group ">
@@ -62,33 +76,33 @@
 								<label for="ap1" >Descripción: </label>
 								<textarea rows="4" cols="50" class="form-control" required="" name="descrip" value="" id="descrip"></textarea>
 							</div>
-							<label class="form-group" for="">Tipo de Tarea</label>
-							<fieldset class="form-group">
+							<label class="form-group" for="">Habilidad</label>
+							<fieldset class="form-group" id="radios">
 								<div class="row">
 									<legend class="col-form-label col-sm-2 pt-0"></legend>
 									<div class="col-sm-10">
 										<div class="form-check">
 											<input class="form-check-input" type="radio" name="tipo" id="rb1" value="1" checked>
 											<label class="form-check-label" for="rb1">
-												Archivo (PDF,Word)
+												Hablar
 											</label>
 										</div>
 										<div class="form-check">
 											<input class="form-check-input" type="radio" name="tipo" id="rb2" value="2">
 											<label class="form-check-label" for="rb2">
-												Imagen
+												Leer
 											</label>
 										</div>
 										<div class="form-check">
 											<input class="form-check-input" type="radio" name="tipo" id="rb3" value="3">
 											<label class="form-check-label" for="rb3">
-												Audio
+												Escribir
 											</label>
 										</div>
 										<div class="form-check">
 											<input class="form-check-input" type="radio" name="tipo" id="rb4" value="4">
 											<label class="form-check-label" for="rb4">
-												Texto
+												Escuchar(Dictado)
 											</label>
 										</div>
 									</div>
@@ -96,16 +110,11 @@
 							</fieldset>
 							<div class="form-group">
 								<label for="" >Material de Apoyo: </label>
-								<input class="form-control"  type="file" name="archivo" value="" id="archivo">
+								<input class="form-control"  type="file" name="foto" value="" id="foto" accept="image/png, image/jpeg, application/pdf, application/msword, audio/*">
 							</div>
-							<label class="form-group" for="">Fecha y Hora de Entrega</label>
-							<div class="form-group">
-								<label for="" >Fecha: </label>
-								<input class="form-control" required=""  type="date" name="fecha" value="" id="fecha">
-							</div>
-							<div class="form-group">
-								<label for="" >Hora: </label>
-								<input class="form-control" required=""  type="time" name="hora" value="" id="hora">
+							<div class="form-group"id="divtextoDi" >
+								<label for="ap1" >Texto para dicatado: </label>
+								<textarea id="textoDi" rows="4" cols="50" class="form-control" name="textoDi" value="" ></textarea>
 							</div>
 
 					 	</div>

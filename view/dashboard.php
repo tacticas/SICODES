@@ -4,6 +4,8 @@
 			<div class="row">
 				<div class="col-sm-8">
 					<h3>DashBoard</h3>
+                    <h4>Bienvenido <?=$_SESSION['idMaster'];?></h4>
+                    <h4>Bienvenido <?=$_SESSION['permiso'];?></h4>
                     <table class="table table-bordered table-striped display dataTable no-footer">
                         <thead class="thead-inverse">
                             <tr>

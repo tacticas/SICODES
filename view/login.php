@@ -1,29 +1,21 @@
-<?php session_start(); 
-  
-           
-  
+<?php 
+      //terminar variables y la sessión
+      session_start(); 
+      $_SESSION = array();
+      session_destroy();   
+      
+     
 ?>
 <div class="container form-padding">
 
  
-    <form method="POST" action="controller/login.php" class="form-signin">
-      <?php
-          if (isset($_GET['error'])) {
-                  
-          echo '<div class="col-md-12">Usuario o Contraseña Incorrectos</div>'; 
-              }    
-      ?>
-      <img class="img-responsive col-md-12" src="assets/img/logo.png" alt="No se encontró" class="img-rounded">
-        <h2 class="form-signin-heading">Porfavor inicia sesión</h2>
+    <form id="frmLogin" class="form-signin">
+      <img class="img-responsive col-md-12" src="assets/img/logoprep.jpg" alt="No se encontró" class="img-rounded">
+        <h2 class="form-signin-heading text-center">Inicia sesión</h2>
         <label for="inputEmail" class="sr-only">Matricula</label>
-        <input name="matri" type="text" id="inputEmail" class="form-control" placeholder="Matrícula" required autofocus>
+        <input name="user" type="text" id="inputEmail" class="form-control" placeholder="Matrícula" required autofocus>
         <label for="inputPassword" class="sr-only">Contraseña</label>
         <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Recordame
-          </label>
-        </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
       </form>
 

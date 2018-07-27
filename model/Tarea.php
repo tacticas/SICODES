@@ -4,22 +4,23 @@ class Tarea extends Connection
 {	
 	//query para obtener todo los campos
 	public function getAll(){
-		return $this->con->query("SELECT * FROM tarea")->fetchAll(PDO::FETCH_ASSOC);
+		return $this->con->query("Select tarea.*, grupo.nombre as grupoN,profesor.nombre as profesorN from tarea,grupo,profesor where tarea.idGrupo = grupo.idGrupo and tarea.idProfesor = profesor.idProfesor
+		")->fetchAll(PDO::FETCH_ASSOC);
 	}
-	//query para dar de alta alumnos
-	public function alta($idGrupo,$idProfesor,$tema,$descripcion,$tipo,$archivo,$fechaEntrega){
-		$query = $this->con->prepare("INSERT INTO tarea ( idGrupo,idProfesor,tema,descripcion,tipo,archivo,fechaEntrega ) values(?,?,?,?,?,?,?)");
-		$exc = $query->execute(array($idGrupo,$idProfesor,$tema,$descripcion,$tipo,$archivo,$fechaEntrega));
+	//query para dar de alta 
+	public function alta($grupo,$alumno,$idProfesor,$alcance,$tema,$descrip,$tipo,$ruta,$textoDi){
+		$query = $this->con->prepare("INSERT INTO tarea (idGrupo,idAlumno,idProfesor,alcance,tema,descripcion,tipo,archivo,textDi) values(?,?,?,?,?,?,?,?,?)");
+		$exc = $query->execute(array($grupo,$alumno,$idProfesor,$alcance,$tema,$descrip,$tipo,$ruta,$textoDi));
 		if ($exc) {
 			return true;
 		}else{
 			return false;
 		}
 	}
-	//query para editar alumnos
-	public function editar($idTarea,$idGrupo,$idProfesor,$tema,$descripcion,$tipo,$archivo,$fechaEntrega){
-		$query = $this->con->prepare("UPDATE tarea SET idGrupo=?,idProfesor=?,tema=?,descripcion=?,tipo=?,archivo=?,fechaEntrega=? WHERE idTarea=?");
-		$exc = $query->execute(array($idGrupo,$idProfesor,$tema,$descripcion,$tipo,$archivo,$fechaEntrega,$idTarea));
+	//query para editar
+	public function editar($grupo,$alumno,$alcance,$tema,$descrip,$tipo,$ruta,$textoDi,$idTarea){ //modificando aqui
+		$query = $this->con->prepare("UPDATE tarea SET idGrupo=?,idAlumno=?,alcance=?,tema=?,descripcion=?,tipo=?,archivo=?,textDi=? WHERE idTarea=?");
+		$exc = $query->execute(array($grupo,$alumno,$alcance,$tema,$descrip,$tipo,$ruta,$textoDi,$idTarea));
 		if ($exc) {
 			return true;
 		}else{
@@ -27,16 +28,16 @@ class Tarea extends Connection
 		}
 	}
 		//query para editar sin archivo
-		public function editarsf($idTarea,$idGrupo,$idProfesor,$tema,$descripcion,$tipo,$fechaEntrega){
-			$query = $this->con->prepare("UPDATE tarea SET idGrupo=?,idProfesor=?,tema=?,descripcion=?,tipo=?,fechaEntrega=? WHERE idTarea=?");
-			$exc = $query->execute(array($idGrupo,$idProfesor,$tema,$descripcion,$tipo,$fechaEntrega,$idTarea));
+		public function editarsf($grupo,$alumno,$alcance,$tema,$descrip,$tipo,$textoDi,$idTarea){
+			$query = $this->con->prepare("UPDATE tarea SET idGrupo=?,idAlumno=?,alcance=?,tema=?,descripcion=?,tipo=?,textDi=? WHERE idTarea=?");
+			$exc = $query->execute(array($grupo,$alumno,$alcance,$tema,$descrip,$tipo,$textoDi,$idTarea));
 			if ($exc) {
 				return true;
 			}else{
 				return false;
 			}
 		}
-	//query para dar de baja alumnos
+	//query para dar de baja Tarea
 	public function eliminar($id){
 		$query = $this->con->prepare("DELETE FROM tarea WHERE idTarea=?");
 		$exc = $query->execute(array($id));
@@ -51,5 +52,8 @@ class Tarea extends Connection
 	}
 	public function getProfesor(){
 		return $this->con->query("SELECT idProfesor, nombre, ap1 FROM profesor")->fetchAll(PDO::FETCH_ASSOC);
+	}
+	public function getAlumno($id){
+		return $this->con->query("SELECT * from alumno JOIN alumnogrupo WHERE alumno.idAlumno = alumnogrupo.idAlumno AND alumnogrupo.idGrupo =".$id)->fetchAll(PDO::FETCH_ASSOC);
 	}
 }

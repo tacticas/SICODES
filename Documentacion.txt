@@ -5,9 +5,19 @@ Permisos
 4 profesor
 5 alumno
 6 padre
+-----------
+padre 123
+profe 123
+admin admin
+XA010001 123
+recep 123
+
+$_SESSION['idMaster'] id de la sessión
+$_SESSION['permiso'] define el permiso
 
 
 tipos de formularios
+
 
 select
 
@@ -16,3 +26,10 @@ select
         <select class="form-control" id="escuela" name="idEscuela" value="">
 	    </select>
 </div>
+
+
+
+0.0.0.1
+
+El apartado de agregar nueva tarea, ya no se pediran los archivos ya sea audios,
+imagenes, pdf, etc, si no que se hará referencia al enlace dentro de la BV biblioteca virtual

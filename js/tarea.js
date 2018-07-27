@@ -1,6 +1,8 @@
 $(document).ready(function() {
-
+	$('#divAlumno').hide();
+	$('#divtextoDi').hide();
 	preCarga();
+	
 });     
 
 	var table = $('#example').DataTable( {
@@ -19,27 +21,36 @@ $(document).ready(function() {
 				render: function(data, type, row) {
 					var r = "";
 					switch(data) {
-						case 1:
-							r = "Documento";
+						case "1":
+							r = "Hablar";
 							break;
-						case 2:
-							r = "Imagen";
+						case "2":
+							r = "leer";
 							break;
-						case 3:
-							r = "Audio";
+						case "3":
+							r = "Escribir";
 							break;
-						case 4:
-							r = "Escrito";
+						case "4":
+							r = "Escuchar";
 							break;	
 						default:
 							r = "No especificado";
+							break;
 					}
 					return r;
 				}
 			},
 			{ data: 'archivo' },
-			{ data: 'fechaEntrega' },
-			{ data: 'status' },
+			{ data: 'fechaAlta' },
+			{ data: 'status', 
+				render: function(data, type, row){
+					if (data == "1") {
+						return "Activa";
+					} else {
+						return "Concluida";
+					}
+				}
+			},
 			{ defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>'}
 		],
 		select: true,
@@ -57,76 +68,150 @@ $(document).ready(function() {
 	function preCarga(){
 		$.ajax({
 			method: 'POST',
-			url: "controller/alumno.php?carga=1",
+			url: "controller/tarea.php?carga=1",
 			dataType: "json",
 			success: function(data){
 				$.each( data, function( key, registro ) {
-					$("#escuela").append('<option value='+registro.idEscuela+'>'+registro.nombre+' - '+registro.ciudad+'</option>');
+					$("#grupo").append('<option value='+registro.idGrupo+'>'+registro.nombre+'</option>');
 				});
 			}
 		});
+		
 	}
+	$('#editar').on('shown.bs.modal', function () {
+		$('#tema').focus()
+	});
+ 
+	//interface
+	
+	$( "#alcance" ).change(function() {
+			$( "#alcance option:selected" ).each(function() {
+				  if( $( this ).val() == 1 ){
+					$('#divAlumno').show();
+				  }
+				  if($( this ).val() == "n" ){
+					$('#divAlumno').hide();
+				  }	
+			});
+		});
+
+	$( "#grupo" ).change(function() {
+		$( "#grupo option:selected" ).each(function() {
+			var grupo =  $( this ).val();
+			$.ajax({
+				method: 'POST',
+				url: "controller/tarea.php?carga=2&grupo="+grupo,
+				dataType: "json",
+				success: function(data){
+					$.each( data, function( key, registro ) {
+						$("#idAlumno").append('<option value='+registro.idAlumno+'>'+registro.nombre+' '+registro.ap1 +' ('+registro.matricula+')'+'</option>');
+					});
+				}
+			});
+		});
+	});
+
+	$('#radios input[type=radio]').on('change', function() {
+		if($(this).val()== 4){
+			$('#divtextoDi').show();
+		}else{
+			$('#divtextoDi').hide();
+		} 
+	});
+	
+	// back-js
 
 	$('button.agregar').click(function(){
 		$('#formGuardar')[0].reset();
 		$('#accion').val('agregar');
-		$('#tituloModal').html('Agregar nuevo registro');
-		$('#foto').prop('required',true);
+		$('#tituloModal').html('Agregar nueva Tarea');
+		$('#divAlumno').hide();
+		$('#divtextoDi').hide();
+		$("#alcance").prop('disabled', false);
+		$("#grupo").prop('disabled', false);
+		$("#idAlumno").prop('disabled', false);
+		$('#rb1').prop('disabled', false);
+		$('#rb2').prop('disabled', false);
+		$('#rb3').prop('disabled', false);
+		$('#rb4').prop('disabled', false);
+	});
+	
+	$('#formGuardar').on('submit', function(e){
+		e.preventDefault();
+		$("#alcance").prop('disabled', false);
+		$("#grupo").prop('disabled', false);
+		$("#idAlumno").prop('disabled', false);
+		$('#rb1').prop('disabled', false);
+		$('#rb2').prop('disabled', false);
+		$('#rb3').prop('disabled', false);
+		$('#rb4').prop('disabled', false);
+		var frm = new FormData($(this)[0]);
+		$.ajax({
+			method: 'POST',
+			url: 'controller/tarea.php',
+			data: frm,
+			contentType: false,
+			processData: false,
+		}).done( function( info ){
+			$('#editar').modal('hide');
+			table.ajax.reload();
+			toastr.success('Guardado Correctamente'+info);
+		});
 	});
 
 	$('#example tbody').on('click','button.editar', function(){
 		var data = table.row( $(this).parents('tr') ).data();
 		console.log(data);
-		$('#tituloModal').html('Editando Datos de '+data.matricula);
+		$('#tituloModal').html('Editando Datos de '+data.tema);
 		$('#accion').val('editar');
+		$('#idTarea').val(data.idTarea);
+		$('#alcance').val(data.alcance);
+		$('#grupo').val(data.idGrupo);
+		$('#idAlumno').val(data.idAlumno);
+		$('#tema').val(data.tema);
+		$('#descrip').val(data.descripcion);
+		switch (data.tipo) {
+			case "1":
+			$("#rb1").prop("checked", true);
+			$('#divtextoDi').hide();
+				break;
+			case "2":
+			$("#rb2").prop("checked", true);
+			$('#divtextoDi').hide();	
+				break;
+			case "3":
+			$("#rb3").prop("checked", true);
+			$('#divtextoDi').hide();	
+				break;
+			case "4":
+			$("#rb4").prop("checked", true);
+			$('#divtextoDi').show();	
+				break;
+			default:
+			break;
+		}
+		$('#textoDi').val(data.textDi);
 		$('#foto').prop('required',false);
 		$('#foto').val(null);
 		$('#idAlumno').val(data.idAlumno);
-		$('#matricula').val(data.matricula);
-		$('#contraseña').val(data.contraseña);
-		$('#nombre').val(data.nombre);
-		$('#ap1').val(data.ap1);
-		$('#ap2').val(data.ap2);
-		$('#email').val(data.email);
-		$('#fnac').val(data.fnac);
-		$('#sexo').val(data.sexo);
 		if ($('#foto').get(0).files.length === 0) {
 			console.log("No files selected.");
 		}
-		$('#dir').val(data.dir);
-		$('#tel').val(data.tel);
-		$('#cel').val(data.cel);
-		$('#meta').val(data.meta);
-		$('#evaluacion').val(data.evaluacion);
-		$('#cursoInicio').val(data.cursoInicio);
-		$('#fechaPago').val(data.fechaPago);
-		$('#escuela').val(data.idEscuela);
+		$('#alcance').prop('disabled', true);
+		$('#grupo').prop('disabled', true);
+		$('#idalunno').prop('disabled', true);
+		$('#rb1').prop('disabled', true);
+		$('#rb2').prop('disabled', true);
+		$('#rb3').prop('disabled', true);
+		$('#rb4').prop('disabled', true);
+		
+		
 	});
 	
 	$('#example tbody').on('click','button.eliminar', function(){
 		var data = table.row( $(this).parents('tr') ).data();
 		$('#accion').val('eliminar');
-		$('#formEliminar #id').val(data.idAlumno);
-	});
-	
-	$('#editar').on('shown.bs.modal', function () {
-		$('#matricula').focus()
-	});
-
-	$('#formGuardar').on('submit', function(e){
-			e.preventDefault();
-			var frm = new FormData($(this)[0]);
-			$.ajax({
-				method: 'POST',
-				url: 'controller/alumno.php',
-				data: frm,
-				contentType: false,
-				processData: false,
-			}).done( function( info ){
-				$('#editar').modal('hide');
-				table.ajax.reload();
-				toastr.success('Guardado Correctamente');
-			});
+		$('#formEliminar #id').val(data.idTarea);
 	});
 
 	$('#formEliminar').on('submit', function(e){
@@ -134,7 +219,7 @@ $(document).ready(function() {
 			var frm = $(this).serialize();
 			$.ajax({
 				method: 'POST',
-				url: 'controller/alumno.php',
+				url: 'controller/tarea.php',
 				data: frm
 			}).done( function( info ){
 				$('#confirmar').modal('hide');

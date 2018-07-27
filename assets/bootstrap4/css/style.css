@@ -53,7 +53,7 @@ body {
 }
 .container-fluid{
   padding-left:0px ;
-  padding-rigth: 0px ;
+  padding-right: 0px ;
 }
 .sin-padding{
   
@@ -62,4 +62,31 @@ body {
 }
 img.fotosmini{
      width: 50px;
+}
+
+.navbar-nav {
+  width: 100%;
+  text-align: center;
+
+}
+
+.navbar-nav > li {
+    float: none;
+    display: inline-block;
+  }
+
+audio {
+  width: 100%;
+ 
+}
+#recordingslist{
+  padding-left: 0;
+}
+
+div.b-azul{
+  border-style: solid;
+  border-width: 3px;
+  border-color: #428bca;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

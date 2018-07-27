@@ -1,10 +1,11 @@
 <?php
 
-//require "inc/global.php";
-
-//require "controller/login.php";
 
 require "view/plantilla/_header.php";
-//require "view/_top.php";
+
 require "view/login.php";
-//require "view/_footer.php";
+
+require "view/plantilla/_footer.php";
+
+?>
+<script type="text/javascript" src="js/login.js"></script>
