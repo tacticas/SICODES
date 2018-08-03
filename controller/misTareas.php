@@ -16,6 +16,36 @@ if (isset($_GET['get'])) {
 	}
 	echo json_encode($data);
 }
+
+if (isset($_GET['getTareaIndi'])) {
+	$idAlumno=$_SESSION['idMaster'];
+	$tabla = $obj->getAllTareasIndi($idAlumno);
+
+	if($tabla != false){
+		foreach ($tabla as $key) {
+			$data["data"][] = $key;
+		}
+	}else{
+		$data = "";
+	}
+	echo json_encode($data);
+}
+
+if (isset($_GET['getTareaReal'])) {
+	$idAlumno=$_SESSION['idMaster'];
+	$tabla = $obj->getAllTareasCompleta($idAlumno);
+
+	if($tabla != false){
+		foreach ($tabla as $key) {
+			$data["data"][] = $key;
+		}
+	}else{
+		$data = "";
+	}
+	echo json_encode($data);
+}
+
+
 //obtener datos para formulario
 
 if (isset($_POST['task'])) {
@@ -27,18 +57,42 @@ if (isset($_POST['task'])) {
 			if (isset($_FILES['data'])) {
 				$rutaRandom = $obj->rutaRandom();
 				$audio =$_FILES['data'];
-
-				$rutax="../assets/audio/".$rutaRandom.".wav";
-				$ruta="assets/audio/".$rutaRandom.".wav";
+				if($_FILES['data']['type'] == "image/jpeg" ){
+					$rutax="../assets/img/tareas/".$rutaRandom.".jpeg";
+					$ruta="assets/img/tareas/".$rutaRandom.".jpeg";
+				}
+				if($_FILES['data']['type'] == "image/png" ){
+					$rutax="../assets/img/tareas/".$rutaRandom.".png";
+					$ruta="assets/img/tareas/".$rutaRandom.".png";
+				}
+				if($_FILES['data']['type'] == "application/pdf"){
+					$rutax="../assets/pdf/".$rutaRandom.".pdf";
+					$ruta="assets/pdf/".$rutaRandom.".pdf";
+				}
+				if($_FILES['data']['type'] == "application/msword"){
+					$rutax="../assets/word/".$rutaRandom.".doc";
+					$ruta="assets/word/".$rutaRandom.".doc";
+				}
+				if($_FILES['data']['type'] == "audio/mp3" || $_FILES['data']['type'] == "audio/wav"){
+					$rutax="../assets/audio/dictados/".$rutaRandom.".wav";
+					$ruta="assets/audio/dictados/".$rutaRandom.".wav";
+				}
 				move_uploaded_file($audio['tmp_name'],$rutax);
-				$control = true;
-			}else {
-				$ruta = "";
+				
+			}else{
+				$ruta="";
 			}
 						
 			$control = $obj->alta($idAlumno,$idTarea,$texto,$ruta);
 			break;
-		
+		case 'dictado':
+			$idAlumno=$_SESSION['idMaster'];
+			$texto = $_POST['respuesta'];
+			$idTarea =$_POST['idTarea'];
+			$archivo ='';
+
+			$control = $obj->alta($idAlumno,$idTarea,$texto,$archivo);
+			break;
 		default:
 			echo 'problema';
 		break;

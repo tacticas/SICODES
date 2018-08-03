@@ -21,6 +21,22 @@ if(isset($_GET['carga'])){
 	}
 	echo json_encode($escuelas);
 }
+if(isset($_GET['cursos'])){
+	$cursos = $obj->getCursos();
+	if($cursos == false){
+		$cursos = "";
+	}
+	
+	echo json_encode($cursos);
+}
+if(isset($_GET['lastId'])){
+	$cursos = $obj->getLastId();
+	if($cursos == false){
+		$cursos = "";
+	}
+	
+	echo json_encode($cursos);
+}
 
 if (isset($_POST['task'])) {
 	switch ($_POST['task']) {

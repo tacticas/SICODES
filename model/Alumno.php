@@ -47,6 +47,14 @@ class Alumno extends Connection
 		}
 	}
 	public function getEscuela(){
-		return $this->con->query("SELECT idEscuela, nombre, ciudad FROM escuela")->fetchAll(PDO::FETCH_ASSOC);
+		return $this->con->query("SELECT idEscuela, nombre, ciudad, estado FROM escuela")->fetchAll(PDO::FETCH_ASSOC);
 	}
+	public function getCursos(){
+		return $this->con->query("SELECT idCurso, nombre FROM curso")->fetchAll(PDO::FETCH_ASSOC);
+	}
+	public function getLastId(){
+		return $this->con->query("SELECT alumno.idAlumno from alumno order by idAlumno DESC LIMIT 1")->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	
 }

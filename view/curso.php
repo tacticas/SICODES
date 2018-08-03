@@ -29,34 +29,34 @@
 
 <!-- Modal -->
 <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="tituloModal">Editar registro</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form id="formGuardar">
-      				<div class="modal-body">
-			        		<input class="form-control" id="accion" type="hidden" name="task" value="">
-			        		<input class="form-control" type="hidden" name="idCurso" value="" id="idCurso">
-			        		<div class="form-group">
-								<label for="nombre" >Nombre de Curso: </label>
-								<input class="form-control" required="" type="text" name="nombre" value="" id="nombre">
-							</div>
-							<div class="form-group">
-								<label for="ap1" >Descripción: </label>
-								<textarea rows="4" cols="50" class="form-control" required="" name="descrip" value="" id="descrip"></textarea>
-							</div>
-			     	</div>
-			      	<div class="modal-footer">
-				      	<input data-dismiss="modal" type="reset" class="btn btn-secondary" value="Cancelar">
-				      	<button type="submit" id="enviarUsuario" class="btn btn-primary">Enviar</button>
-				    </div>
-			 </form>
-    </div>
-  </div>
+ 	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<h5 class="modal-title" id="tituloModal">Editar registro</h5>
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+      		</div>
+      		<form id="formGuardar">
+      			<div class="modal-body">
+			   		<input class="form-control" id="accion" type="hidden" name="task" value="">
+			   		<input class="form-control" type="hidden" name="idCurso" value="" id="idCurso">
+			   		<div class="form-group">
+						<label for="nombre" >Nombre de Curso: </label>
+						<input class="form-control" required="" type="text" name="nombre" value="" id="nombre">
+					</div>
+					<div class="form-group">
+						<label for="ap1" >Descripción: </label>
+						<textarea rows="4" cols="50" class="form-control" required="" name="descrip" value="" id="descrip"></textarea>
+					</div>
+			    </div>
+			    <div class="modal-footer">
+				   	<input data-dismiss="modal" type="reset" class="btn btn-secondary" value="Cancelar">
+				   	<button type="submit" id="enviarUsuario" class="btn btn-primary">Enviar</button>
+				</div>
+			</form>
+    	</div>
+  	</div>
 </div>
 
 
@@ -84,4 +84,76 @@
     </form>
     </div>
   </div>
+</div>
+
+<!--- Horario modal----->
+<!-- Modal -->
+<div class="modal fade" id="md_horario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  	<div class="modal-dialog" role="document">
+   		<div class="modal-content">
+      		<div class="modal-header">
+        		<h5 class="modal-title" id="tituloModalh">Horario del Curso</h5>
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+      		</div>
+      		<form id="formGuardar">
+      			<div class="modal-body col-sm-12">
+					<div class="form-group">
+						<input class="form-control" id="accionh" type="hidden" name="task" value="">
+						<input class="form-control" type="hidden" name="idCurso" value="" id="idCurso">
+					</div>	
+					<div class="form-group">
+						<label for="nombre" >Selecciona los Días: </label>
+						<div class="table-responsive">
+							<table class="table table-sm table-bordered">
+								<thead>
+									<th>Lunes</th>
+									<th>Martes</th>
+									<th>Miercoles</th>
+									<th>Jueves</th>
+									<th>Viernes</th>
+									<th>Sabado</th>
+									<th>Domingo</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
+										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
+										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
+										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
+										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
+										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
+										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+			
+					<div class="form-group row">
+						<div class=col-sm-2>
+							<label for="nombre" >Lunes: </label>
+						</div>
+						<div class="col-sm-5">
+							<label for="nombre" >Inicio: </label>
+							<select name="" id="">
+								<option value="07:00:00">7:00 AM</option>
+							</select>
+						</div>
+						<div class="col-sm-5">
+							<label for="nombre" >Fin: </label>
+							<select name="" id="">
+								<option value="07:00:00">7:00 AM</option>
+							</select>
+						</div>
+					</div>
+			    </div>
+			    <div class="modal-footer">
+				   	<input data-dismiss="modal" type="reset" class="btn btn-secondary" value="Cancelar">
+				   	<button type="submit" id="enviarUsuario" class="btn btn-primary">Enviar</button>
+				</div>
+			</form>
+    	</div>
+  	</div>
 </div>

@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once('../model/Tarea.php');
+require_once('../model/Revisar.php');
 
-$obj = new Tarea();
+$obj = new Revisar();
 //genera el json para la tabla
 if (isset($_GET['get'])) {
-	$idProf=$_SESSION['idMaster'];
-	$tabla = $obj->getAllByProf($idProf);
+	$id =  $_GET['get'];
+	$tabla = $obj->getAll($id);
 	if($tabla != false){
 		foreach ($tabla as $key) {
 			$data["data"][] = $key;
@@ -18,25 +18,6 @@ if (isset($_GET['get'])) {
 }
 //obtener datos para formulario
 
-if(isset($_GET['carga'])){
-	if($_GET['carga']==1){
-		$grupo = $obj->getGrupo();
-		if($grupo == false){
-			$grupo = "";
-		}
-		echo json_encode($grupo);
-	}
-	if($_GET['carga']==2){
-		$idGrupo = $_GET['grupo'];
-		$res = $obj->getAlumno($idGrupo);
-		if($res == false){
-			$res = "";
-		}
-		echo json_encode($res);
-	}
-	
-	
-}
 
 if (isset($_POST['task'])) {
 	switch ($_POST['task']) {

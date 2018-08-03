@@ -8,7 +8,11 @@ $(document).ready(function() {
             { data: 'idCurso' },
             { data: 'nombre' },
             { data: 'descrip' },
-            { defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>'},
+            { data:null,
+                render(data){
+                 return '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <button data-toggle="modal" data-target="#md_horario" class="horario btn btn-primary btn-sm"><i class="fa fa-calendar"></i></button>';
+                }
+            },
         ],
         select: true,
         buttons: [
@@ -66,5 +70,10 @@ $(document).ready(function() {
         $('#formEliminar #idCurso').val(data.idCurso);
     });
     
-    
-    
+    //horario
+    $('#md_horario tbody').on('click','button.horario', function(){
+        var data = table.row( $(this).parents('tr') ).data();
+        $('#tituloModalh').html('Modificando el Horario de '+data.nombre); //editando titulo
+       
+    });
+

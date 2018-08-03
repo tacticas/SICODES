@@ -51,7 +51,11 @@ $(document).ready(function() {
 					}
 				}
 			},
-			{ defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>'}
+			{ 	data: 'idTarea',
+				render: function(data, type, row){
+					return '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <a href="revisar.php?id='+data+'" target="_blank"><button class="btn btn-primary btn-sm"><i class="fa fa-check"></i></button></a>';
+				}
+			}	
 		],
 		select: true,
 		buttons: [
@@ -103,6 +107,7 @@ $(document).ready(function() {
 				url: "controller/tarea.php?carga=2&grupo="+grupo,
 				dataType: "json",
 				success: function(data){
+					$('#idAlumno').empty();
 					$.each( data, function( key, registro ) {
 						$("#idAlumno").append('<option value='+registro.idAlumno+'>'+registro.nombre+' '+registro.ap1 +' ('+registro.matricula+')'+'</option>');
 					});
@@ -155,7 +160,7 @@ $(document).ready(function() {
 		}).done( function( info ){
 			$('#editar').modal('hide');
 			table.ajax.reload();
-			toastr.success('Guardado Correctamente'+info);
+			toastr.success('Guardado Correctamente');
 		});
 	});
 

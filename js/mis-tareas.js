@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
 	
+	
+	
 });     
 
 	var table = $('#example').DataTable( {
@@ -46,10 +48,21 @@ $(document).ready(function() {
 					}
 				}
 			},
-			{ data: 'status', 
+			{ data: null, 
 				render: function(data, type, row){
-					if (data == "1") {
-						return '<button data-toggle="modal" data-target="#contestar" class="contestar btn btn-warning btn-sm"><i class="fa fa-check"> Contestar</i></button>';
+					if (data.status == "1") {
+						switch (data.tipo) {
+							case "1":
+							return '<button data-toggle="modal" data-target="#contestar" class="contestar btn btn-primary btn-sm"><i class="fa fa-check"> Grabar</i></button>';
+							break;
+							case "4":
+							return '<button data-toggle="modal" data-target="#md_dictado" class="dictado btn btn-primary btn-sm"><i class="fa fa-check"> Dictado</i></button>';
+							break;
+							default:
+							return '<button data-toggle="modal" data-target="#md_otros" class="otros btn btn-primary btn-sm"><i class="fa fa-check"> Contestar</i></button>';
+					
+							break;
+						}
 					} else {
 						return "Concluida";
 					}
@@ -58,7 +71,135 @@ $(document).ready(function() {
 		]
 	} );
  
+	
+	//----- tabla 2 indivuduales ---
 	 
+	var tableIndi = $('#indi').DataTable( {
+		
+		ajax: 'controller/misTareas.php?getTareaIndi=1',
+		dom: '<"col-xs-12 text-center"><"row"<"col-sm-6"><"col-sm-6">>t<"row"<"col-xs-12 text-center"p>><"row"<"col-xs-12 pull-">>',
+		columns: [
+			
+			{ data: 'nombre' },
+
+			{ data: 'tema' },
+			{ data: 'descripcion' },
+			{
+				data : 'tipo',
+				render: function(data, type, row) {
+					var r = "";
+					switch(data) {
+						case "1":
+							r = "Hablar";
+							break;
+						case "2":
+							r = "leer";
+							break;
+						case "3":
+							r = "Escribir";
+							break;
+						case "4":
+							r = "Escuchar";
+							break;	
+						default:
+							r = "No especificado";
+							break;
+					}
+					return r;
+				}
+			},
+			{ data: 'fechaAlta' },
+			{ data: 'status', 
+				render: function(data, type, row){
+					if (data == "1") {
+						return "Activa";
+					} else {
+						return "Concluida";
+					}
+				}
+			},
+			{ data: null, 
+				render: function(data, type, row){
+					if (data.status == "1") {
+						switch (data.tipo) {
+							case "1":
+							return '<button data-toggle="modal" data-target="#contestar" class="contestar btn btn-primary btn-sm"><i class="fa fa-check"> Grabar</i></button>';
+							break;
+							case "4":
+							return '<button data-toggle="modal" data-target="#md_dictado" class="dictado btn btn-primary btn-sm"><i class="fa fa-check"> Dictado</i></button>';
+							break;
+							default:
+							return '<button data-toggle="modal" data-target="#md_otros" class="otros btn btn-primary btn-sm"><i class="fa fa-check"> Contestar</i></button>';
+					
+							break;
+						}
+					} else {
+						return "Concluida";
+					}
+				}
+			}
+		]
+	} );
+
+
+	//---- Tareas Realizadas
+
+	var tableReal = $('#real').DataTable( {
+		ajax: 'controller/misTareas.php?getTareaReal=1',
+		dom: '<"col-xs-12 text-center"><"row"<"col-sm-6"><"col-sm-6">>t<"row"<"col-xs-12 text-center"p>><"row"<"col-xs-12 pull-">>',
+		columns: [
+			
+			{ data: 'nombre' },
+
+			{ data: 'tema' },
+			{ data: 'descripcion' },
+			{
+				data : 'tipo',
+				render: function(data, type, row) {
+					var r = "";
+					switch(data) {
+						case "1":
+							r = "Hablar";
+							break;
+						case "2":
+							r = "leer";
+							break;
+						case "3":
+							r = "Escribir";
+							break;
+						case "4":
+							r = "Escuchar";
+							break;	
+						default:
+							r = "No especificado";
+							break;
+					}
+					return r;
+				}
+			},
+			{ data: 'fechaAlta' },
+			{ data: 'status', 
+				render: function(data, type, row){
+					if (data == "1") {
+						return "Activa";
+					} else {
+						return "Concluida";
+					}
+				}
+			},
+			{ data: 'status', 
+				render: function(data, type, row){
+					if (data == "1") {
+						return 'Realizada';
+					} else {
+						return "Realizada";
+					}
+				}
+			}
+		]
+	} );
+
+
 	//interface
 	
 	
@@ -68,7 +209,7 @@ $(document).ready(function() {
 	$('#formGuardar').on('submit', function(e){
 		e.preventDefault();
 		var frm = new FormData($(this)[0]);
-		frm.append('audio', 'test.wab');
+		//frm.append('audio', 'test.wab');
 		frm.append('data',audioREC);;
 		
 		$.ajax({
@@ -80,17 +221,28 @@ $(document).ready(function() {
 		}).done( function( info ){
 			$('#md_hablar').modal('hide');
 			table.ajax.reload();
+			tableIndi.ajax.reload();
+			tableReal.ajax.reload();
 			toastr.success('Tarea Enviada');
 		});
 	});
 
+
+	// ------------ GRABAR ---------------
 	$('#example tbody').on('click','button.contestar', function(){
 		var data = table.row( $(this).parents('tr') ).data();
 		$('#md_hablar').modal('show');
 		$('#idTarea').val(data.idTarea);
 	
 	});
+
+	$('#indi tbody').on('click','button.contestar', function(){
+		var data = tableIndi.row( $(this).parents('tr') ).data();
+		$('#md_hablar').modal('show');
+		$('#idTarea').val(data.idTarea);
 	
+	});
+	// ------------ GRABAR ---------------
 	var audioREC;
 
 	function __log(e, data) {
@@ -171,3 +323,315 @@ $(document).ready(function() {
 		});
 	  };
 	
+	var stadoR = 0;
+
+	//dictado
+	$('#example tbody').on('click','button.dictado', function(){
+		
+		
+		var data = table.row( $(this).parents('tr') ).data();
+		var texto = data.textDi;
+		$("#audio").attr("src", data.archivo);
+		var aux = '';
+		var aux2 = '';
+		var separador = " ";
+		var arreglo = texto.split(separador);
+		var terminado = [];
+		var letras = 0;
+		var signos = 0;
+		var tamaño = [];
+		var clave= [];
+		console.log(texto);
+		for(let i=0; i<arreglo.length; i++){
+			var temp = arreglo[i].split("");
+			for(let j=0; j<temp.length; j++){
+				
+				if(temp[j] != "," && temp[j] != "?" && temp[j] != "." && temp[j] != "’" && temp[j] != "’" ){
+					aux += temp[j];
+					letras++;
+					
+				}else{
+					aux2 += temp[j]
+					signos++;
+				}
+			}
+			clave.push(aux);
+			terminado.push(aux);
+			tamaño.push(letras);
+			if(aux2 != ""){
+				terminado.push(aux2);
+			}
+			if(signos !=0){
+				tamaño.push(signos);
+			}
+			aux = '';
+			aux2 = '';
+			letras = 0;
+			signos = 0;
+			
+		}
+		
+		var contador = 0;
+		var campo  = '';
+		//imprime los input y los label
+		if(stadoR == 0){
+			var puntos = 0; 
+			for(let l=0; l<terminado.length; l++){
+				if(terminado[l] != "," && terminado[l] != "?" && terminado[l] != "." && terminado[l] != "’" && terminado[l] != "!"){
+					campo = '<input title="Si no la sabes pon un signo (?)" required="" placeholder="'+tamaño[l]+'" name="'+l+'" class="respuesta" maxlength="'+tamaño[l]+'" type="text" id="campo' + contador + '"/>  ';
+					contador++;
+				}else{
+					campo = '<label class=""><strong>'+terminado[l]+'</strong></label> ' ;
+				}
+				$("#campos").append(campo);
+			
+			}
+			stadoR++;
+		}
+		$('#barra').prop( "max", arreglo.length);
+		var res = [];
+		$( "#campos input" ).keyup(function() {
+			console.log("key up");
+		  
+			res = [];
+			$('#campos input').each(
+				function(index){  
+					var input = $(this);
+					res.push(input.val());
+				}
+			);
+			puntos = 0;
+			for (let index = 0; index < clave.length; index++) {
+				
+				if(clave[index].toUpperCase() == res[index].toUpperCase() || res[index] == "?"  ){
+					console.log(puntos);
+					
+					$('#campo' + index).prop( "disabled", true );
+					puntos++;
+					$('#barra').prop( "value", puntos );
+					
+				}
+				
+			}
+			
+		});	
+
+		//dictado bot
+
+		
+		
+		$('#formDictado').on('submit', function(e){
+			e.preventDefault();
+			res = [];
+			$('#formDictado input').each(
+				function(index){  
+					var input = $(this);
+					res.push(input.val());
+					res.push(" ");
+				}
+			);
+			var x = '';
+			res.forEach(function (element) {
+				x = x + element;
+			});
+			$("#texto").val(x);
+			var frm = $(this).serialize();
+			$.ajax({
+				method: 'POST',
+				url: 'controller/misTareas.php',
+				data: frm
+			}).done( function( info ){
+				$('#md_dictado').modal('hide');
+				$("#campos").empty();
+				table.ajax.reload();
+				tableIndi.ajax.reload();
+				tableReal.ajax.reload();
+				toastr.success('Tarea Enviada');
+				stadoR = 0;
+
+			});
+		});
+		
+		
+		//ciclo para crear los inputs 
+			
+	});
+
+	//modal otros
+
+	$('#indi tbody').on('click','button.dictado', function(){
+		
+		
+		var data = tableIndi.row( $(this).parents('tr') ).data();
+		var texto = data.textDi;
+		$("#audio").attr("src", data.archivo);
+		var aux = '';
+		var aux2 = '';
+		var separador = " ";
+		var arreglo = texto.split(separador);
+		var terminado = [];
+		var letras = 0;
+		var signos = 0;
+		var tamaño = [];
+		var clave= [];
+		console.log(texto);
+		for(let i=0; i<arreglo.length; i++){
+			var temp = arreglo[i].split("");
+			for(let j=0; j<temp.length; j++){
+				
+				if(temp[j] != "," && temp[j] != "?" && temp[j] != "." && temp[j] != "’" && temp[j] != "’" ){
+					aux += temp[j];
+					letras++;
+					
+				}else{
+					aux2 += temp[j]
+					signos++;
+				}
+			}
+			clave.push(aux);
+			terminado.push(aux);
+			tamaño.push(letras);
+			if(aux2 != ""){
+				terminado.push(aux2);
+			}
+			if(signos !=0){
+				tamaño.push(signos);
+			}
+			aux = '';
+			aux2 = '';
+			letras = 0;
+			signos = 0;
+			
+		}
+		
+		var contador = 0;
+		var campo  = '';
+		//imprime los input y los label
+		if(stadoR == 0){
+			var puntos = 0; 
+			for(let l=0; l<terminado.length; l++){
+				if(terminado[l] != "," && terminado[l] != "?" && terminado[l] != "." && terminado[l] != "’" && terminado[l] != "!"){
+					campo = '<input title="Si no la sabes pon un signo (?)" required="" placeholder="'+tamaño[l]+'" name="'+l+'" class="respuesta" maxlength="'+tamaño[l]+'" type="text" id="campo' + contador + '"/>  ';
+					contador++;
+				}else{
+					campo = '<label class=""><strong>'+terminado[l]+'</strong></label> ' ;
+				}
+				$("#campos").append(campo);
+			
+			}
+			stadoR++;
+		}
+		$('#barra').prop( "max", arreglo.length);
+		var res = [];
+		$( "#campos input" ).keyup(function() {
+			console.log("key up");
+		  
+			res = [];
+			$('#campos input').each(
+				function(index){  
+					var input = $(this);
+					res.push(input.val());
+				}
+			);
+			puntos = 0;
+			for (let index = 0; index < clave.length; index++) {
+				
+				if(clave[index].toUpperCase() == res[index].toUpperCase() || res[index] == "?"  ){
+					console.log(puntos);
+					
+					$('#campo' + index).prop( "disabled", true );
+					puntos++;
+					$('#barra').prop( "value", puntos );
+					
+				}
+				
+			}
+			
+		});	
+
+		//dictado bot
+
+		
+		
+		$('#formDictado').on('submit', function(e){
+			e.preventDefault();
+			res = [];
+			$('#formDictado input').each(
+				function(index){  
+					var input = $(this);
+					res.push(input.val());
+					res.push(" ");
+				}
+			);
+			var x = '';
+			res.forEach(function (element) {
+				x = x + element;
+			});
+			$("#texto").val(x);
+			var frm = $(this).serialize();
+			$.ajax({
+				method: 'POST',
+				url: 'controller/misTareas.php',
+				data: frm
+			}).done( function( info ){
+				$('#md_dictado').modal('hide');
+				$("#campos").empty();
+				table.ajax.reload();
+				tableIndi.ajax.reload();
+				tableReal.ajax.reload();
+				toastr.success('Tarea Enviada');
+				stadoR = 0;
+
+			});
+		});
+		
+		
+		//ciclo para crear los inputs 
+			
+	});
+
+
+	$('#example tbody').on('click','button.otros', function(){
+		var data = table.row( $(this).parents('tr') ).data();
+		console.log(data);
+		$('#tituloModalO').html(data.tema);
+		$('#idTareao').val(data.idTarea);
+		$('#descargas').empty();
+		if(data.archivo != ''){
+			var myHtml = '<h5>Archivo Complemento</h5> <label ><a href="'+data.archivo +'" download="Material-'+data.tema+'" >Descargar Material - '+data.tema+'</a> </label>';
+			$('#descargas').html( myHtml);
+		}
+	
+	});
+	
+	$('#indi tbody').on('click','button.otros', function(){
+		var data = tableIndi.row( $(this).parents('tr') ).data();
+		console.log(data);
+		$('#tituloModalO').html(data.tema);
+		$('#idTareao').val(data.idTarea);
+		$('#descargas').empty();
+		if(data.archivo != ''){
+			
+			var myHtml = '<h5>Archivo Complemento</h5> <label ><a href="'+data.archivo +'"download="Material-'+data.tema+'" >Descargar Material - '+data.tema+'</a> </label>';
+			$('#descargas').html( myHtml);
+		}
+	});
+
+	$('#FormOtro ').on('submit', function(e){
+		e.preventDefault();
+		var frm = new FormData($(this)[0]);
+		$.ajax({
+			method: 'POST',
+			url: 'controller/misTareas.php',
+			data: frm,
+			contentType: false,
+			processData: false,
+		}).done( function( info ){
+			$('#md_otros').modal('hide');
+			table.ajax.reload();
+			tableIndi.ajax.reload();
+			tableReal.ajax.reload();
+			toastr.success('Tarea Enviada'+ info );
+
+		});
+	});

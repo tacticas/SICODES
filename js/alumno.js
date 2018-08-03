@@ -56,6 +56,17 @@ $(document).ready(function() {
 				});
 			}
 		});
+		$.ajax({
+			method: 'POST',
+			url: "controller/alumno.php?cursos=1",
+			dataType: "json",
+			success: function(data){
+				$.each( data, function( key, registro ) {
+					$("#cursoInicio").append('<option value='+registro.idCurso+'>'+registro.nombre+'</option>');
+				});
+			}
+		});
+		
 	}
 
 	$('button.agregar').click(function(){
@@ -63,6 +74,49 @@ $(document).ready(function() {
 		$('#accion').val('agregar');
 		$('#tituloModal').html('Agregar nuevo registro');
 		$('#foto').prop('required',true);
+		$('#matricula').prop('required',true);
+		
+		var matricula = '';
+		var res ='';
+		$.ajax({
+			method: 'POST',
+			url: "controller/alumno.php?carga=1",
+			dataType: "json",
+			success: function(data){
+				var cd = '';
+				var es = '';
+				var id = '';
+				for (let index = 0; index <2; index++) {
+					cd += data[0].ciudad.charAt(index);
+					es += data[0].estado.charAt(index);
+					id += data[0].idEscuela.charAt(index);
+				}
+				res = cd+es+id;
+				matricula = res.toUpperCase();
+				$('#matricula').val(matricula);
+				
+			}
+		});
+		$.ajax({
+			method: 'POST',
+			url: "controller/alumno.php?lastId=1",
+			dataType: "json",
+			success: function(data){
+				var aux = $('#matricula').val();
+				
+				if(data[0].idAlumno != ''){
+					var x = data[0].idAlumno; 
+					console.log(x);
+					x++;
+					aux = aux + String(x);
+				}else{
+					aux = aux + '000001';
+				}
+				$('#matricula').val(aux);
+			}
+		});
+		
+		toastr.success('Matrícula Generada');
 	});
 
 	$('#example tbody').on('click','button.editar', function(){
@@ -71,9 +125,11 @@ $(document).ready(function() {
 		$('#tituloModal').html('Editando Datos de '+data.matricula);
 		$('#accion').val('editar');
 		$('#foto').prop('required',false);
+		
 		$('#foto').val(null);
 		$('#idAlumno').val(data.idAlumno);
 		$('#matricula').val(data.matricula);
+		$('#matricula').prop('required',false);
 		$('#contraseña').val(data.contraseña);
 		$('#nombre').val(data.nombre);
 		$('#ap1').val(data.ap1);
@@ -101,7 +157,16 @@ $(document).ready(function() {
 	});
 	
 	$('#editar').on('shown.bs.modal', function () {
-		$('#matricula').focus()
+		$('#generar').focus()
+	});
+
+	//generar matricula 
+	$('#generar').on('click', function(e){
+		
+		
+
+
+		
 	});
 
 	$('#formGuardar').on('submit', function(e){

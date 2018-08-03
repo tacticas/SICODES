@@ -90,3 +90,24 @@ div.b-azul{
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
+input.respuesta{
+  width: 90px;
+  text-align: center;
+}
+input[type="text"]:disabled {
+  background: #25df2e;
+}
+progress{
+  width: 100%;
+}
+
+img.vizor{
+  max-width: 100px;
+}
+button.generador{
+  background-color:#0275d8;
+}
+input[type="text"].matricula:disabled {
+  background: #c0e7c2;
+}

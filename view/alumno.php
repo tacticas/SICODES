@@ -61,7 +61,7 @@
 			        		<input class="form-control" type="hidden" name="idAlumno" value="" id="idAlumno">
 			        		<div class="form-group">
 								<label for="nombre" >Matricula: </label>
-								<input class="form-control" required="" type="text" name="matricula" value="" id="matricula">
+								<input class="form-control matricula"  type="text" name="matricula" value="" id="matricula"> <label class="btn form-control generador btn-primary "> <i class="fa fa-user"></i>	Matrícula</label>
 							</div>
 							<div class="form-group ">
 								<label for="nombre" >Contraseña: </label>
@@ -121,7 +121,8 @@
 							</div>
 							<div class="form-group">
 								<label for="tel" >Curso Inicial: </label>
-								<input class="form-control" required="" type="text" name="cursoInicio" value="" id="cursoInicio">
+								<select class="form-control" id="cursoInicio" name="cursoInicio" value="">
+								</select>
 							</div>
 							<div class="form-group">
 								<label for="contra" >Fecha de Pago: </label>
