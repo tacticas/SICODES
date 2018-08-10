@@ -8,13 +8,13 @@ class MisTareas extends Connection
 		")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	public function getAllTareasGrupo($id){
-		return $this->con->query("Select tarea.*,grupo.nombre from tarea,alumnogrupo,grupo where alcance = 'n' and alumnogrupo.idAlumno = '$id' and alumnogrupo.idGrupo <> '' and tarea.idGrupo = alumnogrupo.idGrupo AND grupo.idGrupo = tarea.idGrupo AND tarea.idTarea NOT IN (Select tarea.idTarea from tarea,alumnogrupo,alumnotarea where alcance = 'n' and alumnogrupo.idAlumno = '$id' and alumnogrupo.idGrupo <> '' and tarea.idGrupo = alumnogrupo.idGrupo AND tarea.idTarea = alumnotarea.idTarea )")->fetchAll(PDO::FETCH_ASSOC);
+		return $this->con->query("Select tarea.*,grupo.nombre from tarea,alumnogrupo,grupo where alcance = 'n' and alumnogrupo.idAlumno = '$id' and alumnogrupo.idGrupo <> '' and tarea.idGrupo = alumnogrupo.idGrupo AND grupo.idGrupo = tarea.idGrupo AND tarea.idTarea NOT IN (Select tarea.idTarea from tarea,alumnogrupo,alumnotarea where alcance = 'n' and alumnogrupo.idAlumno = '$id' and alumnogrupo.idGrupo <> '' and tarea.idGrupo = alumnogrupo.idGrupo AND tarea.idTarea = alumnotarea.idTarea and alumnotarea.status <> 4 )")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	public function getAllTareasIndi($id){
-		return $this->con->query("Select tarea.*,grupo.nombre from tarea,alumnogrupo,grupo where alcance = '1' and alumnogrupo.idAlumno = '$id' and alumnogrupo.idGrupo <> '' and tarea.idGrupo = alumnogrupo.idGrupo AND grupo.idGrupo = tarea.idGrupo AND tarea.idTarea NOT IN (Select tarea.idTarea from tarea,alumnogrupo,alumnotarea where alcance = '1' and alumnogrupo.idAlumno = '$id' and alumnogrupo.idGrupo <> '' and tarea.idGrupo = alumnogrupo.idGrupo AND tarea.idTarea = alumnotarea.idTarea )")->fetchAll(PDO::FETCH_ASSOC);
+		return $this->con->query("Select tarea.*,grupo.nombre from tarea,alumnogrupo,grupo where alcance = '1' and alumnogrupo.idAlumno = '$id' and alumnogrupo.idGrupo <> '' and tarea.idGrupo = alumnogrupo.idGrupo AND grupo.idGrupo = tarea.idGrupo AND tarea.idTarea NOT IN (Select tarea.idTarea from tarea,alumnogrupo,alumnotarea where alcance = '1' and alumnogrupo.idAlumno = '$id' and alumnogrupo.idGrupo <> '' and tarea.idGrupo = alumnogrupo.idGrupo AND tarea.idTarea = alumnotarea.idTarea and alumnotarea.status <> 4 )")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	public function getAllTareasCompleta($id){
-		return $this->con->query("Select tarea.*,grupo.nombre from tarea,alumnotarea,grupo where alumnotarea.idAlumno = '$id' and tarea.idTarea = alumnotarea.idTarea and grupo.idGrupo = tarea.idGrupo")->fetchAll(PDO::FETCH_ASSOC);
+		return $this->con->query("Select tarea.*,grupo.nombre,alumnotarea.* ,alumnotarea.status as estado from tarea,alumnotarea,grupo where alumnotarea.idAlumno = '$id' and tarea.idTarea = alumnotarea.idTarea and grupo.idGrupo = tarea.idGrupo and alumnotarea.status <> 4")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	
 	//query para dar de alta 

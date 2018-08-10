@@ -58,30 +58,34 @@ if (isset($_POST['task'])) {
 				$textoDi="";
 			}
 			//foto
+			echo($_FILES['foto']['tmp_name']);
 			if (isset($_FILES['foto'])) {
-				$rutaRandom = $obj->rutaRandom();
-				$audio =$_FILES['foto'];
-				if($_FILES['foto']['type'] == "image/jpeg" ){
-					$rutax="../assets/audio/dictados/".$rutaRandom.".jpeg";
-					$ruta="assets/audio/dictados/".$rutaRandom.".jpeg";
+				if($_FILES['foto']['tmp_name']){
+					$rutaRandom = $obj->rutaRandom();
+					$audio =$_FILES['foto'];
+					if($_FILES['foto']['type'] == "image/jpeg" ){
+						$rutax="../assets/audio/dictados/".$rutaRandom.".jpeg";
+						$ruta="assets/audio/dictados/".$rutaRandom.".jpeg";
+					}
+					if($_FILES['foto']['type'] == "image/png" ){
+						$rutax="../assets/audio/dictados/".$rutaRandom.".png";
+						$ruta="assets/audio/dictados/".$rutaRandom.".png";
+					}
+					if($_FILES['foto']['type'] == "application/pdf"){
+						$rutax="../assets/audio/dictados/".$rutaRandom.".pdf";
+						$ruta="assets/audio/dictados/".$rutaRandom.".pdf";
+					}
+					if($_FILES['foto']['type'] == "application/msword"){
+						$rutax="../assets/audio/dictados/".$rutaRandom.".doc";
+						$ruta="assets/audio/dictados/".$rutaRandom.".doc";
+					}
+					if($_FILES['foto']['type'] == "audio/mp3" || $_FILES['foto']['type'] == "audio/wav"){
+						$rutax="../assets/audio/dictados/".$rutaRandom.".wav";
+						$ruta="assets/audio/dictados/".$rutaRandom.".wav";
+					}
+					move_uploaded_file($audio['tmp_name'],$rutax);
 				}
-				if($_FILES['foto']['type'] == "image/png" ){
-					$rutax="../assets/audio/dictados/".$rutaRandom.".png";
-					$ruta="assets/audio/dictados/".$rutaRandom.".png";
-				}
-				if($_FILES['foto']['type'] == "application/pdf"){
-					$rutax="../assets/audio/dictados/".$rutaRandom.".pdf";
-					$ruta="assets/audio/dictados/".$rutaRandom.".pdf";
-				}
-				if($_FILES['foto']['type'] == "application/msword"){
-					$rutax="../assets/audio/dictados/".$rutaRandom.".doc";
-					$ruta="assets/audio/dictados/".$rutaRandom.".doc";
-				}
-				if($_FILES['foto']['type'] == "audio/mp3" || $_FILES['foto']['type'] == "audio/wav"){
-					$rutax="../assets/audio/dictados/".$rutaRandom.".wav";
-					$ruta="assets/audio/dictados/".$rutaRandom.".wav";
-				}
-				move_uploaded_file($audio['tmp_name'],$rutax);
+				$ruta="";
 				
 			}else{
 				$ruta="";

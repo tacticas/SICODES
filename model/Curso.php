@@ -36,4 +36,28 @@ class Curso extends Connection
 			return false;
 		}
 	}
+	
+	//tabla lecciones
+	public function getLeccionByCurso($id){
+		return $this->con->query("SELECT * FROM leccion WHERE idCurso = '$id'")->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function eliminarLeccion($id){
+		$query = $this->con->prepare("DELETE FROM leccion WHERE idLeccion=?");
+		$exc = $query->execute(array($id));
+		if ($exc) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function addLeccion($idCurso,$num,$nombre){
+		$query = $this->con->prepare("INSERT INTO leccion (idCurso,numero,nombre) values(?,?,?)");
+		$exc = $query->execute(array($idCurso,$num,$nombre));
+		if ($exc) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

@@ -88,6 +88,10 @@
 								<input class="form-control" required="" type="date" name="fnac" value="" id="fnac">
 							</div>
 							<div class="form-group">
+								<label for="tel" >Fecha de Ingreso: </label>
+								<input class="form-control" required="" type="date" name="fin" value="" id="fin">
+							</div>
+							<div class="form-group">
 							    <label for="escuela">Sexo:</label>
 							    <select class="form-control" id="sexo" name="sexo" value="">
 							      <option value="Masculino">Masculino</option>

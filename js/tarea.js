@@ -13,7 +13,15 @@ $(document).ready(function() {
 			{ data: 'idGrupo' },
 			{ data: 'grupoN' },
 			{ data: 'idProfesor' },
-			{ data: 'profesorN' },
+			{ data: null,
+				render: function(data){
+					if(data.alcance == 'n'){
+						return 'Grupal';
+					}else{
+						return 'Individual';
+					}
+				}
+			},
 			{ data: 'tema' },
 			{ data: 'descripcion' },
 			{
@@ -53,7 +61,7 @@ $(document).ready(function() {
 			},
 			{ 	data: 'idTarea',
 				render: function(data, type, row){
-					return '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <a href="revisar.php?id='+data+'" target="_blank"><button class="btn btn-primary btn-sm"><i class="fa fa-check"></i></button></a>';
+					return '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <a href="revisar.php?id='+data+'" target="_blank"><button class="btn btn-primary btn-sm"><i class="fa fa-check"></i></button></a> ';
 				}
 			}	
 		],

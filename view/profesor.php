@@ -48,6 +48,14 @@
 					<input class="form-control" id="accion" type="hidden" name="task" value="">
 					<input class="form-control" type="hidden" name="idProfesor" value="" id="idProfesor">
 					<div class="form-group">
+						<label for="nombre" >Usuario: </label>
+						<input class="form-control" required="" type="text" name="user" value="" id="user">
+					</div>
+					<div class="form-group">
+						<label for="nombre" >Contraseña: </label>
+						<input class="form-control" required="" type="password" name="pwd" value="" id="pwd">
+					</div>
+					<div class="form-group">
 						<label for="nombre" >Nombre: </label>
 						<input class="form-control" required="" type="text" name="nombre" value="" id="nombre">
 					</div>
@@ -64,9 +72,13 @@
 						<input class="form-control" required="" type="date" name="fnaci" value="" id="fnaci">
 					</div>
 					<div class="form-group">
-						<label for="nombre" >Sexo: </label>
-						<input class="form-control" required="" type="text" name="sexo" value="" id="sexo">
-					</div>
+							    <label for="escuela">Sexo:</label>
+							    <select class="form-control" id="sexo" name="sexo" value="">
+							      <option value="Masculino">Masculino</option>
+							      <option value="Femenino">Femenino</option>
+										<option value="Otro">Otro</option>
+							    </select>
+							</div>
 					<div class="form-group">
 						<label for="nombre" >Dirección: </label>
 						<input class="form-control" required="" type="text" name="dir" value="" id="dir">

@@ -18,7 +18,7 @@
 							<th>idGrupo</th>
 							<th>Grupo</th>
 							<th>idProfesor</th>
-							<th>Profesor</th>
+							<th>Alcance</th>
 							<th>Tema</th>
 							<th>Descripción</th>
 							<th>Tipo</th>

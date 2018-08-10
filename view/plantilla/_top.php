@@ -23,16 +23,16 @@ if(!isset($_SESSION))
         case 'alumno':
             echo('
               <li class="nav-item">
-               <a class="nav-link" href="mis-tareas.php">Mis Tarea</a>
+               <a class="nav-link" href="mis-tareas.php">My Homework</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Mensajes</a>
+                <a class="nav-link" href="#">Messages</a>
               </li>  
               <li class="nav-item">
-                <a class="nav-link" href="#">eventos</a>
+                <a class="nav-link" href="#">Events</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">biblioteca</a>
+                <a class="nav-link" href="#">Library</a>
               </li> 
             ');
         break;
@@ -59,23 +59,11 @@ if(!isset($_SESSION))
               <li class="nav-item">
                 <a class="nav-link" href="alumno.php">Alumnos</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  + Cursos
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="curso.php">Cursos</a>
-                  <a class="dropdown-item" href="#">Lecciones</a>
-                </div>
+              <li class="nav-item">
+                <a class="nav-link" href="curso.php">Cursos</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  + Grupos
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="grupo.php">Grupos</a>
-                  <a class="dropdown-item" href="#">Horarios</a>
-                </div>
+              <li class="nav-item">
+                <a class="nav-link" href="grupo.php">Grupos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="tarea.php">Tarea</a>
@@ -91,7 +79,7 @@ if(!isset($_SESSION))
               </li>
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                + Biblioteca
+                Biblioteca
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="escuela.php">Bilblioteca</a>
@@ -120,28 +108,24 @@ if(!isset($_SESSION))
 
         case 'superAdmin':
             echo('
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Alumnos
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="tomaLista.php">Pase de Lista</a>
+                <a class="dropdown-item" href="alumno.php">Alumnos</a>
+              </div>
+              </li>
+
               <li class="nav-item">
-                <a class="nav-link" href="alumno.php">Alumnos</a>
+                <a class="nav-link" href="curso.php">Cursos</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  + Cursos
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="curso.php">Cursos</a>
-                  <a class="dropdown-item" href="#">Lecciones</a>
-                </div>
+              <li class="nav-item">
+                <a class="nav-link" href="grupo.php">Grupos</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  + Grupos
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="grupo.php">Grupos</a>
-                  <a class="dropdown-item" href="#">Horarios</a>
-                </div>
-              </li>
-              </li>
+              
+              
               <li class="nav-item">
                 <a class="nav-link" href="tarea.php">Tarea</a>
               </li>
@@ -156,7 +140,7 @@ if(!isset($_SESSION))
               </li>
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                + Biblioteca
+                Biblioteca
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="escuela.php">Bilblioteca</a>
@@ -183,7 +167,7 @@ if(!isset($_SESSION))
            
     </ul>
     <div class"nav-item">
-      <a class="btn btn-primary boton-menu" href="index.php">Salir</a>
+      <a class="btn btn-primary boton-menu" href="index.php">Exit</a>
     </div>
         
     

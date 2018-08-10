@@ -30,7 +30,7 @@ if(isset($_GET['cursos'])){
 	echo json_encode($cursos);
 }
 if(isset($_GET['lastId'])){
-	$cursos = $obj->getLastId();
+	$cursos = $obj->getLastId(1);
 	if($cursos == false){
 		$cursos = "";
 	}
@@ -57,17 +57,27 @@ if (isset($_POST['task'])) {
 			$cursoInicio=$_POST['cursoInicio'];
 			$fechaPago=$_POST['fechaPago'];
 			$idEscuela=$_POST['idEscuela'];
+			$fingreso=$_POST['fin'];
 			//foto
 			$foto=$_FILES['foto'];
-			if ($foto['type'] == "image/jpg" OR $foto['type'] == "image/jpeg"){
-				$ruta="assets/img/fotos/".md5($foto['tmp_name']).".jpg";
-				$rutax="../assets/img/fotos/".md5($foto['tmp_name']).".jpg";
-
+		
+			if (isset($_FILES['foto'])) {
+				$rutaRandom = $obj->rutaRandom();
+				$audio =$_FILES['foto'];
+				if($_FILES['foto']['type'] == "image/jpeg" ){
+					$rutax="../assets/img/fotos/".$rutaRandom.".jpeg";
+					$ruta="assets/img/fotos/".$rutaRandom.".jpeg";
+				}
+				if($_FILES['foto']['type'] == "image/png" ){
+					$rutax="../assets/img/fotos/".$rutaRandom.".png";
+					$ruta="assets/img/fotos/".$rutaRandom.".png";
+				}
 				move_uploaded_file($foto['tmp_name'],$rutax);
-				echo getcwd();
+			}else{
+				$ruta="";
 			}
 									
-			$control = $obj->alta($matricula,$contraseña,$nombre,$apPaterno,$apMaterno,$eMail,$fnac,$sexo,$ruta,$dir,$tel,$cel,$meta,$evaluacion,$cursoInicio,$fechaPago,$idEscuela);
+			$control = $obj->alta($matricula,$contraseña,$nombre,$apPaterno,$apMaterno,$eMail,$fnac,$sexo,$ruta,$dir,$tel,$cel,$meta,$evaluacion,$cursoInicio,$fechaPago,$idEscuela,$fingreso);
 			break;
 		case 'editar':
 			$id=$_POST['idAlumno'];

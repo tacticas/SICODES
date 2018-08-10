@@ -10,7 +10,7 @@ $(document).ready(function() {
             { data: 'descrip' },
             { data:null,
                 render(data){
-                 return '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <button data-toggle="modal" data-target="#md_horario" class="horario btn btn-primary btn-sm"><i class="fa fa-calendar"></i></button>';
+                 return '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <button data-toggle="modal" data-target="#md_leccion" class="leccion btn btn-primary btn-sm"><i class="fa fa-book"></i> Lección</button>';
                 }
             },
         ],
@@ -70,10 +70,66 @@ $(document).ready(function() {
         $('#formEliminar #idCurso').val(data.idCurso);
     });
     
-    //horario
-    $('#md_horario tbody').on('click','button.horario', function(){
-        var data = table.row( $(this).parents('tr') ).data();
-        $('#tituloModalh').html('Modificando el Horario de '+data.nombre); //editando titulo
-       
-    });
 
+
+	$('#example tbody').on('click','button.leccion', function(){
+		var data = table.row( $(this).parents('tr') ).data();
+        var id = data.idCurso;
+        console.log(data);
+        $("#formGuardarLeccion")[0].reset();
+        
+        
+        $('#id_curso').val(data.idCurso);
+
+		
+        $('#tb_leccion').dataTable().fnDestroy();
+        var leccion = $('#tb_leccion').DataTable( {
+			ajax : 'controller/curso.php?listar=1&leccion='+id,
+			dom: '<"col-xs-12 text-center"><"row"<"col-sm-6"><"col-sm-6">><"row"<"col-xs-12 text-center">><"row"<"col-xs-12 pull-">>',
+            columns: [
+                {data: 'numero'},
+                {data: 'nombre'},
+				{ data: null,
+					render: function(){
+						return '<button id="del_horaio" class="eliminarLeccion btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>';
+					} 
+				}
+            ]
+		} );
+        $('#tb_leccion').on ('click','button.eliminarLeccion', function( event ){
+			event.preventDefault();
+			var data = leccion.row( $(this).parents('tr') ).data();
+			console.log(data);
+            
+           $.ajax({
+                method: "POST",
+                url: "controller/curso.php?acc1=dell&id="+data.idLeccion,
+                data: data
+              })
+                .done(function( msg ) {
+					leccion.ajax.reload();
+					toastr.success('Eliminado Correctamente');
+					
+              });
+           
+			
+        });
+		$('#formGuardarLeccion').on('submit', function(e){
+			e.preventDefault();
+			var frm = $(this).serialize();
+			console.log(frm);
+			$.ajax({
+				method: "POST",
+				url: "controller/curso.php?acc=addl",
+				data: frm
+			  })
+				.done(function( msg ) {
+					leccion.ajax.reload();
+                    $('#lc_num').val("");
+                    $('#lc_name').val("");
+                    toastr.success('Eliminado Correctamente');
+                    
+			  });
+	
+		});
+    });

@@ -53,6 +53,21 @@ if (isset($_GET['get'])) {
 		echo json_encode($data);
 	}
 }
+
+if (isset($_GET['horario'])) {
+	$id = $_GET['horario'];
+	$tabla = $obj->getHorarioByGrupo($id);
+	if($tabla != false){
+		foreach ($tabla as $key) {
+			$data["data"][] = $key;
+		}
+	}else{
+		$data = "";
+	}
+	
+	echo json_encode($data);
+}
+
 //agregar alumnos
 if(isset($_GET['acc'])){
 	if($_GET['acc']=='add'){
@@ -66,6 +81,25 @@ if(isset($_GET['acc'])){
 
 }
 //elimianr alumnos de grupo
+
+//agregar horario
+if(isset($_GET['acc'])){
+	if($_GET['acc']=='addh'){
+		$idGrupo = $_POST['idGrupo'];
+		$dia=$_POST['dia'];
+		$ini=$_POST['ini'];
+		$fin=$_POST['fin'];
+		$obj->addHorario($idGrupo,$dia,$ini,$fin);
+	}
+}	
+if(isset($_GET['acc1'])){
+	if($_GET['acc1']=='delh'){
+		$id = $_GET['id'];
+	
+		$obj->eliminarHorario($id);
+	}
+}
+		
 
 
 
@@ -98,6 +132,11 @@ if (isset($_POST['task'])) {
 		case 'agregarAln':
 			
 			break;
+		case 'delh':
+			$id=$_POST['id'];
+			$control = $obj->eliminarHorario($id);
+			break;
+		
 		default:
 			echo 'problema';
 		break;

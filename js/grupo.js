@@ -15,7 +15,7 @@ $(document).ready(function() {
 					return data;
 				}
 			},
-			{ defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <button data-toggle="modal" data-target="#add" class="agregarAl btn btn-success btn-sm"><i class="fa fa-plus"></i> <i class="fa fa-users"></i></button> <button data-toggle="modal" data-target="#del" class="getGrupo btn btn-danger btn-sm"><i class="fa fa-list"></i></button> '}
+			{ defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button> <button data-toggle="modal" data-target="#add" class="agregarAl btn btn-success btn-sm"><i class="fa fa-plus"></i> <i class="fa fa-users"></i></button> <button data-toggle="modal" data-target="#del" class="getGrupo btn btn-danger btn-sm"><i class="fa fa-list"></i></button>  <button data-toggle="modal" data-target="#md_horario" class="horario btn btn-primary btn-sm"><i class="fa fa-calendar"></i></button>'}
 		],
 		select: true,
 		buttons: [
@@ -29,6 +29,8 @@ $(document).ready(function() {
 			
 		]
 	} );
+
+	
 
 	function preCarga(){
 		$.ajax({
@@ -130,8 +132,64 @@ $(document).ready(function() {
     
         });
         
+	});
+	
+	$('#example tbody').on('click','button.horario', function(){
+		var data = table.row( $(this).parents('tr') ).data();
+		var id = data.idGrupo;
+		$("#formGuardarHora")[0].reset();
+		$('#idGrupoh').val(data.idGrupo); 
+		
+        $('#tb_horario').dataTable().fnDestroy();
+        var horario = $('#tb_horario').DataTable( {
+			ajax : 'controller/grupo.php?horario='+id,
+			dom: '<"col-xs-12 text-center"><"row"<"col-sm-6"><"col-sm-6">><"row"<"col-xs-12 text-center">><"row"<"col-xs-12 pull-">>',
+            columns: [
+                {data: 'dia'},
+                {data: 'ini'},
+                { data: 'fin' },
+				{ data: null,
+					render: function(){
+						return '<button id="del_horaio" class="eliminarHorario btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>';
+					} 
+				}
+            ]
+		} );
+        $('#tb_horario').on ('click','button.eliminarHorario', function( event ){
+			event.preventDefault();
+			var data = horario.row( $(this).parents('tr') ).data();
+			console.log(data);
+            
+           $.ajax({
+                method: "POST",
+                url: "controller/grupo.php?acc1=delh&id="+data.idHorario,
+                data: data
+              })
+                .done(function( msg ) {
+					horario.ajax.reload();
+					toastr.success('Eliminado Correctamente');
+					
+              });
+           
+			
+        });
+		$('#formGuardarHora').on('submit', function(e){
+			e.preventDefault();
+			var frm = $(this).serialize();
+			console.log(frm);
+			$.ajax({
+				method: "POST",
+				url: "controller/grupo.php?acc=addh",
+				data: frm
+			  })
+				.done(function( msg ) {
+					horario.ajax.reload();
+					toastr.success('Eliminado Correctamente');
+			  });
+	
+		});
     });
-
+	
 
 
 	//------------
@@ -170,3 +228,12 @@ $(document).ready(function() {
 				toastr.success('Eliminado Correctamente');
 			});
 	});   
+
+	    //horario
+		$('#md_horario tbody').on('click','button.horario', function(){
+			var data = table.row( $(this).parents('tr') ).data();
+			$('#tituloModalh').html('Modificando el Horario de '+data.nombre); //editando titulo
+		   
+		});
+
+		

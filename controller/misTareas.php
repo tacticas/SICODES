@@ -54,7 +54,7 @@ if (isset($_POST['task'])) {
 			$idAlumno=$_SESSION['idMaster'];
 			$texto = $_POST['respuesta'];
 			$idTarea =$_POST['idTarea'];
-			if (isset($_FILES['data'])) {
+			if ($_FILES['data']['tmp_name']!="") {
 				$rutaRandom = $obj->rutaRandom();
 				$audio =$_FILES['data'];
 				if($_FILES['data']['type'] == "image/jpeg" ){
@@ -85,6 +85,10 @@ if (isset($_POST['task'])) {
 						
 			$control = $obj->alta($idAlumno,$idTarea,$texto,$ruta);
 			break;
+
+		case 'editar':
+		//el formulario de editar osea vamos sobre el mismo id recivir idAlumnoTarea
+		break;
 		case 'dictado':
 			$idAlumno=$_SESSION['idMaster'];
 			$texto = $_POST['respuesta'];
@@ -93,6 +97,10 @@ if (isset($_POST['task'])) {
 
 			$control = $obj->alta($idAlumno,$idTarea,$texto,$archivo);
 			break;
+		case 'dictadoE':
+		
+		
+		break;
 		default:
 			echo 'problema';
 		break;

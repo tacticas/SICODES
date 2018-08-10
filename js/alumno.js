@@ -78,11 +78,13 @@ $(document).ready(function() {
 		
 		var matricula = '';
 		var res ='';
+
 		$.ajax({
 			method: 'POST',
-			url: "controller/alumno.php?carga=1",
+			url: "controller/alumno.php?lastId=1",
 			dataType: "json",
 			success: function(data){
+				
 				var cd = '';
 				var es = '';
 				var id = '';
@@ -93,16 +95,8 @@ $(document).ready(function() {
 				}
 				res = cd+es+id;
 				matricula = res.toUpperCase();
-				$('#matricula').val(matricula);
-				
-			}
-		});
-		$.ajax({
-			method: 'POST',
-			url: "controller/alumno.php?lastId=1",
-			dataType: "json",
-			success: function(data){
-				var aux = $('#matricula').val();
+								
+				var aux = 	matricula;
 				
 				if(data[0].idAlumno != ''){
 					var x = data[0].idAlumno; 
@@ -110,9 +104,10 @@ $(document).ready(function() {
 					x++;
 					aux = aux + String(x);
 				}else{
-					aux = aux + '000001';
+					aux = aux + '1';
 				}
 				$('#matricula').val(aux);
+				console.log('aqui');
 			}
 		});
 		

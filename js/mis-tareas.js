@@ -20,16 +20,16 @@ $(document).ready(function() {
 					var r = "";
 					switch(data) {
 						case "1":
-							r = "Hablar";
+							r = "Speaking";
 							break;
 						case "2":
-							r = "leer";
+							r = "Reading";
 							break;
 						case "3":
-							r = "Escribir";
+							r = "Writing";
 							break;
 						case "4":
-							r = "Escuchar";
+							r = "Listening";
 							break;	
 						default:
 							r = "No especificado";
@@ -39,7 +39,7 @@ $(document).ready(function() {
 				}
 			},
 			{ data: 'fechaAlta' },
-			{ data: 'status', 
+			{ data: 'estado', 
 				render: function(data, type, row){
 					if (data == "1") {
 						return "Activa";
@@ -53,13 +53,13 @@ $(document).ready(function() {
 					if (data.status == "1") {
 						switch (data.tipo) {
 							case "1":
-							return '<button data-toggle="modal" data-target="#contestar" class="contestar btn btn-primary btn-sm"><i class="fa fa-check"> Grabar</i></button>';
+							return '<button data-toggle="modal" data-target="#md_hablar" class="contestar btn btn-primary btn-sm"><i class="fa fa-check"> Record</i></button>';
 							break;
 							case "4":
-							return '<button data-toggle="modal" data-target="#md_dictado" class="dictado btn btn-primary btn-sm"><i class="fa fa-check"> Dictado</i></button>';
+							return '<button data-toggle="modal" data-target="#md_dictado" class="dictado btn btn-primary btn-sm"><i class="fa fa-check"> Dictation</i></button>';
 							break;
 							default:
-							return '<button data-toggle="modal" data-target="#md_otros" class="otros btn btn-primary btn-sm"><i class="fa fa-check"> Contestar</i></button>';
+							return '<button data-toggle="modal" data-target="#md_otros" class="otros btn btn-primary btn-sm"><i class="fa fa-check"> Answer</i></button>';
 					
 							break;
 						}
@@ -90,16 +90,16 @@ $(document).ready(function() {
 					var r = "";
 					switch(data) {
 						case "1":
-							r = "Hablar";
+							r = "Speaking";
 							break;
 						case "2":
-							r = "leer";
+							r = "Reading";
 							break;
 						case "3":
-							r = "Escribir";
+							r = "Writing";
 							break;
 						case "4":
-							r = "Escuchar";
+							r = "Listening";
 							break;	
 						default:
 							r = "No especificado";
@@ -123,18 +123,18 @@ $(document).ready(function() {
 					if (data.status == "1") {
 						switch (data.tipo) {
 							case "1":
-							return '<button data-toggle="modal" data-target="#contestar" class="contestar btn btn-primary btn-sm"><i class="fa fa-check"> Grabar</i></button>';
+							return '<button data-toggle="modal" data-target="#md_hablar" class="contestar btn btn-primary btn-sm"><i class="fa fa-check"> Record</i></button>';
 							break;
 							case "4":
-							return '<button data-toggle="modal" data-target="#md_dictado" class="dictado btn btn-primary btn-sm"><i class="fa fa-check"> Dictado</i></button>';
+							return '<button data-toggle="modal" data-target="#md_dictado" class="dictado btn btn-primary btn-sm"><i class="fa fa-check"> Dictation</i></button>';
 							break;
 							default:
-							return '<button data-toggle="modal" data-target="#md_otros" class="otros btn btn-primary btn-sm"><i class="fa fa-check"> Contestar</i></button>';
+							return '<button data-toggle="modal" data-target="#md_otros" class="otros btn btn-primary btn-sm"><i class="fa fa-check"> Answer </i></button>';
 					
 							break;
 						}
 					} else {
-						return "Concluida";
+						return "concluded";
 					}
 				}
 			}
@@ -159,16 +159,16 @@ $(document).ready(function() {
 					var r = "";
 					switch(data) {
 						case "1":
-							r = "Hablar";
+							r = "Speaking";
 							break;
 						case "2":
-							r = "leer";
+							r = "Reading";
 							break;
 						case "3":
-							r = "Escribir";
+							r = "Writing";
 							break;
 						case "4":
-							r = "Escuchar";
+							r = "Listening";
 							break;	
 						default:
 							r = "No especificado";
@@ -178,31 +178,56 @@ $(document).ready(function() {
 				}
 			},
 			{ data: 'fechaAlta' },
-			{ data: 'status', 
+			{ data: null, 
 				render: function(data, type, row){
-					if (data == "1") {
-						return "Activa";
+					if (data.status == "2") {
+						return '<h5><span class="badge badge-warning">Reviewed</span></h5>'+ data.msg;
 					} else {
-						return "Concluida";
+						return "Concluded";
 					}
 				}
 			},
-			{ data: 'status', 
+			{ data: null, 
 				render: function(data, type, row){
-					if (data == "1") {
-						return 'Realizada';
-					} else {
-						return "Realizada";
+					switch (data.estado) {
+						case "1":
+						return '<h5><span class="badge badge-info">Sent</span></h5>';
+							break;
+						case "2":
+							
+								switch (data.tipo) {
+									case "1":
+									return '<button id="editContestar" data-toggle="modal" data-target="#md_hablarE" class="contestar  btn btn-primary btn-sm"><i class="fa fa-check"> Record</i></button>';
+									break;
+									case "4":
+									return '<button id="editDictado" data-toggle="modal" data-target="#md_dictadoE" class="dictado  btn btn-primary btn-sm"><i class="fa fa-check"> Dictation</i></button>';
+									break;
+									default:
+									return '<button id="editOtro" data-toggle="modal" data-target="#md_otrosE" class="otros  btn btn-primary btn-sm"><i class="fa fa-check"> Answer </i></button>';
+							
+									break;
+								}
+							
+						
+							break;
+
+						case "3":
+						return '<h5><span class="badge badge-primary">Done</span></h5>';
+							break;
+					
+						default:
+							break;
 					}
+										
 				}
 			}
 		]
 	} );
 
 
-	//interface
-	
-	
+	//Editar - Weas
+
+
 	// back-js
 
 	
@@ -231,15 +256,25 @@ $(document).ready(function() {
 	// ------------ GRABAR ---------------
 	$('#example tbody').on('click','button.contestar', function(){
 		var data = table.row( $(this).parents('tr') ).data();
-		$('#md_hablar').modal('show');
+		
 		$('#idTarea').val(data.idTarea);
 	
 	});
 
 	$('#indi tbody').on('click','button.contestar', function(){
 		var data = tableIndi.row( $(this).parents('tr') ).data();
-		$('#md_hablar').modal('show');
+		
 		$('#idTarea').val(data.idTarea);
+	
+	});
+
+	$('#real tbody').on('click','button.contestar', function(){
+		var data = tableIndi.row( $(this).parents('tr') ).data();
+		$('#respGrabar').val(data.idAlumnoTarea);
+		$('#idTarea').val(data.idTarea);
+		console.log("aqui andamos");
+		$('#texto1').val(data.texto);
+		
 	
 	});
 	// ------------ GRABAR ---------------
@@ -268,14 +303,14 @@ $(document).ready(function() {
 		recorder && recorder.record();
 		button.disabled = true;
 		button.nextElementSibling.disabled = false;
-		__log('Grabando...');
+		__log('Recording...');
 	  }
 	
 	  function stopRecording(button) {
 		recorder && recorder.stop();
 		button.disabled = true;
 		button.previousElementSibling.disabled = false;
-		__log('Se detuvo la grabación.');
+		__log('Recording stopped.');
 		
 		// create WAV download link using audio data blob
 		createDownloadLink();
@@ -315,7 +350,7 @@ $(document).ready(function() {
 		  //__log('Audio context set up.');
 		  //__log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
 		} catch (e) {
-		  alert('Tu navegador no soporta las grabaciones de Audio // recomendamos Chrome en su versión ams actual');
+		  alert('Tu navegador no soporta las grabaciones de Audio // recomendamos Chrome en su versión mas actual');
 		}
 		
 		navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
@@ -325,7 +360,7 @@ $(document).ready(function() {
 	
 	var stadoR = 0;
 
-	//dictado
+	//dictado ssss 
 	$('#example tbody').on('click','button.dictado', function(){
 		
 		
@@ -590,7 +625,138 @@ $(document).ready(function() {
 			
 	});
 
+	$('#real tbody').on('click','button.dictado', function(){
+		
+		var data = tableReal.row( $(this).parents('tr') ).data();
+		$('#respDictado').val(data.idAlumnoTarea);
+		var texto = data.textDi;
+		$("#audio").attr("src", data.archivo);
+		var aux = '';
+		var aux2 = '';
+		var separador = " ";
+		var arreglo = texto.split(separador);
+		var terminado = [];
+		var letras = 0;
+		var signos = 0;
+		var tamaño = [];
+		var clave= [];
+		console.log(texto);
+		for(let i=0; i<arreglo.length; i++){
+			var temp = arreglo[i].split("");
+			for(let j=0; j<temp.length; j++){
+				
+				if(temp[j] != "," && temp[j] != "?" && temp[j] != "." && temp[j] != "’" && temp[j] != "’" ){
+					aux += temp[j];
+					letras++;
+					
+				}else{
+					aux2 += temp[j]
+					signos++;
+				}
+			}
+			clave.push(aux);
+			terminado.push(aux);
+			tamaño.push(letras);
+			if(aux2 != ""){
+				terminado.push(aux2);
+			}
+			if(signos !=0){
+				tamaño.push(signos);
+			}
+			aux = '';
+			aux2 = '';
+			letras = 0;
+			signos = 0;
+			
+		}
+		
+		var contador = 0;
+		var campo  = '';
+		//imprime los input y los label
+		if(stadoR == 0){
+			var puntos = 0; 
+			for(let l=0; l<terminado.length; l++){
+				if(terminado[l] != "," && terminado[l] != "?" && terminado[l] != "." && terminado[l] != "’" && terminado[l] != "!"){
+					campo = '<input title="Si no la sabes pon un signo (?)" required="" placeholder="'+tamaño[l]+'" name="'+l+'" class="respuesta" maxlength="'+tamaño[l]+'" type="text" id="campo' + contador + '"/>  ';
+					contador++;
+				}else{
+					campo = '<label class=""><strong>'+terminado[l]+'</strong></label> ' ;
+				}
+				$("#campos").append(campo);
+			
+			}
+			stadoR++;
+		}
+		$('#barra').prop( "max", arreglo.length);
+		var res = [];
+		$( "#campos input" ).keyup(function() {
+			console.log("key up");
+		  
+			res = [];
+			$('#campos input').each(
+				function(index){  
+					var input = $(this);
+					res.push(input.val());
+				}
+			);
+			puntos = 0;
+			for (let index = 0; index < clave.length; index++) {
+				
+				if(clave[index].toUpperCase() == res[index].toUpperCase() || res[index] == "?"  ){
+					console.log(puntos);
+					
+					$('#campo' + index).prop( "disabled", true );
+					puntos++;
+					$('#barra').prop( "value", puntos );
+					
+				}
+				
+			}
+			
+		});	
 
+		//dictado bot
+
+		
+		
+		$('#formDictado').on('submit', function(e){
+			e.preventDefault();
+			res = [];
+			$('#formDictado input').each(
+				function(index){  
+					var input = $(this);
+					res.push(input.val());
+					res.push(" ");
+				}
+			);
+			var x = '';
+			res.forEach(function (element) {
+				x = x + element;
+			});
+			$("#texto").val(x);
+			var frm = $(this).serialize();
+			$.ajax({
+				method: 'POST',
+				url: 'controller/misTareas.php',
+				data: frm
+			}).done( function( info ){
+				$('#md_dictado').modal('hide');
+				$("#campos").empty();
+				table.ajax.reload();
+				tableIndi.ajax.reload();
+				tableReal.ajax.reload();
+				toastr.success('Tarea Enviada');
+				stadoR = 0;
+
+			});
+		});
+		
+		
+		//ciclo para crear los inputs 
+			
+	});
+
+//otras respuestas
 	$('#example tbody').on('click','button.otros', function(){
 		var data = table.row( $(this).parents('tr') ).data();
 		console.log(data);
@@ -617,7 +783,24 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#FormOtro ').on('submit', function(e){
+
+	$('#real tbody').on('click','button.otros', function(){
+		var data = tableReal.row( $(this).parents('tr') ).data();
+		console.log(data);
+		$('#respTexto').val(data.idAlumnoTarea);
+		$('#tituloModalO').html(data.tema);
+		$('#idTareao').val(data.idTarea);
+		$('#descargas').empty();
+		if(data.archivo != ''){
+			
+			var myHtml = '<h5>Archivo Complemento</h5> <label ><a href="'+data.archivo +'"download="Material-'+data.tema+'" >Descargar Material - '+data.tema+'</a> </label>';
+			$('#descargas').html( myHtml);
+		}
+		
+		$('#texto1').val(data.texto);
+	});
+
+	$('#FormOtro').on('submit', function(e){
 		e.preventDefault();
 		var frm = new FormData($(this)[0]);
 		$.ajax({
@@ -628,10 +811,12 @@ $(document).ready(function() {
 			processData: false,
 		}).done( function( info ){
 			$('#md_otros').modal('hide');
-			table.ajax.reload();
+			/*table.ajax.reload();
 			tableIndi.ajax.reload();
-			tableReal.ajax.reload();
-			toastr.success('Tarea Enviada'+ info );
+			tableReal.ajax.reload();*/
+			toastr.success('Tarea Enviada');
+			location.reload();
+			
 
 		});
 	});

@@ -7,9 +7,9 @@ class Alumno extends Connection
 		return $this->con->query("SELECT * FROM alumno")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	//query para dar de alta alumnos
-	public function alta($matricula,$contraseña,$nombre,$apPaterno,$apMaterno,$eMail,$fnac,$sexo,$foto,$dir,$tel,$cel,$meta,$evaluacion,$cursoInicio,$fechaPago,$idEscuela){
-		$query = $this->con->prepare("INSERT INTO alumno ( matricula, contraseña, nombre, ap1, ap2, email, fnac, sexo, foto, dir, tel,cel,meta,evaluacion,cursoInicio,fechaPago,idEscuela) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		$exc = $query->execute(array($matricula,$contraseña,$nombre,$apPaterno,$apMaterno,$eMail,$fnac,$sexo,$foto,$dir,$tel,$cel,$meta,$evaluacion,$cursoInicio,$fechaPago,$idEscuela));
+	public function alta($matricula,$contraseña,$nombre,$apPaterno,$apMaterno,$eMail,$fnac,$sexo,$foto,$dir,$tel,$cel,$meta,$evaluacion,$cursoInicio,$fechaPago,$idEscuela,$fingreso){
+		$query = $this->con->prepare("INSERT INTO alumno ( matricula, contraseña, nombre, ap1, ap2, email, fnac, sexo, foto, dir, tel,cel,meta,evaluacion,cursoInicio,fechaPago,idEscuela,fIngreso) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$exc = $query->execute(array($matricula,$contraseña,$nombre,$apPaterno,$apMaterno,$eMail,$fnac,$sexo,$foto,$dir,$tel,$cel,$meta,$evaluacion,$cursoInicio,$fechaPago,$idEscuela,$fingreso));
 		if ($exc) {
 			return true;
 		}else{
@@ -52,9 +52,14 @@ class Alumno extends Connection
 	public function getCursos(){
 		return $this->con->query("SELECT idCurso, nombre FROM curso")->fetchAll(PDO::FETCH_ASSOC);
 	}
-	public function getLastId(){
-		return $this->con->query("SELECT alumno.idAlumno from alumno order by idAlumno DESC LIMIT 1")->fetchAll(PDO::FETCH_ASSOC);
+	public function getLastId($id){
+		return $this->con->query("SELECT escuela.*, alumno.idAlumno FROM escuela, alumno where escuela.idEscuela = '$id' order by alumno.idAlumno DESC LIMIT 1")->fetchAll(PDO::FETCH_ASSOC);
 	}
-
+	public function rutaRandom(){
+		$fecha=strftime( "%Y-%m-%d-%H-%M-%S", time() );
+			$random = rand(1, 9999);
+			$fecha .= $random;
+			return $fecha;
+	}
 	
 }

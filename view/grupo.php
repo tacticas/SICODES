@@ -168,3 +168,76 @@
 	</div>
   </div>
 </div>
+
+
+<!--- Horario modal----->
+<!-- Modal -->
+<div class="modal fade" id="md_horario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  	<div class="modal-dialog  modal-lg" role="document">
+   		<div class="modal-content">
+      		<div class="modal-header">
+        		<h5 class="modal-title" id="tituloModalh">Horario del Curso</h5>
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          			<span aria-hidden="true">&times;</span>
+        		</button>
+      		</div>
+      		<form id="formGuardarHora">
+      			<div class="modal-body col-sm-12">
+					<div class="form-group">
+						<input class="form-control" id="accionh" type="hidden" name="task" value="addHora">
+						<input class="form-control" type="hidden" name="idGrupo" value="" id="idGrupoh">
+					</div>	
+					
+					<div class="table-responsive">
+						<table data-order='[[ 0, "DESC" ]]' id="tb_horario" class="table table-bordered table-striped display" cellspacing="0" width="100%">
+							<thead class="thead-inverse">
+								<tr>
+									<th>Dia</th>
+									<th>Hora inicio</th>
+									<th>Hora Fin</th>
+									<th></th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<hr class"m-top3">
+					<div class="form-group row">
+				
+						<div class=col-sm-3>
+							<select name="dia" id="">
+								<option value="Lunes">Lunes</option>
+								<option value="Martes">Martes</option>
+								<option value="Miercoles">Miercoles</option>
+								<option value="Jueves">Jueves</option>
+								<option value="Viernes">Viernes</option>
+								<option value="Sabado">Sabado</option>
+								<option value="Domingo">Domingo</option>
+							</select>
+						</div>
+						<div class="col-sm-3">
+							<label for="ini" >Inicio: </label>
+							<input require name="ini" type="time">
+						</div>
+						<div class="col-sm-3">
+							<label for="fin" >Fin: </label>
+							<input require name="fin" type="time">
+						</div> 
+						<div class="col-sm-3">
+							<button type="submit" id="addHorario" class="btn btn-primary">+ Agregar</button>
+						</div>
+					</form>
+
+					</div>
+
+				
+					
+					
+					</div>
+			    <div class="modal-footer">
+				   	<input data-dismiss="modal" type="reset" class="btn btn-secondary" value="Cancelar">
+				   	
+				</div>
+			</form>
+    	</div>
+  	</div>
+</div>

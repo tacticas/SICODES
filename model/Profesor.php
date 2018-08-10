@@ -7,9 +7,9 @@ class Profesor extends Connection
 		return $this->con->query("SELECT * FROM profesor")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	//query para dar de alta 
-	public function alta($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel){
-		$query = $this->con->prepare("INSERT INTO profesor (nombre,ap1,ap2,fnaci,sexo,dir,tel,cel) values(?,?,?,?,?,?,?,?)");
-		$exc = $query->execute(array($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel));
+	public function alta($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$usuario,$contra){
+		$query = $this->con->prepare("INSERT INTO profesor (nombre,ap1,ap2,fnaci,sexo,dir,tel,cel,usuario,contraseña) values(?,?,?,?,?,?,?,?,?,?)");
+		$exc = $query->execute(array($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$usuario,$contra));
 		if ($exc) {
 			return true;
 		}else{
@@ -17,9 +17,9 @@ class Profesor extends Connection
 		}
 	}
 	//query para editar 
-	public function editar($id,$nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel){
-		$query = $this->con->prepare("UPDATE profesor SET nombre=?,ap1=?,ap2=?,fnaci=?,sexo=?,dir=?,tel=?,cel=? WHERE idProfesor=?");
-		$exc = $query->execute(array($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$id));
+	public function editar($id,$nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$usuario,$contra){
+		$query = $this->con->prepare("UPDATE profesor SET nombre=?,ap1=?,ap2=?,fnaci=?,sexo=?,dir=?,tel=?,cel=?, usuario=?, contraseña=? WHERE idProfesor=?");
+		$exc = $query->execute(array($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$usuario,$contra,$id));
 		if ($exc) {
 			return true;
 		}else{

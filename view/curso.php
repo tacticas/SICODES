@@ -86,72 +86,58 @@
   </div>
 </div>
 
-<!--- Horario modal----->
 <!-- Modal -->
-<div class="modal fade" id="md_horario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  	<div class="modal-dialog" role="document">
+<div class="modal fade" id="md_leccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  	<div class="modal-dialog  modal-lg" role="document">
    		<div class="modal-content">
       		<div class="modal-header">
-        		<h5 class="modal-title" id="tituloModalh">Horario del Curso</h5>
+        		<h5 class="modal-title" id="tituloModalh">Lecciones</h5>
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           			<span aria-hidden="true">&times;</span>
         		</button>
       		</div>
-      		<form id="formGuardar">
+      		<form id="formGuardarLeccion">
       			<div class="modal-body col-sm-12">
 					<div class="form-group">
-						<input class="form-control" id="accionh" type="hidden" name="task" value="">
-						<input class="form-control" type="hidden" name="idCurso" value="" id="idCurso">
+						
 					</div>	
-					<div class="form-group">
-						<label for="nombre" >Selecciona los Días: </label>
-						<div class="table-responsive">
-							<table class="table table-sm table-bordered">
-								<thead>
-									<th>Lunes</th>
-									<th>Martes</th>
-									<th>Miercoles</th>
-									<th>Jueves</th>
-									<th>Viernes</th>
-									<th>Sabado</th>
-									<th>Domingo</th>
-								</thead>
-								<tbody>
-									<tr>
-										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
-										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
-										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
-										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
-										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
-										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
-										<td><input class="position-static" type="checkbox" id="blankCheckbox" value="option1"></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+					
+					<div class="table-responsive">
+						<table data-order='[[ 0, "ASC" ]]' id="tb_leccion" class="table table-bordered table-striped display" cellspacing="0" width="100%">
+							<thead class="thead-inverse">
+								<tr>
+									<th>Número</th>
+									<th>Nombre</th>
+									<th></th>
+								</tr>
+							</thead>
+						</table>
 					</div>
-			
+					<hr class"mt-2">
 					<div class="form-group row">
-						<div class=col-sm-2>
-							<label for="nombre" >Lunes: </label>
+						<input name="idCurso" require type="hidden" id="id_curso">
+						<div class=col-sm-3>
+							<label for="">Número:</label>
+							<input class="form-control" name="numero" type="number" id="lc_num">
 						</div>
-						<div class="col-sm-5">
-							<label for="nombre" >Inicio: </label>
-							<select name="" id="">
-								<option value="07:00:00">7:00 AM</option>
-							</select>
+						<div class="col-sm-6">
+							<label for="ini" >Nombre: </label>
+							<input class="form-control" require name="nombre" type="text" id="lc_name" >
 						</div>
-						<div class="col-sm-5">
-							<label for="nombre" >Fin: </label>
-							<select name="" id="">
-								<option value="07:00:00">7:00 AM</option>
-							</select>
+						<div class="col-sm-3 pt-4">
+							<button type="submit" id="addHorario" class="btn btn-primary">+ Agregar</button>
 						</div>
+					</form>
+
 					</div>
-			    </div>
+
+				
+					
+					
+					</div>
 			    <div class="modal-footer">
 				   	<input data-dismiss="modal" type="reset" class="btn btn-secondary" value="Cancelar">
-				   	<button type="submit" id="enviarUsuario" class="btn btn-primary">Enviar</button>
+				   	
 				</div>
 			</form>
     	</div>

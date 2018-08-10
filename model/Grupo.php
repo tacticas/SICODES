@@ -71,5 +71,29 @@ class Grupo extends Connection
 	public function getCurso(){
 		return $this->con->query("SELECT * FROM curso")->fetchAll(PDO::FETCH_ASSOC);
 	}
+
+	public function getHorarioByGrupo($id){
+		return $this->con->query("SELECT * FROM horario WHERE idGrupo = '$id'")->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function eliminarHorario($id){
+		$query = $this->con->prepare("DELETE FROM horario WHERE idHorario=?");
+		$exc = $query->execute(array($id));
+		if ($exc) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function addHorario($idGrupo,$dia,$ini,$fin){
+		$query = $this->con->prepare("INSERT INTO horario (idGrupo,dia,ini,fin) values(?,?,?,?)");
+		$exc = $query->execute(array($idGrupo,$dia,$ini,$fin));
+		if ($exc) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 	
 }
+
