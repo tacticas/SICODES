@@ -205,7 +205,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form id="FormOtro" enctype="multipart/form-data">
+			<form id="FormOtroE" enctype="multipart/form-data">
 			<div class="modal-body">
 				<input class="form-control" id="accion3" type="hidden" name="task" value="editar">
 				<input class="form-control" id="respTexto" type="hidden" name="idAlumnoTarea" value="">
@@ -244,7 +244,7 @@
         </button>
       </div>
       <div class="modal-body">
-	  <form id="formDictado" class="form-row" >
+	  <form id="formDictadoE" class="form-row" >
 	  		<input class="form-control" id="accion2" type="hidden" name="task" value="dictadoE">
 			<input class="form-control" type="hidden" name="idTarea" value="" id="idTarea">
 			<input class="form-control" id="respDictado" type="hidden" name="idAlumnoTarea" value="">
@@ -260,7 +260,7 @@
 			<progress id="barra" max="10" value="0" ></progress>
 			<br>
 			<br>
-			<div id="campos" class="">
+			<div id="camposE" class="">
 			
 			</div>
 			<input id="texto" name="respuesta" type="hidden">
@@ -286,7 +286,7 @@
 				</button>
 			</div>
 			
-			<form id="formGuardar" enctype="multipart/form-data">
+			<form id="formGuardarE" enctype="multipart/form-data">
 				<div class="modal-body">
 					<input class="form-control" id="accion1" type="hidden" name="task" value="Editar">
 					<input class="form-control" type="hidden" name="idTarea" value="" id="idTarea">

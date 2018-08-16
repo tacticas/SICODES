@@ -180,11 +180,25 @@ $(document).ready(function() {
 			{ data: 'fechaAlta' },
 			{ data: null, 
 				render: function(data, type, row){
-					if (data.status == "2") {
+					switch (data.estado) {
+						case "1":
+						return '<h5><span class="badge badge-warning">To check</span></h5>';
+							break;
+						
+						case "2":
 						return '<h5><span class="badge badge-warning">Reviewed</span></h5>'+ data.msg;
-					} else {
+						break;
+						
+						case "3":
+						return '<h5><span class="badge badge-primary">Done</span></h5>';
+
+						break;
+						default:
 						return "Concluded";
+							break;
 					}
+
+			
 				}
 			},
 			{ data: null, 
@@ -245,6 +259,26 @@ $(document).ready(function() {
 			processData: false,
 		}).done( function( info ){
 			$('#md_hablar').modal('hide');
+			table.ajax.reload();
+			tableIndi.ajax.reload();
+			tableReal.ajax.reload();
+			toastr.success('Tarea Enviada');
+		});
+	});
+	$('#formGuardarE').on('submit', function(e){
+		e.preventDefault();
+		var frm = new FormData($(this)[0]);
+		//frm.append('audio', 'test.wab');
+		frm.append('data',audioREC);;
+		
+		$.ajax({
+			method: 'POST',
+			url: 'controller/misTareas.php',
+			data: frm, 
+			contentType: false,
+			processData: false,
+		}).done( function( info ){
+			$('#md_hablarE').modal('hide');
 			table.ajax.reload();
 			tableIndi.ajax.reload();
 			tableReal.ajax.reload();
@@ -750,6 +784,38 @@ $(document).ready(function() {
 
 			});
 		});
+
+		$('#formDictadoE').on('submit', function(e){
+			e.preventDefault();
+			res = [];
+			$('#formDictadoE input').each(
+				function(index){  
+					var input = $(this);
+					res.push(input.val());
+					res.push(" ");
+				}
+			);
+			var x = '';
+			res.forEach(function (element) {
+				x = x + element;
+			});
+			$("#texto").val(x);
+			var frm = $(this).serialize();
+			$.ajax({
+				method: 'POST',
+				url: 'controller/misTareas.php',
+				data: frm
+			}).done( function( info ){
+				$('#md_dictadoE').modal('hide');
+				$("#camposE").empty();
+				table.ajax.reload();
+				tableIndi.ajax.reload();
+				tableReal.ajax.reload();
+				toastr.success('Tarea Enviada');
+				stadoR = 0;
+
+			});
+		});
 		
 		
 		//ciclo para crear los inputs 
@@ -811,6 +877,27 @@ $(document).ready(function() {
 			processData: false,
 		}).done( function( info ){
 			$('#md_otros').modal('hide');
+			/*table.ajax.reload();
+			tableIndi.ajax.reload();
+			tableReal.ajax.reload();*/
+			toastr.success('Tarea Enviada');
+			location.reload();
+			
+
+		});
+	});
+
+	$('#FormOtroE').on('submit', function(e){
+		e.preventDefault();
+		var frm = new FormData($(this)[0]);
+		$.ajax({
+			method: 'POST',
+			url: 'controller/misTareas.php',
+			data: frm,
+			contentType: false,
+			processData: false,
+		}).done( function( info ){
+			$('#md_otrosE').modal('hide');
 			/*table.ajax.reload();
 			tableIndi.ajax.reload();
 			tableReal.ajax.reload();*/

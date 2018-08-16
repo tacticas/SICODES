@@ -88,7 +88,42 @@ if (isset($_POST['task'])) {
 
 		case 'editar':
 		//el formulario de editar osea vamos sobre el mismo id recivir idAlumnoTarea
-		break;
+		$idAlumno=$_SESSION['idMaster'];
+			$texto = $_POST['respuesta'];
+			$idAlumnoTarea = $_POST['idAlumnoTarea'];
+			$idTarea =$_POST['idTarea'];
+			if ($_FILES['data']['tmp_name']!="") {
+				$rutaRandom = $obj->rutaRandom();
+				$audio =$_FILES['data'];
+				if($_FILES['data']['type'] == "image/jpeg" ){
+					$rutax="../assets/img/tareas/".$rutaRandom.".jpeg";
+					$ruta="assets/img/tareas/".$rutaRandom.".jpeg";
+				}
+				if($_FILES['data']['type'] == "image/png" ){
+					$rutax="../assets/img/tareas/".$rutaRandom.".png";
+					$ruta="assets/img/tareas/".$rutaRandom.".png";
+				}
+				if($_FILES['data']['type'] == "application/pdf"){
+					$rutax="../assets/pdf/".$rutaRandom.".pdf";
+					$ruta="assets/pdf/".$rutaRandom.".pdf";
+				}
+				if($_FILES['data']['type'] == "application/msword"){
+					$rutax="../assets/word/".$rutaRandom.".doc";
+					$ruta="assets/word/".$rutaRandom.".doc";
+				}
+				if($_FILES['data']['type'] == "audio/mp3" || $_FILES['data']['type'] == "audio/wav"){
+					$rutax="../assets/audio/dictados/".$rutaRandom.".wav";
+					$ruta="assets/audio/dictados/".$rutaRandom.".wav";
+				}
+				move_uploaded_file($audio['tmp_name'],$rutax);
+				$control = $obj->editarR($texto,$ruta,$idAlumnoTarea);
+			}else{
+							
+				$control = $obj->editarRSin($texto,$idAlumnoTarea);
+			}
+			
+
+			break;
 		case 'dictado':
 			$idAlumno=$_SESSION['idMaster'];
 			$texto = $_POST['respuesta'];
@@ -98,9 +133,14 @@ if (isset($_POST['task'])) {
 			$control = $obj->alta($idAlumno,$idTarea,$texto,$archivo);
 			break;
 		case 'dictadoE':
+			$idAlumnoTarea = $_POST['idAlumnoTarea'];
+			
+			$texto = $_POST['respuesta'];
 		
+
+			$control = $obj->editarRSin($texto,$idAlumnoTarea);
 		
-		break;
+			break;
 		default:
 			echo 'problema';
 		break;

@@ -27,6 +27,25 @@ class MisTareas extends Connection
 			return false;
 		}
 	}
+
+	public function editarR($texto,$ruta,$idAlumnoTarea){
+		$query = $this->con->prepare("UPDATE alumnoTarea SET texto=?, archivo=?, status=1 WHERE idAlumnoTarea=?");
+		$exc = $query->execute(array($texto,$ruta,$idAlumnoTarea));
+		if ($exc) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function editarRSin($texto,$idAlumnoTarea){
+		$query = $this->con->prepare("UPDATE alumnoTarea SET texto=?, status=1 WHERE idAlumnoTarea=?");
+		$exc = $query->execute(array($texto,$idAlumnoTarea));
+		if ($exc) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 	//query para determianr el grupo del alumno
 	
 	public function getAlumnoGrupo($id){
@@ -40,4 +59,7 @@ class MisTareas extends Connection
 			$fecha .= $random;
 			return $fecha;
 	}
+
+	
+
 }
