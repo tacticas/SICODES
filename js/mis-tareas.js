@@ -394,11 +394,12 @@ $(document).ready(function() {
 	
 	var stadoR = 0;
 
-	//dictado ssss 
+	//Dictado para talba GRUPAL
 	$('#example tbody').on('click','button.dictado', function(){
 		
 		
 		var data = table.row( $(this).parents('tr') ).data();
+		
 		var texto = data.textDi;
 		$("#audio").attr("src", data.archivo);
 		var aux = '';
@@ -410,7 +411,7 @@ $(document).ready(function() {
 		var signos = 0;
 		var tamaño = [];
 		var clave= [];
-		console.log(texto);
+	
 		for(let i=0; i<arreglo.length; i++){
 			var temp = arreglo[i].split("");
 			for(let j=0; j<temp.length; j++){
@@ -460,7 +461,6 @@ $(document).ready(function() {
 		$('#barra').prop( "max", arreglo.length);
 		var res = [];
 		$( "#campos input" ).keyup(function() {
-			console.log("key up");
 		  
 			res = [];
 			$('#campos input').each(
@@ -473,7 +473,7 @@ $(document).ready(function() {
 			for (let index = 0; index < clave.length; index++) {
 				
 				if(clave[index].toUpperCase() == res[index].toUpperCase() || res[index] == "?"  ){
-					console.log(puntos);
+				
 					
 					$('#campo' + index).prop( "disabled", true );
 					puntos++;
@@ -505,6 +505,7 @@ $(document).ready(function() {
 			});
 			$("#texto").val(x);
 			var frm = $(this).serialize();
+			frm+= '&idTarea='+data.idTarea;
 			$.ajax({
 				method: 'POST',
 				url: 'controller/misTareas.php',
@@ -512,11 +513,13 @@ $(document).ready(function() {
 			}).done( function( info ){
 				$('#md_dictado').modal('hide');
 				$("#campos").empty();
-				table.ajax.reload();
-				tableIndi.ajax.reload();
-				tableReal.ajax.reload();
-				toastr.success('Tarea Enviada');
+				table.ajax.reload( null, false );
+				tableIndi.ajax.reload( null, false );
+				tableReal.ajax.reload( null, false );
+				toastr.success('Tarea Enviada'+frm);
 				stadoR = 0;
+				
+				location.reload();
 
 			});
 		});
@@ -526,7 +529,7 @@ $(document).ready(function() {
 			
 	});
 
-	//modal otros
+	//Dictado para talba individual
 
 	$('#indi tbody').on('click','button.dictado', function(){
 		
@@ -543,7 +546,7 @@ $(document).ready(function() {
 		var signos = 0;
 		var tamaño = [];
 		var clave= [];
-		console.log(texto);
+		
 		for(let i=0; i<arreglo.length; i++){
 			var temp = arreglo[i].split("");
 			for(let j=0; j<temp.length; j++){
@@ -593,7 +596,7 @@ $(document).ready(function() {
 		$('#barra').prop( "max", arreglo.length);
 		var res = [];
 		$( "#campos input" ).keyup(function() {
-			console.log("key up");
+			
 		  
 			res = [];
 			$('#campos input').each(
@@ -606,7 +609,7 @@ $(document).ready(function() {
 			for (let index = 0; index < clave.length; index++) {
 				
 				if(clave[index].toUpperCase() == res[index].toUpperCase() || res[index] == "?"  ){
-					console.log(puntos);
+					
 					
 					$('#campo' + index).prop( "disabled", true );
 					puntos++;
@@ -638,6 +641,9 @@ $(document).ready(function() {
 			});
 			$("#texto").val(x);
 			var frm = $(this).serialize();
+			
+			frm+= '&idTarea='+data.idTarea;
+			
 			$.ajax({
 				method: 'POST',
 				url: 'controller/misTareas.php',
@@ -645,11 +651,12 @@ $(document).ready(function() {
 			}).done( function( info ){
 				$('#md_dictado').modal('hide');
 				$("#campos").empty();
-				table.ajax.reload();
-				tableIndi.ajax.reload();
-				tableReal.ajax.reload();
+				table.ajax.reload( null, false );
+				tableIndi.ajax.reload( null, false );
+				tableReal.ajax.reload( null, false );
 				toastr.success('Tarea Enviada');
 				stadoR = 0;
+				location.reload();
 
 			});
 		});
@@ -659,9 +666,12 @@ $(document).ready(function() {
 			
 	});
 
+	//Dictado para talba REALIZADOS
+
 	$('#real tbody').on('click','button.dictado', function(){
 		
 		var data = tableReal.row( $(this).parents('tr') ).data();
+		console.log(data);
 		$('#respDictado').val(data.idAlumnoTarea);
 		var texto = data.textDi;
 		$("#audio").attr("src", data.archivo);
@@ -674,7 +684,7 @@ $(document).ready(function() {
 		var signos = 0;
 		var tamaño = [];
 		var clave= [];
-		console.log(texto);
+		
 		for(let i=0; i<arreglo.length; i++){
 			var temp = arreglo[i].split("");
 			for(let j=0; j<temp.length; j++){
@@ -711,23 +721,23 @@ $(document).ready(function() {
 			var puntos = 0; 
 			for(let l=0; l<terminado.length; l++){
 				if(terminado[l] != "," && terminado[l] != "?" && terminado[l] != "." && terminado[l] != "’" && terminado[l] != "!"){
-					campo = '<input title="Si no la sabes pon un signo (?)" required="" placeholder="'+tamaño[l]+'" name="'+l+'" class="respuesta" maxlength="'+tamaño[l]+'" type="text" id="campo' + contador + '"/>  ';
+					campo = '<input title="Si no la sabes pon un signo (?)" required="" placeholder="'+tamaño[l]+'" name="'+l+'" class="respuesta" maxlength="'+tamaño[l]+'" type="text" id="campoE' + contador + '"/>  ';
 					contador++;
 				}else{
 					campo = '<label class=""><strong>'+terminado[l]+'</strong></label> ' ;
 				}
-				$("#campos").append(campo);
+				$("#camposE").append(campo);
 			
 			}
 			stadoR++;
 		}
 		$('#barra').prop( "max", arreglo.length);
 		var res = [];
-		$( "#campos input" ).keyup(function() {
-			console.log("key up");
+		$( "#camposE input" ).keyup(function() {
+			
 		  
 			res = [];
-			$('#campos input').each(
+			$('#camposE input').each(
 				function(index){  
 					var input = $(this);
 					res.push(input.val());
@@ -737,11 +747,11 @@ $(document).ready(function() {
 			for (let index = 0; index < clave.length; index++) {
 				
 				if(clave[index].toUpperCase() == res[index].toUpperCase() || res[index] == "?"  ){
-					console.log(puntos);
 					
-					$('#campo' + index).prop( "disabled", true );
+					
+					$('#campoE' + index).prop( "disabled", true );
 					puntos++;
-					$('#barra').prop( "value", puntos );
+					$('#barraE').prop( "value", puntos );
 					
 				}
 				
@@ -751,40 +761,7 @@ $(document).ready(function() {
 
 		//dictado bot
 
-		
-		
-		$('#formDictado').on('submit', function(e){
-			e.preventDefault();
-			res = [];
-			$('#formDictado input').each(
-				function(index){  
-					var input = $(this);
-					res.push(input.val());
-					res.push(" ");
-				}
-			);
-			var x = '';
-			res.forEach(function (element) {
-				x = x + element;
-			});
-			$("#texto").val(x);
-			var frm = $(this).serialize();
-			$.ajax({
-				method: 'POST',
-				url: 'controller/misTareas.php',
-				data: frm
-			}).done( function( info ){
-				$('#md_dictado').modal('hide');
-				$("#campos").empty();
-				table.ajax.reload();
-				tableIndi.ajax.reload();
-				tableReal.ajax.reload();
-				toastr.success('Tarea Enviada');
-				stadoR = 0;
-
-			});
-		});
-
+	
 		$('#formDictadoE').on('submit', function(e){
 			e.preventDefault();
 			res = [];
@@ -813,6 +790,7 @@ $(document).ready(function() {
 				tableReal.ajax.reload();
 				toastr.success('Tarea Enviada');
 				stadoR = 0;
+				
 
 			});
 		});

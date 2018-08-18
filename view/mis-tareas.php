@@ -52,7 +52,7 @@
 				<h3>Completed Homework</h3>
 				<hr>
 				<div id="tb" class="table-responsive">
-					<table data-order='[[ 0, "DESC" ]]' id="real" class="table table-bordered table-striped display dataTable no-footer" cellspacing="0" width="100%">
+					<table data-order='[[ 5, "DESC" ]]' id="real" class="table table-bordered table-striped display dataTable no-footer" cellspacing="0" width="100%">
 						<thead class="thead-inverse">
 							<tr>
 								<th>Group</th>
@@ -131,7 +131,7 @@
       <div class="modal-body">
 	  <form id="formDictado" class="form-row" >
 	  		<input class="form-control" id="accion2" type="hidden" name="task" value="dictado">
-			<input class="form-control" type="hidden" name="idTarea" value="" id="idTarea">
+			<!--<input class="form-control" type="hidden" name="idTarea" value="" id="idTarea">-->
 			<input class="form-control" required=""  type="hidden" name="idAlumno" value="<?=$_SESSION['idMaster']?>" id="idAlumno">
 			<div class="form-group">
 				<label for="">Audio</label>
@@ -257,7 +257,7 @@
 			<hr>
 			<h5>Full, if you do not know the answer, put a "?"</h5>
 			<br>
-			<progress id="barra" max="10" value="0" ></progress>
+			<progress id="barraE" max="10" value="0" ></progress>
 			<br>
 			<br>
 			<div id="camposE" class="">
