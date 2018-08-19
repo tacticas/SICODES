@@ -84,8 +84,11 @@ if (isset($_POST['task'])) {
 						$ruta="assets/audio/dictados/".$rutaRandom.".wav";
 					}
 					move_uploaded_file($audio['tmp_name'],$rutax);
+				}else{
+					$ruta="";
 				}
-				$ruta="";
+
+				
 				
 			}else{
 				$ruta="";
