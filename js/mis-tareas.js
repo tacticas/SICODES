@@ -39,7 +39,7 @@ $(document).ready(function() {
 				}
 			},
 			{ data: 'fechaAlta' },
-			{ data: 'estado', 
+			{ data: 'status', 
 				render: function(data, type, row){
 					if (data == "1") {
 						return "Activa";
@@ -211,7 +211,7 @@ $(document).ready(function() {
 							
 								switch (data.tipo) {
 									case "1":
-									return '<button id="editContestar" data-toggle="modal" data-target="#md_hablarE" class="contestar  btn btn-primary btn-sm"><i class="fa fa-check"> Record</i></button>';
+									return '<button id="editContestar" data-toggle="modal" data-target="#md_hablar" class="contestar  btn btn-primary btn-sm"><i class="fa fa-check"> Record</i></button>';
 									break;
 									case "4":
 									return '<button id="editDictado" data-toggle="modal" data-target="#md_dictadoE" class="dictado  btn btn-primary btn-sm"><i class="fa fa-check"> Dictation</i></button>';
@@ -263,6 +263,7 @@ $(document).ready(function() {
 			tableIndi.ajax.reload();
 			tableReal.ajax.reload();
 			toastr.success('Tarea Enviada');
+			location.reload();
 		});
 	});
 	$('#formGuardarE').on('submit', function(e){
@@ -283,6 +284,7 @@ $(document).ready(function() {
 			tableIndi.ajax.reload();
 			tableReal.ajax.reload();
 			toastr.success('Tarea Enviada');
+			
 		});
 	});
 
@@ -303,11 +305,14 @@ $(document).ready(function() {
 	});
 
 	$('#real tbody').on('click','button.contestar', function(){
-		var data = tableIndi.row( $(this).parents('tr') ).data();
+		var data = tableReal.row( $(this).parents('tr') ).data();
 		$('#respGrabar').val(data.idAlumnoTarea);
 		$('#idTarea').val(data.idTarea);
-		console.log("aqui andamos");
+		console.log(data);
+		$('#textoDi').val(data.texto);
 		$('#texto1').val(data.texto);
+		$('#accion1').val('editar');
+		$('#idAlumnoTareaEs').val(data.idAlumnoTarea);
 		
 	
 	});
@@ -791,6 +796,7 @@ $(document).ready(function() {
 				toastr.success('Tarea Enviada');
 				stadoR = 0;
 				
+				
 
 			});
 		});
@@ -808,7 +814,7 @@ $(document).ready(function() {
 		$('#idTareao').val(data.idTarea);
 		$('#descargas').empty();
 		if(data.archivo != ''){
-			var myHtml = '<h5>Archivo Complemento</h5> <label ><a href="'+data.archivo +'" download="Material-'+data.tema+'" >Descargar Material - '+data.tema+'</a> </label>';
+			var myHtml = '<h5>Complement material</h5> <label ><a href="'+data.archivo +'" download="Material-'+data.tema+'" >Download Material - '+data.tema+'</a> </label>';
 			$('#descargas').html( myHtml);
 		}
 	
@@ -822,7 +828,7 @@ $(document).ready(function() {
 		$('#descargas').empty();
 		if(data.archivo != ''){
 			
-			var myHtml = '<h5>Archivo Complemento</h5> <label ><a href="'+data.archivo +'"download="Material-'+data.tema+'" >Descargar Material - '+data.tema+'</a> </label>';
+			var myHtml = '<h5>Complement material</h5> <label ><a href="'+data.archivo +'"download="Material-'+data.tema+'" >Download Material - '+data.tema+'</a> </label>';
 			$('#descargas').html( myHtml);
 		}
 	});
