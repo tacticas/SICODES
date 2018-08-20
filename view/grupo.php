@@ -205,13 +205,13 @@
 				
 						<div class=col-sm-3>
 							<select name="dia" id="">
-								<option value="Lunes">Lunes</option>
-								<option value="Martes">Martes</option>
-								<option value="Miercoles">Miercoles</option>
-								<option value="Jueves">Jueves</option>
-								<option value="Viernes">Viernes</option>
-								<option value="Sabado">Sabado</option>
-								<option value="Domingo">Domingo</option>
+								<option value="Monday">Lunes</option>
+								<option value="Tuesday">Martes</option>
+								<option value="Wednesday">Miercoles</option>
+								<option value="Thursday">Jueves</option>
+								<option value="Friday">Viernes</option>
+								<option value="Saturday">Sabado</option>
+								<option value="Sunday">Domingo</option>
 							</select>
 						</div>
 						<div class="col-sm-3">

@@ -190,7 +190,7 @@ $(document).ready(function() {
 						break;
 						
 						case "3":
-						return '<h5><span class="badge badge-primary">Done</span></h5>';
+						return '<h5><span class="badge badge-primary">Done</span></h5>'+ data.msg;
 
 						break;
 						default:
@@ -262,7 +262,7 @@ $(document).ready(function() {
 			table.ajax.reload();
 			tableIndi.ajax.reload();
 			tableReal.ajax.reload();
-			toastr.success('Tarea Enviada');
+			toastr.success('Submitted successfully');
 			location.reload();
 		});
 	});
@@ -283,7 +283,7 @@ $(document).ready(function() {
 			table.ajax.reload();
 			tableIndi.ajax.reload();
 			tableReal.ajax.reload();
-			toastr.success('Tarea Enviada');
+			toastr.success('Submitted successfully');
 			
 		});
 	});
@@ -521,7 +521,7 @@ $(document).ready(function() {
 				table.ajax.reload( null, false );
 				tableIndi.ajax.reload( null, false );
 				tableReal.ajax.reload( null, false );
-				toastr.success('Tarea Enviada'+frm);
+				toastr.success('Submitted successfully'+frm);
 				stadoR = 0;
 				
 				location.reload();
@@ -659,7 +659,7 @@ $(document).ready(function() {
 				table.ajax.reload( null, false );
 				tableIndi.ajax.reload( null, false );
 				tableReal.ajax.reload( null, false );
-				toastr.success('Tarea Enviada');
+				toastr.success('Submitted successfully');
 				stadoR = 0;
 				location.reload();
 
@@ -793,7 +793,7 @@ $(document).ready(function() {
 				table.ajax.reload();
 				tableIndi.ajax.reload();
 				tableReal.ajax.reload();
-				toastr.success('Tarea Enviada');
+				toastr.success('Submitted successfully');
 				stadoR = 0;
 				
 				
@@ -864,7 +864,7 @@ $(document).ready(function() {
 			/*table.ajax.reload();
 			tableIndi.ajax.reload();
 			tableReal.ajax.reload();*/
-			toastr.success('Tarea Enviada');
+			toastr.success('Submitted successfully');
 			location.reload();
 			
 
@@ -885,7 +885,7 @@ $(document).ready(function() {
 			/*table.ajax.reload();
 			tableIndi.ajax.reload();
 			tableReal.ajax.reload();*/
-			toastr.success('Tarea Enviada');
+			toastr.success('Submitted successfully');
 			location.reload();
 			
 

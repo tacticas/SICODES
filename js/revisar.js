@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	
 
+
 	
 
 });    
@@ -89,7 +90,11 @@ function invertir(cadena) {
 			},
 			{ data: null, 
 				render : function(data){
-					return '<button class="btn btn-primary"> 0 </button>';
+					if(data.status == '3'){
+						return '<h5><span class="badge badge-primary">Done</span></h5>'
+					}else{
+						return '<button onclick="modal(2,this)" class="btn btn-warning" data-toggle="modal" data-target="#md_revisar"><i class="fa fa-comment"></i></button> <button onclick="modal(3,this)" class="btn btn-primary" data-toggle="modal" data-target="#md_revisar"><i class="fa fa-check"></i></button>';
+					}
 				} 
 			},
 		],
@@ -106,6 +111,36 @@ function invertir(cadena) {
 	} );
 
 
+
+	function modal(num,btn){
+		
+		var data = table.row( $(btn).parents('tr') ).data();
+		$("#idAlumnoTarea").val(data.idAlumnoTarea);
+		$("#msg").val(data.msg);
+		if(num==2){
+			//mandar a revisar
+			$("#tituloModal").html("Check homework");
+			$("#accion").val("revisar");
+		}else{
+			//mandar tarea completada
+			$("#tituloModal").html("Completed?");
+			$("#accion").val("completar");
+		}
+		$("#formGuardar").on("submit", function(event){
+			event.preventDefault();
+			frm = $(this).serialize();
+			$.ajax({
+				method: "POST",
+				url: "controller/revisar.php",
+				data: frm
+			  })
+				.done(function( msg ) {
+					table.ajax.reload();
+					toastr.success('Sent correctly');
+					$("#md_revisar").modal('hide');
+				});
+		});
+	}
 
  
 	

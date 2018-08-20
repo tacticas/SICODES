@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once('../model/Revisar.php');
+require_once('../model/Lista.php');
 
-$obj = new Revisar();
+$obj = new Lista();
 //genera el json para la tabla
 if (isset($_GET['get'])) {
 	$id =  $_GET['get'];
-	$tabla = $obj->getAll($id);
+	$tabla = $obj->getListaByAlumno($id);
 	if($tabla != false){
 		foreach ($tabla as $key) {
 			$data["data"][] = $key;

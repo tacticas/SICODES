@@ -30,16 +30,16 @@ $(document).ready(function() {
 					var r = "";
 					switch(data) {
 						case "1":
-							r = "Hablar";
+							r = "Speaking";
 							break;
 						case "2":
-							r = "leer";
+							r = "Reading";
 							break;
 						case "3":
-							r = "Escribir";
+							r = "Writing";
 							break;
 						case "4":
-							r = "Escuchar";
+							r = "Listening";
 							break;	
 						default:
 							r = "No especificado";
@@ -53,9 +53,9 @@ $(document).ready(function() {
 			{ data: 'status', 
 				render: function(data, type, row){
 					if (data == "1") {
-						return "Activa";
+						return "Active";
 					} else {
-						return "Concluida";
+						return "Concluded";
 					}
 				}
 			},
@@ -137,7 +137,7 @@ $(document).ready(function() {
 	$('button.agregar').click(function(){
 		$('#formGuardar')[0].reset();
 		$('#accion').val('agregar');
-		$('#tituloModal').html('Agregar nueva Tarea');
+		$('#tituloModal').html('Add new task');
 		$('#divAlumno').hide();
 		$('#divtextoDi').hide();
 		$("#alcance").prop('disabled', false);
@@ -168,14 +168,14 @@ $(document).ready(function() {
 		}).done( function( info ){
 			$('#editar').modal('hide');
 			table.ajax.reload();
-			toastr.success('Guardado Correctamente');
+			toastr.success(' Saved Correctly');
 		});
 	});
 
 	$('#example tbody').on('click','button.editar', function(){
 		var data = table.row( $(this).parents('tr') ).data();
 		console.log(data);
-		$('#tituloModal').html('Editando Datos de '+data.tema);
+		$('#tituloModal').html('Editing data of  '+data.tema);
 		$('#accion').val('editar');
 		$('#idTarea').val(data.idTarea);
 		$('#alcance').val(data.alcance);
@@ -237,7 +237,7 @@ $(document).ready(function() {
 			}).done( function( info ){
 				$('#confirmar').modal('hide');
 				table.ajax.reload();
-				toastr.success('Eliminado Correctamente');
+				toastr.success('Eliminated Correctly');
 			});
 	});   
 
