@@ -2,15 +2,10 @@
 	<div id="contenido" class="row">
 		<div class="col-md-12"><br>
 			<div class="row">
-<<<<<<< HEAD
 				<div class="col-sm-8">
-					<h3>Registrar Alumnos</h3>
+					<h3>Registrar Alumnos en Entrada</h3>
 				</div>
 				<div class="col-sm-4">
-=======
-				<div class="col-sm-12">
-					<h3>Registro de Entrada 1</h3>
->>>>>>> 4c0767c46f387c537207ec678ffaca0ef75ccd0e
 				</div>
 				
 			</div>						
