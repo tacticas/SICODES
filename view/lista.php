@@ -3,7 +3,7 @@
 		<div class="col-md-12"><br>
 			<div class="row">
 				<div class="col-sm-8">
-					<h3>Pase de Lista</h3>
+					<h3>Registrar Alumnos</h3>
 				</div>
 				<div class="col-sm-4">
 				</div>
