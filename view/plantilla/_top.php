@@ -113,7 +113,7 @@ if(!isset($_SESSION))
                 Alumnos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="tomaLista.php">Pase de Lista</a>
+                <a class="dropdown-item" href="lista.php">Pase de Lista</a>
                 <a class="dropdown-item" href="alumno.php">Alumnos</a>
               </div>
               </li>
@@ -132,12 +132,6 @@ if(!isset($_SESSION))
               <li class="nav-item">
                 <a class="nav-link" href="#">Mensajes</a>
               </li>  
-              <li class="nav-item">
-                <a class="nav-link" href="#">Horarios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">eventos</a>
-              </li>
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Biblioteca

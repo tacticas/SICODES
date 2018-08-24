@@ -6,8 +6,8 @@ $obj = new Lista();
 //genera el json para la tabla
 if (isset($_GET['get'])) {
 	$id =  $_GET['get'];
-	$tabla = $obj->getListaByAlumno($id);
-	if($tabla != false){
+	$tabla = $obj->getListaByAlumno();
+	if($tabla != "0"){
 		foreach ($tabla as $key) {
 			$data["data"][] = $key;
 		}
@@ -17,23 +17,12 @@ if (isset($_GET['get'])) {
 	echo json_encode($data);
 }
 
-if(isset($_POST['accion']) && !empty($_POST['accion'])) {
-	$accion = $_POST['accion'];
-	switch ($accion) {
-		case 'revisar':
-			$_POST['status'] = 2;
-			break;
-		
-		case 'completar':
-			$_POST['status'] = 3;
-			break;
-		
-		default:
-			# code...
-			break;
-	}
-	$flag = $obj->UpdRevisar($_POST);
+if(isset($_GET['registrar']) && !empty($_GET['registrar'])) {
+	$flag = $obj->registrarUser($_POST);
 	if($flag){
 		echo 'Correcto';
+		
+	}else{
+		echo 'algo mal';
 	}
 }
