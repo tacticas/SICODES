@@ -8,9 +8,9 @@ require "controller/alumno.php";
 */
 require "view/plantilla/_header.php";
 require "view/plantilla/_top.php";
-require "view/multimedia.php";
+require "view/multires.php";
 require "view/plantilla/_footer.php";
 ?>
 
 <!-- Los js para que funcionen data tables 1 para cada vista -->
-<script type="text/javascript" src="js/multimedia.js"></script>
+<script type="text/javascript" src="js/multires.js"></script>
