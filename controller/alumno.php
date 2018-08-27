@@ -65,7 +65,7 @@ if (isset($_POST['task'])) {
 		
 			if (isset($_FILES['foto'])) {
 				$rutaRandom = $gen->rutaRandom();
-				$audio =$_FILES['foto'];
+				//$audio =$_FILES['foto'];
 				if($_FILES['foto']['type'] == "image/jpeg" ){
 					$rutax="../assets/img/fotos/".$rutaRandom.".jpeg";
 					$ruta="assets/img/fotos/".$rutaRandom.".jpeg";

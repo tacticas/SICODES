@@ -8,7 +8,7 @@
 
 
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap4/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap4/css/notify.css">
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap4/css/style.css">
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap4/fonts/css/font-awesome.min.css">
