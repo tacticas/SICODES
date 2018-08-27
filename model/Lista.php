@@ -10,7 +10,47 @@ class Lista extends Connection
 
 	public function getListaByAlumno(){
 		
-		$resultado = $this->con->query("SELECT alumno.matricula,alumno.idAlumno,alumno.nombre as aName,grupo.nombre,grupo.idGrupo,horario.* from alumno,alumnogrupo,horario,grupo WHERE  grupo.idGrupo = alumnogrupo.idGrupo and horario.idGrupo = grupo.idGrupo and horario.dia = Date_format(now(),'%W')");
+		$resultado = $this->con->query("SELECT lista.id,alumno.matricula, alumno.nombre, alumno.ap1, alumno.ap2 , alumno.idAlumno, horario.*,  grupo.nombre AS Gnombre, time(lista.registro) as hora
+        FROM alumno 
+       JOIN alumnogrupo ON alumno.idAlumno = alumnogrupo.idAlumno 
+        JOIN horario ON alumnogrupo.idGrupo = horario.idGrupo
+        JOIN grupo ON alumnogrupo.idGrupo = grupo.idGrupo
+        JOIN lista ON alumno.idAlumno = lista.idAlumno AND horario.idGrupo = lista.idGrupo AND date(lista.registro) = date(now())
+        WHERE horario.dia = Date_format(now(),'%W') and lista.status = 0");
+		$número_filas =  $resultado->rowCount();
+		if ($número_filas > 0) {
+			return $resultado;
+		}else
+		{
+			return "0";
+		}
+	}
+	public function registroHoy(){
+		
+		$resultado = $this->con->query("SELECT alumno.matricula, alumno.nombre, alumno.ap1, alumno.ap2 , alumno.idAlumno, horario.*,  grupo.nombre AS Gnombre, time(lista.registro) as hora
+        FROM alumno 
+       JOIN alumnogrupo ON alumno.idAlumno = alumnogrupo.idAlumno 
+        JOIN horario ON alumnogrupo.idGrupo = horario.idGrupo
+        JOIN grupo ON alumnogrupo.idGrupo = grupo.idGrupo
+        JOIN lista ON alumno.idAlumno = lista.idAlumno AND horario.idGrupo = lista.idGrupo AND date(lista.registro) = date(now())
+        WHERE horario.dia = Date_format(now(),'%W') AND lista.status = 1");
+		$número_filas =  $resultado->rowCount();
+		if ($número_filas > 0) {
+			return $resultado;
+		}else
+		{
+			return "0";
+		}
+	}
+
+
+	public function alumosLesToca(){
+		
+		$resultado = $this->con->query("SELECT alumno.idAlumno, grupo.idGrupo, horario.dia
+		FROM alumno
+		JOIN alumnogrupo on alumno.idAlumno = alumnogrupo.idGrupo
+		JOIN grupo on grupo.idGrupo =alumnogrupo.idAlumno 
+		JOIN horario on grupo.idGrupo = horario.idGrupo and horario.dia = Date_format(now(),'%W')");
 		$número_filas =  $resultado->rowCount();
 		if ($número_filas > 0) {
 			return $resultado;
@@ -21,10 +61,21 @@ class Lista extends Connection
 	}
 
 	public function registrarUser($arry){
-		$query = $this->con->prepare("INSERT INTO lista (idAlumno,idGrupo,status ) values(?,?,?)");
-		$exc = $query->execute(array($arry['idAlumno'],$arry['idGrupo'],1));
+		$query = $this->con->prepare("UPDATE lista SET status= ? WHERE lista.id = ?");
+		$exc = $query->execute(array(1,$arry['id']));
 		$rows =  $exc->rowCount();
 		if ($rows > 0) {
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
+
+	public function inicioPase($arry){
+		$query = $this->con->prepare("INSERT INTO lista (idAlumno,idGrupo,status ) values(?,?,?)");
+		$exc = $query->execute(array($arry['idAlumno'],$arry['idGrupo'],0));
+		if ($exc ) {
 			return true;
 		}else
 		{
