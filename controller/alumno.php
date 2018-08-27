@@ -1,6 +1,8 @@
 <?php
 require_once('../model/Alumno.php');
+require_once ('generico.php');
 $obj = new Alumno();
+$gen = new Generico();
 //genera el json para la tabla
 if (isset($_GET['get'])) {
 	$tabla = $obj->getAll();
@@ -62,7 +64,7 @@ if (isset($_POST['task'])) {
 			$foto=$_FILES['foto'];
 		
 			if (isset($_FILES['foto'])) {
-				$rutaRandom = $obj->rutaRandom();
+				$rutaRandom = $gen->rutaRandom();
 				$audio =$_FILES['foto'];
 				if($_FILES['foto']['type'] == "image/jpeg" ){
 					$rutax="../assets/img/fotos/".$rutaRandom.".jpeg";

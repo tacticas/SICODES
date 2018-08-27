@@ -1,5 +1,6 @@
 <?php 
 require_once 'Connection.php';
+
 class Alumno extends Connection 
 {	
 	//query para obtener todo los campos
@@ -55,11 +56,6 @@ class Alumno extends Connection
 	public function getLastId($id){
 		return $this->con->query("SELECT escuela.*, alumno.idAlumno FROM escuela, alumno where escuela.idEscuela = '$id' order by alumno.idAlumno DESC LIMIT 1")->fetchAll(PDO::FETCH_ASSOC);
 	}
-	public function rutaRandom(){
-		$fecha=strftime( "%Y-%m-%d-%H-%M-%S", time() );
-			$random = rand(1, 9999);
-			$fecha .= $random;
-			return $fecha;
-	}
+
 	
 }
