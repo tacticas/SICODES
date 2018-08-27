@@ -138,7 +138,7 @@ if(!isset($_SESSION))
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="escuela.php">Bilblioteca</a>
-                <a class="dropdown-item" href="profesor.php">Biblioteca Configuración</a>
+                <a class="dropdown-item" href="biblioteca-config.php">Biblioteca Configuración</a>
               </div>
               </li>
                 <li class="nav-item dropdown">
