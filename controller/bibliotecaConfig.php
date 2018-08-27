@@ -1,8 +1,9 @@
 <?php
     session_start();
     require_once('../model/BibliotecaConfig.php');
-
+    require_once ('generico.php');
     $obj = new BibliotecaConfig();
+    $gen = new Generico();
 
     //genera el json para la tabla
     if (isset($_GET['get'])) {
@@ -23,14 +24,14 @@
                 $nombre=$_POST['nombre'];
                 //foto
                 $img=$_FILES['img'];
-            
-                if (isset($_FILES['img'])) {
-                    $rutaRandom = $obj->rutaRandom();
+                
+                if ($_FILES['img']['tmp_name']!="") {
+                    $rutaRandom = $gen->rutaRandom();
                     if($_FILES['img']['type'] == "image/jpeg" ){
                         $rutax="../assets/img/fotos/".$rutaRandom.".jpeg";
                         $ruta="assets/img/fotos/".$rutaRandom.".jpeg";
                     }
-                    if($_FILES['foto']['type'] == "image/png" ){
+                    if($_FILES['img']['type'] == "image/png" ){
                         $rutax="../assets/img/fotos/".$rutaRandom.".png";
                         $ruta="assets/img/fotos/".$rutaRandom.".png";
                     }
@@ -39,7 +40,7 @@
                     $ruta="";
                 }
                                         
-                $control = $obj->alta($nombre,$img);
+                $control = $obj->alta($nombre,$ruta);
                 break;
             case 'editar':
                 $id=$_POST['id'];

@@ -10,8 +10,8 @@
 				</div>
 			</div>						
 			<br>
-			<div id="tb" class="table-responsive">
-				<table data-order='[[ 0, "DESC" ]]' id="example" class="table table-bordered table-striped display dataTable no-footer" cellspacing="0" width="100%">
+			<div id="tb1" class="table-responsive">
+				<table data-order='[[ 0, "DESC" ]]' id="tb" class="table table-bordered table-striped display dataTable no-footer" cellspacing="0" width="100%">
 					<thead class="thead-inverse">
 						<tr>
 							<th>ID</th>
@@ -38,7 +38,7 @@
 			</div>
 			<form id="formGuardar" enctype="multipart/form-data">
 			<div class="modal-body">
-                <input class="form-control" id="accion" type="hidden" name="accion" value="">
+                <input class="form-control" id="accion" type="hidden" name="task" value="agregar">
                 <input class="form-control" id="id" type="hidden" name="id" value="">
                 <div class="form-group">
                     <label >Nombre: </label>

@@ -7,9 +7,9 @@
             return $this->con->query("SELECT * FROM catmultimedia")->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function alta($arry) {
-            $query = $this->cons->prepare("INSERT INTO catmultimedia (nombre, img) values (?,?)");
-            $exc = $query->execute(array($arry['nombre'],$arry['img']));
+        public function alta($nombre,$ruta) {
+            $query = $this->con->prepare("INSERT INTO catmultimedia (nombre, img) values (?,?)");
+            $exc = $query->execute(array($nombre,$ruta));
             if ($exc) {
                 return true;
             } else {
