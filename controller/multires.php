@@ -2,7 +2,7 @@
 session_start();
 require_once('../model/Multires.php');
 
-$obj = new Multimedia();
+$obj = new Multires();
 
 if (isset($_GET['getAll2'])) {
 	$tabla = $obj->getAll();
@@ -18,7 +18,8 @@ if (isset($_GET['getAll2'])) {
 
 
 if (isset($_GET['getAll'])) {
-	$tabla = $obj->getAll();
+	$id= $_GET['getAll'];
+	$tabla = $obj->getAll($id);
 	if($tabla != "0"){
 		foreach ($tabla as $key) {
 			$data["data"][] = $key;

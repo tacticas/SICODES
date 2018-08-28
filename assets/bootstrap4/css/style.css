@@ -417,3 +417,13 @@ behavior:url(border.htc);
 border-radius: 10px 10px 10px 10px;
 
 }
+
+
+.modal-full {
+  min-width: 100%;
+  margin: 0;
+}
+
+.modal-full .modal-content {
+  min-height: 100vh;
+}
