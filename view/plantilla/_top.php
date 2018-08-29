@@ -79,11 +79,12 @@ if(!isset($_SESSION))
               </li>
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Biblioteca
+                Multimedia
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="escuela.php">Bilblioteca</a>
-                <a class="dropdown-item" href="profesor.php">Biblioteca Configuración</a>
+                <a class="dropdown-item" href="multimedia.php">Multimedia</a>
+                <a class="dropdown-item" href="biblioteca-config.php">Categorias Multimedia</a>
+                <a class="dropdown-item" href="archivos-multimedia.php">Archivos Multimedia</a>
               </div>
               </li>
                 <li class="nav-item dropdown">
@@ -134,11 +135,12 @@ if(!isset($_SESSION))
               </li>  
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Biblioteca
+                Multimedia
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="escuela.php">Bilblioteca</a>
-                <a class="dropdown-item" href="biblioteca-config.php">Biblioteca Configuración</a>
+                <a class="dropdown-item" href="multimedia.php">Multimedia</a>
+                <a class="dropdown-item" href="biblioteca-config.php">Categorias Multimedia</a>
+                <a class="dropdown-item" href="archivos-multimedia.php">Archivos Multimedia</a>
               </div>
               </li>
                 <li class="nav-item dropdown">
