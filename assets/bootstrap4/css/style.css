@@ -427,3 +427,11 @@ border-radius: 10px 10px 10px 10px;
 .modal-full .modal-content {
   min-height: 100vh;
 }
+
+.fc-day-header{
+  background-color: #0275d8;
+  color: #fff;
+}
+.fc-header-toolbar, .fc-view-container{
+  padding: 1em;
+}

@@ -132,7 +132,16 @@ if(!isset($_SESSION))
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Mensajes</a>
-              </li>  
+              </li> 
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Calendario
+              </a> 
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="calendar.php">Calendario General</a>
+                <a class="dropdown-item" href="eventos.php">Agregar Eventos</a>
+              </div>
+              </li>
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Multimedia
@@ -140,7 +149,7 @@ if(!isset($_SESSION))
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="multimedia.php">Multimedia</a>
                 <a class="dropdown-item" href="biblioteca-config.php">Categorias Multimedia</a>
-                <a class="dropdown-item" href="archivos-multimedia.php">Archivos Multimedia</a>
+                <a class="dropdown-item" href="archivos-multi.php">Archivos Multimedia</a>
               </div>
               </li>
                 <li class="nav-item dropdown">
