@@ -79,17 +79,64 @@ if(!isset($_SESSION))
               ');
         break;
 
+        case '1':
+            echo('
+              <li class="nav-item">
+                <a class="nav-link" href="mis-tareas.php"><i class="fa fa-pencil"></i> My Homework</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-comment"></i> Messages</a>
+              </li> 
+              <li class="nav-item">
+                  <a class="nav-link" href="calendar.php"><i class="fa fa-calendar"></i> Calendar</a>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="multimedia.php"><i class="fa fa-image"></i> Tarea</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-cog"></i> Config
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    
+                  </div>
+                </li>
+              ');
+        break;
+
+        //profe
+        case '2':
+        echo('
+          <li class="nav-item">
+            <a class="nav-link" href="tarea.php"><i class="fa fa-pencil"></i> Homework</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa fa-comment"></i> Messages</a>
+          </li> 
+          <li class="nav-item">
+              <a class="nav-link" href="calendar.php"><i class="fa fa-calendar"></i> Calendar</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-cog"></i> Config
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                
+              </div>
+            </li>
+          ');
+    break;
+
         default:
           break;
       }
             
       ?>
 
-      </ul>
-    
-      
-        <a class="btn btn-primary" href="index.php">Exit</a>
-    
+    </ul>
+
+
+    <a class="btn btn-primary" href="index.php">Exit</a>
+
   </div>
 </nav>
-

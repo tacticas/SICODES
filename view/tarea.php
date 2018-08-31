@@ -17,12 +17,9 @@
 							<th>id</th>
 							<th>idGrupo</th>
 							<th>Group</th>
-							<th>idProfesor</th>
 							<th>Scope</th>
 							<th>Topic</th>
-							<th>Description</th>
 							<th>Skill</th>
-							<th>archivo</th>
 							<th>Date</th>
 							<th>Status</th>
 							<th></th>

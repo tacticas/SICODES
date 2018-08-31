@@ -50,8 +50,9 @@ class Tarea extends Connection
 			return false;
 		}
 	}
-	public function getGrupo(){
-		return $this->con->query("SELECT idGrupo, nombre FROM grupo")->fetchAll(PDO::FETCH_ASSOC);
+	//get grupo debe recivir la escuela
+	public function getGrupo($id){
+		return $this->con->query("SELECT idGrupo, nombre FROM grupo where idEscuela = '$id'")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	public function getProfesor(){
 		return $this->con->query("SELECT idProfesor, nombre, ap1 FROM profesor")->fetchAll(PDO::FETCH_ASSOC);

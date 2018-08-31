@@ -20,7 +20,8 @@ if (isset($_GET['get'])) {
 
 if(isset($_GET['carga'])){
 	if($_GET['carga']==1){
-		$grupo = $obj->getGrupo();
+		$id=$_SESSION['idEscuela'];
+		$grupo = $obj->getGrupo($id);
 		if($grupo == false){
 			$grupo = "";
 		}
