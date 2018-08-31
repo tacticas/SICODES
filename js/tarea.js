@@ -12,7 +12,6 @@ $(document).ready(function() {
 			{ data: 'idTarea' },
 			{ data: 'idGrupo' },
 			{ data: 'grupoN' },
-			{ data: 'idProfesor' },
 			{ data: null,
 				render: function(data){
 					if(data.alcance == 'n'){
@@ -23,7 +22,7 @@ $(document).ready(function() {
 				}
 			},
 			{ data: 'tema' },
-			{ data: 'descripcion' },
+			
 			{
 				data : 'tipo',
 				render: function(data, type, row) {
@@ -48,7 +47,7 @@ $(document).ready(function() {
 					return r;
 				}
 			},
-			{ data: 'archivo' },
+			
 			{ data: 'fechaAlta' },
 			{ data: 'status', 
 				render: function(data, type, row){
@@ -71,7 +70,7 @@ $(document).ready(function() {
 		],
 		"columnDefs": [
 			{
-				"targets": [ 0,1,3,6,8],
+				"targets": [ 0,1],
 				"visible": false
 			},
 		]

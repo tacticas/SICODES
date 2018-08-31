@@ -48,14 +48,17 @@
                 //foto
                 if (filesize($_FILES['img']['tmp_name'])!=0) {
                     $img=$_FILES['img'];
-                    if ($img['type'] == "image/jpg" OR $img['type'] == "image/jpeg"){
-                        $ruta="assets/img/fotos/".md5($img['tmp_name']).".jpg";
-                        $rutax="../assets/img/fotos/".md5($img['tmp_name']).".jpg";
-    
-                        move_uploaded_file($img['tmp_name'],$rutax);
-                        echo getcwd();
+                    $rutaRandom = $gen->rutaRandom();
+                    if($_FILES['img']['type'] == "image/jpeg" ){
+                        $rutax="../assets/img/fotos/".$rutaRandom.".jpeg";
+                        $ruta="assets/img/fotos/".$rutaRandom.".jpeg";
                     }
-                    $control = $obj->editar($id,$nombre);
+                    if($_FILES['img']['type'] == "image/png" ){
+                        $rutax="../assets/img/fotos/".$rutaRandom.".png";
+                        $ruta="assets/img/fotos/".$rutaRandom.".png";
+                    }
+                    move_uploaded_file($img['tmp_name'],$rutax);
+                    $control = $obj->editar($id,$nombre,$ruta);
                 }else{
                     $control = $obj->editarsf($id,$nombre);
                 }
@@ -71,7 +74,7 @@
         if ($control) {
             echo "correcto";
         }else{
-            echo $control;
+            echo "control es falso";
         }
     
     }

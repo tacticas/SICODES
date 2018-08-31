@@ -18,9 +18,9 @@
         }
 
         //query para editar categorias de la biblioteca
-        public function editar($arry){
-            $query = $this->con->prepare("UPDATE catmultimedia SET nombre=?, WHERE id=?");
-            $exc = $query->execute(array($arry['nombre']));
+        public function editarsf($id,$nombre){
+            $query = $this->con->prepare("UPDATE catmultimedia SET nombre=? WHERE id=?");
+            $exc = $query->execute(array($nombre,$id));
             if ($exc) {
                 return true;
             }else{
@@ -28,9 +28,9 @@
             }
         }
             //query para editar sin foto
-            public function editarsf($arry){
+            public function editar($id,$nombre,$ruta){
                 $query = $this->con->prepare("UPDATE catmultimedia SET nombre=?,img=? WHERE id=?");
-                $exc = $query->execute(array($arry['nombre'], $arry['img']));
+                $exc = $query->execute(array($nombre,$ruta,$id));
                 if ($exc) {
                     return true;
                 }else{

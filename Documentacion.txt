@@ -1,10 +1,10 @@
 Permisos
-1 SuperAdmin
-2 director
-3 administrativo
-4 profesor
-5 alumno
-6 padre
+1 alumno
+2 profe
+3 padre
+4 administrador
+5 Director
+6 SuperAdmin
 -----------
 padre 123
 profe 123

@@ -23,6 +23,7 @@
 											<th>Dirección</th>
 											<th>Telefono</th>
 											<th>Celular</th>
+											<th>Escuela</th>
 											<th></th>
 										</tr>
 								</thead>
@@ -90,6 +91,11 @@
 					<div class="form-group">
 						<label for="nombre" >Celular: </label>
 						<input class="form-control" required="" type="num" name="cel" value="" id="cel">
+					</div>
+					<div class="form-group">
+					    <label for="escuela">Escuela:</label>
+					    <select class="form-control" id="escuela" name="idEscuela" value="">
+					    </select>
 					</div>
 				</div>	
 				<div class="modal-footer">

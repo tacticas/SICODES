@@ -28,7 +28,8 @@ if (isset($_POST['task'])) {
 			$cel=$_POST['cel'];
 			$user=$_POST['user'];
 			$pwd=$_POST['pwd'];
-			$control = $obj->alta($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$user,$pwd);
+			$escu=$_POST['idEscuela'];
+			$control = $obj->alta($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$user,$pwd,$escu);
 			break;
 		case 'editar':
 			$id=$_POST['idProfesor'];
@@ -42,7 +43,8 @@ if (isset($_POST['task'])) {
 			$cel=$_POST['cel'];
 			$user=$_POST['user'];
 			$pwd=$_POST['pwd'];
-			$control = $obj->editar($id,$nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$user,$pwd);
+			$escu=$_POST['idEscuela'];
+			$control = $obj->editar($id,$nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$user,$pwd,$escu);
 			break;	
 		case 'eliminar':
 			$id=$_POST['profesor'];

@@ -30,7 +30,7 @@ $(document).ready(function() {
 			{ data: 'evaluacion' },
 			{ data: 'cursoInicio' },
 			{ data: 'fechaPago' },
-			{ data: 'idEscuela' },
+			{ data: 'eNombre' },
 			{ defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>'}
 		],
 		select: true,

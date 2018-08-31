@@ -5,7 +5,9 @@ class Alumno extends Connection
 {	
 	//query para obtener todo los campos
 	public function getAll(){
-		return $this->con->query("SELECT * FROM alumno")->fetchAll(PDO::FETCH_ASSOC);
+		return $this->con->query("SELECT alumno.*, escuela.nombre as eNombre FROM alumno  
+		JOIN escuela ON alumno.idEscuela = escuela.idEscuela
+		WHERE alumno.tipo = 1")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	//query para dar de alta alumnos
 	public function alta($matricula,$contraseña,$nombre,$apPaterno,$apMaterno,$eMail,$fnac,$sexo,$foto,$dir,$tel,$cel,$meta,$evaluacion,$cursoInicio,$fechaPago,$idEscuela,$fingreso){

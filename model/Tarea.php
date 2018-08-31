@@ -4,7 +4,7 @@ class Tarea extends Connection
 {	
 	//query para obtener todo los campos
 	public function getAllByProf($id){
-		return $this->con->query("Select tarea.*, grupo.nombre as grupoN,profesor.nombre as profesorN from tarea,grupo,profesor where tarea.idGrupo = grupo.idGrupo and tarea.idProfesor = profesor.idProfesor and tarea.idProfesor = '$id'")->fetchAll(PDO::FETCH_ASSOC);
+		return $this->con->query("Select tarea.*, grupo.nombre as grupoN from tarea,grupo where tarea.idGrupo = grupo.idGrupo and tarea.idProfesor = '$id'")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	public function getAll(){
 		return $this->con->query("Select tarea.*, grupo.nombre as grupoN,profesor.nombre as profesorN from tarea,grupo,profesor where tarea.idGrupo = grupo.idGrupo and tarea.idProfesor = profesor.idProfesor
