@@ -1,39 +1,59 @@
-<?php 
-require_once 'Connection.php';
-class Mensaje extends Connection 
-{	
-	//query para obtener todo los campos
-	public function getAllMensajes(){
-		return $this->con->query("SELECT idMensaje, idDe, idPara, titulo, CONCAT (LEFT(contenido, 30),'... ' ) as contenido, fechaHora FROM mensaje group by idDe")->fetchAll(PDO::FETCH_ASSOC);
-	}
-	//query para dar de alta usuarios
-	public function altaPersona($matricula,$nombre,$apPaterno,$apMaterno,$eMail,$telefono,$contrasena,$idEscuela){
-		$query = $this->con->prepare("INSERT INTO usuario (matricula, nombre, apPaterno, apmaterno, eMail, telefono, contrasena, idEscuela) values(?,?,?,?,?,?,?,?)");
-		$exc = $query->execute(array($matricula,$nombre,$apPaterno,$apMaterno,$eMail,$telefono,$contrasena,$idEscuela));
-		if ($exc) {
-			return true;
-		}else{
-			return false;
-		}
-	}
-	//query para editar usuarios
-	public function editarPersona($idUsuario,$matricula,$nombre,$apPaterno,$apMaterno,$eMail,$telefono,$contrasena,$idEscuela){
-		$query = $this->con->prepare("UPDATE usuario SET matricula=?, nombre=?, apPaterno=?, apMaterno=?, eMail=?, telefono=?, contrasena=?, idEscuela=? WHERE idUsuario=?");
-		$exc = $query->execute(array($matricula,$nombre,$apPaterno,$apMaterno,$eMail,$telefono,$contrasena,$idEscuela,$idUsuario));
-		if ($exc) {
-			return true;
-		}else{
-			return false;
-		}
-	}
-	//query para dar de baja usuarios
-	public function eliminarPersona($idUsuario){
-		$query = $this->con->prepare("DELETE FROM usuario WHERE idUsuario=?");
-		$exc = $query->execute(array($idUsuario));
-		if ($exc) {
-			return true;
-		}else{
-			return false;
-		}
-	}
-}
+<?php
+    require_once 'Connection.php';
+    class Mensaje extends Connection
+    {
+        // Query para obtener todos los campos de la tabla 
+        public function getAll($id) {
+            return $this->con->query("SELECT mensaje.*, t.nombre as tx_name, t.ap1 as tx_ap1, r.nombre as rx_name, r.ap1 as rx_ap1 
+			FROM mensaje 
+			JOIN alumno t ON mensaje.tx = t.idAlumno
+			JOIN alumno r ON mensaje.rx = r.idAlumno
+			WHERE mensaje.tx = ".$id." OR mensaje.rx = ".$id)->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+
+        public function alta($arry,$ruta) {
+            $query = $this->con->prepare("INSERT INTO multimedia (idCat, nombre, descrip, archivo, tipo) values (?,?,?,?,?)");
+            $exc = $query->execute(array($arry['idCat'],$arry['nombre'],$arry['descrip'],$ruta,$arry['tipo']));
+            if ($exc) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        //query para editar categorias de la biblioteca
+        public function editar($arry,$ruta){
+            $query = $this->con->prepare("UPDATE catmultimedia SET nombre=?, descrip=?,archivo=?  WHERE id=?");
+            $exc = $query->execute(array($arry['nombre'],$arry['descrip'],$ruta,$arry['id']));
+            if ($exc) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+            //query para editar sin foto
+            public function editarsf($arry){
+                $query = $this->con->prepare("UPDATE multimedia SET nombre=?, idCat=?, descrip=?,archivo=?  WHERE id=?");
+                $exc = $query->execute(array($arry['nombre'],$arry['idCat'],$arry['descrip'],$arry['url'],$arry['id']));
+                if ($exc) {
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        //query para dar de baja
+        public function eliminar($id){
+            $query = $this->con->prepare("DELETE FROM catmultimedia WHERE id=?");
+            $exc = $query->execute(array($id));
+            if ($exc) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        public function precarga(){
+            return $this->con->query("SELECT * FROM catmultimedia")->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }

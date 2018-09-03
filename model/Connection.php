@@ -12,9 +12,9 @@ class Connection
 	function __construct(){
 		try{
 			$this->con = new PDO("mysql:host=".$this->host.";dbname=".$this->dbname.";charset=UTF8;",$this->username, $this->password);
-
+			$this->con->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}catch(PDOException $e){
-			die("No se realizó la Connexion: ".$e->getMessage());
+			echo ("No se realizó la Connexion: ".$e->getMessage());
 		}
 
 	}

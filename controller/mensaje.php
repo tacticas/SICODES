@@ -3,10 +3,18 @@ require_once('../model/Mensaje.php');
 $Object = new Mensaje();
 //genera el json para la tabla
 if (isset($_GET['get'])) {
-	$datos = $Object->getAllMensajes();
-	foreach ($datos as $key) {
-		$data["data"][] = $key;
+	$id  = $_GET['get'];
+
+	$datos = $Object->getAll($id);
+	
+	if($datos != false){
+		foreach ($datos as $key) {
+			$data["data"][] = $key;
+		}
+	}else{
+		$data = '';
 	}
+	
 	echo json_encode($data);
 }
 
