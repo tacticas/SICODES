@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="fondo-blanco box-1">
-        <h2 class="mini-banner horario">SCHEDULE</h2>
+        <h2 class="mini-banner dash-horario">SCHEDULE</h2>
         <table id="tb_horario" class="table">
             <thead>
                 <tr>

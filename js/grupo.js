@@ -38,6 +38,7 @@ $(document).ready(function() {
 			url: "controller/grupo.php?carga=1",
 			dataType: "json",
 			success: function(data){
+				$("#idCurso").html('');
 				$.each( data, function( key, registro ) {
 					$("#idCurso").append('<option value='+registro.idCurso+'>'+registro.nombre+'</option>');
 				});

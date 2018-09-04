@@ -3,18 +3,19 @@ require_once 'Connection.php';
 class Grupo extends Connection 
 {	
 	//query para obtener todo los campos
-	public function getAll(){
-		return $this->con->query("SELECT idGrupo,grupo.nombre as ngrupo,curso.idCurso,curso.nombre as ncurso FROM grupo JOIN curso where grupo.idCurso=curso.idCurso")->fetchAll(PDO::FETCH_ASSOC);
+	public function getAll($idEscuela){
+		return $this->con->query("SELECT idGrupo,grupo.nombre as ngrupo,curso.idCurso,curso.nombre as ncurso FROM grupo JOIN curso on grupo.idCurso=curso.idCurso WHERE grupo.idEscuela = '$idEscuela' ")->fetchAll(PDO::FETCH_ASSOC);
 	}
 	public function getAllAlumnos(){
 		return $this->con->query("SELECT * FROM alumno")->fetchAll(PDO::FETCH_ASSOC);
 	}
+
 	public function getAllRelacion($id){
 		return $this->con->query("SELECT * from alumno JOIN alumnogrupo WHERE alumno.idAlumno = alumnogrupo.idAlumno AND alumnogrupo.idGrupo =".$id)->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	public function getAlumno($id){
-		return $this->con->query("SELECT * FROM alumno WHERE alumno.idAlumno NOT IN (SELECT alumno.idAlumno FROM alumno JOIN alumnogrupo ON alumno.idAlumno = alumnogrupo.idAlumno WHERE alumnogrupo.idGrupo = '$id')")->fetchAll(PDO::FETCH_ASSOC);
+	public function getAlumno($id,$idEscuela){
+		return $this->con->query("SELECT * FROM alumno WHERE alumno.idAlumno NOT IN (SELECT alumno.idAlumno FROM alumno JOIN alumnogrupo ON alumno.idAlumno = alumnogrupo.idAlumno JOIN grupo on alumnogrupo.idGrupo = grupo.idGrupo WHERE grupo.idEscuela = '$idEscuela' AND alumnogrupo.idGrupo = '$id') AND alumno.tipo = 1")->fetchAll(PDO::FETCH_ASSOC);
 	}
 //Agregar alumno a grupo
 	public function addAlumnoToGrupo($alumno,$grupo){
@@ -37,9 +38,9 @@ class Grupo extends Connection
 	}
 
 	//query para dar de alta
-	public function alta($nombre,$idCurso){
-		$query = $this->con->prepare("INSERT INTO grupo (nombre,idCurso) values(?,?)");
-		$exc = $query->execute(array($nombre,$idCurso));
+	public function alta($nombre,$idCurso,$idEscuela){
+		$query = $this->con->prepare("INSERT INTO grupo (nombre,idCurso,idEscuela) values(?,?,?)");
+		$exc = $query->execute(array($nombre,$idCurso,$idEscuela));
 		if ($exc) {
 			return true;
 		}else{

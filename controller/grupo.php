@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../model/Grupo.php');
 $obj = new Grupo();
 //genera el json para la tabla
@@ -18,7 +19,7 @@ if (isset($_GET['grupo'])) {
 
 if (isset($_GET['grupo2'])) {
 	$id = $_GET['grupo2'];
-	$tabla = $obj->getAlumno($id);
+	$tabla = $obj->getAlumno($id,$_SESSION['idEscuela']);
 	if($tabla != false){
 		foreach ($tabla as $key) {
 			$data["data"][] = $key;
@@ -31,7 +32,7 @@ if (isset($_GET['grupo2'])) {
 }
 if (isset($_GET['get'])) {
 	if ($_GET['get']==1) {
-		$tabla = $obj->getAll();
+		$tabla = $obj->getAll($_SESSION['idEscuela']);
 		if($tabla != false){
 			foreach ($tabla as $key) {
 				$data["data"][] = $key;
@@ -117,7 +118,8 @@ if (isset($_POST['task'])) {
 		case 'agregar':
 			$nombre=$_POST['nombre'];
 			$curso=$_POST['idCurso'];
-			$control = $obj->alta($nombre,$curso);
+			$idEscuela = $_SESSION['idEscuela'];
+			$control = $obj->alta($nombre,$curso,$idEscuela);
 			break;
 		case 'editar':
 			$id=$_POST['idGrupo'];
