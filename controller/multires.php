@@ -11,7 +11,7 @@ if (isset($_GET['getAll2'])) {
 			$data["data"][] = $key;
 		}
 	}else{
-		$data = "";
+		$data["data"] = array();
 	}
 	echo json_encode($data);
 }
@@ -25,7 +25,7 @@ if (isset($_GET['getAll'])) {
 			$data["data"][] = $key;
 		}
 	}else{
-		$data = "";
+		$data["data"] = array();
 	}
 	echo json_encode($data);
 }

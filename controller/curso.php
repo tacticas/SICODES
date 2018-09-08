@@ -9,7 +9,7 @@ if (isset($_GET['get'])) {
 			$data["data"][] = $key;
 		}
 	}else{
-		$data = "";
+		$data["data"] = array();
 	}
 	echo json_encode($data);
 }
@@ -44,7 +44,7 @@ if(isset($_GET['listar'])){
 				$data["data"][] = $key;
 			}
 		}else{
-			$data = "";
+			$data["data"] = array();
 		}
 		echo json_encode($data);
 	}

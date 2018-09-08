@@ -11,31 +11,43 @@ if (isset($_GET['get'])) {
 			$data["data"][] = $key;
 		}
 	}else{
-		$data = "";
+		$data["data"] = array();
 	}
 	echo json_encode($data);
 }
 
 if (isset($_GET['getRegistros'])) {
-	$tabla = $obj->registroHoy();
+	$tabla = $obj->registroHoy($_SESSION['idEscuela']);
 	if($tabla != "0"){
 		foreach ($tabla as $key) {
 			$data["data"][] = $key;
 		}
 	}else{
-		$data = "";
+		$data["data"] = array();
+	}
+	echo json_encode($data);
+}
+
+if (isset($_GET['botonSi'])) {
+	$tabla = $obj->botonSi($_SESSION['idEscuela']);
+	if($tabla != "0"){
+		foreach ($tabla as $key) {
+			$data["data"][] = $key;
+		}
+	}else{
+		$data="";
 	}
 	echo json_encode($data);
 }
 
 if (isset($_GET['clases'])) {
-	$tabla = $obj->alumosLesToca();
+	$tabla = $obj->alumosLesToca($_SESSION['idEscuela']);
 	if($tabla != "0"){
 		foreach ($tabla as $key) {
 			$data["data"][] = $key;
 		}
 	}else{
-		$data = "";
+		$data["data"] = array();
 	}
 	echo json_encode($data);
 }
@@ -46,7 +58,7 @@ if (isset($_GET['inicioPase'])) {
 			$data["data"][] = $key;
 		}
 	}else{
-		$data = "";
+		$data["data"] = array();
 	}
 	echo json_encode($data);
 }

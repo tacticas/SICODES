@@ -13,7 +13,7 @@
                 $data["data"][] = $key;
             }
         }else{
-            $data = "";
+            $data["data"] = array();
         }
         echo json_encode($data);
     }
@@ -26,7 +26,7 @@
                 $data["data"][] = $key;
             }
         }else{
-            $data = "";
+            $data["data"] = array();
         }
         echo json_encode($data);
     }

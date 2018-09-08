@@ -30,6 +30,7 @@ if(!isset($_SESSION))
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="lista.php">Pase de Lista</a>
+                <a class="dropdown-item" href="avance.php">Avance Diario</a>
                 <a class="dropdown-item" href="alumno.php">Alumnos</a>
               </div>
               </li>

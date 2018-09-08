@@ -131,10 +131,13 @@ $(document).ready(function() {
 	function botonSi(){
 		$.ajax({
 			method: "POST",
-			url: "controller/lista.php?get=1",
+			url: "controller/lista.php?botonSi=1",
+			type: "json",
 		  })
 			.success(function( data ) {
+				console.log(data[0].length)
 				res =  JSON.parse(data);
+				console.log(res)
 				if (res == "") {
 					 myhtml = '<button id="btn_pre" onclick="precarga()" class="btn btn-primary">Empezar Pase de Lista</button>'
 				}else{
