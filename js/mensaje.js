@@ -103,10 +103,20 @@ function revisar(btn) {
     $("#form_v").hide();
     $("#enviarUsuario").hide();
     $("#msg_v").show();
-
+    
     $("#m_from").html(data.tx_name+' '+data.tx_ap1);  
     $("#m_title").html(data.titulo);  
     $("#m_msg").html(data.msg);  
+
+    //cambiar estado
+    $.ajax({
+        method: 'POST',
+        url: 'controller/mensaje.php?visto='+data.id,
+        type: 'json',
+        success: function (data) {
+            toastr.success('Seen message');
+        }
+    });
     
 }
 

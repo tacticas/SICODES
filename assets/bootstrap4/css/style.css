@@ -601,3 +601,18 @@ border-radius: 10px 10px 10px 10px;
  .navbar-nav{
    width: 100%;
  }
+
+ .no-footer{
+   padding: 0 !important; 
+   margin: 0 !important;
+   width: 100% !important;
+ }
+
+ .sinEspacio div{
+  padding: 0 !important;
+  margin: 0  !important;
+ }
+
+ .boton-grande{
+   color: white !important;
+ }

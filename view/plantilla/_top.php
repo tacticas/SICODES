@@ -92,7 +92,7 @@ if(!isset($_SESSION))
                   <a class="nav-link" href="calendar.php"><i class="fa fa-calendar"></i> Calendar</a>
                 </li>
               <li class="nav-item">
-                  <a class="nav-link" href="multimedia.php"><i class="fa fa-image"></i> Tarea</a>
+                  <a class="nav-link" href="multimedia.php"><i class="fa fa-image"></i> Media Center</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

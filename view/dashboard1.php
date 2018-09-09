@@ -17,89 +17,105 @@
     </div>
     <div class="fondo-blanco box-1">
         <h2 class="mini-banner dash-horario">SCHEDULE</h2>
-        <table id="tb_horario" class="table">
-            <thead>
-                <tr>
-                    <th>Group</th>
-                    <th>Type</th>
-                    <th>Hour</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="sinEspacio table-responsive">
+            <table id="tb_horario" class="table table-striped full">
+                <thead>
+                    <tr>
+                        <th>Group</th>
+                        <th>Type</th>
+                        <th>Start</th>
+                        <th>End</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="fondo-blanco box-1">
         <h2 class="mini-banner tareas">HOMEWORK</h2>
-        <table id="tb_horario" class="table">
-            <thead>
-                <tr>
-                    <th>Scope</th>
-                    <th>Topic</th>
-                    <th>Skill</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-        <button class="btn btn-primary btn-block mb-2">All homeworks List!</button>
+        <div class="sinEspacio table-responsive">
+            <table id="tb_homework" class="table table-striped full">
+                <thead>
+                    <tr>
+                        <th>Group</th>
+                        <th>Scope</th>
+                        <th>Topic</th>
+                        <th>Skill</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <a class="boton-grande" href="mis-tareas.php"><button class="btn btn-primary btn-block mb-2 ">All homeworks List!
+            </button></a>
     </div>
 
 </div>
 <div class="container-1">
     <div class="fondo-blanco box-1">
         <h2 class="mini-banner curso">COURSE STATUS</h2>
-        <table id="tb_horario" class="table">
-            <thead>
-                <tr>
-                    <th>Scope</th>
-                    <th>Topic</th>
-                    <th>Skill</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="sinEspacio table-responsive">
+            <table id="tb_cstatus" class="table">
+                <thead>
+                    <tr>
+                        <th>Group</th>
+                        <th>Homework</th>
+                        <th>Speaking</th>
+                        <th>Reading</th>
+                        <th>Writing</th>
+                        <th>Listening</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            </tbody>
-        </table>
-        
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="fondo-blanco box-1">
         <h2 class="mini-banner progres">COURSE PROGRESS</h2>
-        <table id="tb_horario" class="table">
-            <thead>
-                <tr>
-                    <th>Scope</th>
-                    <th>Topic</th>
-                    <th>Skill</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="sinEspacio table-responsive">
+            <table id="tb_cprogress" class="table">
+                <thead>
+                    <tr>
+                        <th>Group</th>
+                        <th>Date</th>
+                        <th>Lesson</th>
+                        <th>Book</th>
+                        <th>Dictation</th>
+                        <th>Quiz</th>
+                        <th>Test</th>
+                        <th>Oral Quiz</th>
+                        <th>Oral Test</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            </tbody>
-        </table>
-       
+                </tbody>
+            </table>
+        </div>
+
     </div>
     <div class="fondo-blanco box-1">
         <h2 class="mini-banner msg">MESSAGES</h2>
-        <table id="tb_horario" class="table">
-            <thead>
-                <tr>
-                    <th>Scope</th>
-                    <th>Topic</th>
-                    <th>Skill</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="sinEspacio table-responsive">
+                <table id="tb_messages" class="table">
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>Subjet</th>
+                            <th>Date</th>
+                            <th>status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+    
+                    </tbody>
+                </table>
+            </div>
 
-            </tbody>
-        </table>
-        
     </div>
 </div>
 <div class="container-1">
@@ -107,73 +123,34 @@
         <h2 class="mini-banner links">QUICK LINKS</h2>
         <div class="container-2">
             <div class="flex-item-c">
-                <a href="#" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Media Center</div>
+                <a href="multimedia.php" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Media Center</div>
             </div>
             <div class="flex-item-c">
-                <a href="#" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Calendar</div>
+                <a href="calendar.php" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Calendar</div>
             </div>
             <div class="flex-item-c">
-                <a href="#" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Questions</div>
+                <a href="mensaje.php" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Messages</div>
             </div>
             <div class="flex-item-c">
-                <a href="#" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">My Info</div>
+                <a href="#" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Change Password</div>
             </div>
-            <div class="flex-item-c">
-                <a href="#" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Groups</div>
-            </div>
+
 
         </div>
 
     </div>
     <div class="fondo-blanco box-3">
         <h2 class="mini-banner eventos">NEWS & EVENTS</h2>
-        <div class="container-2">
-            <div class="flex-item-c">
-                <div class="flex-item limpio cal">
-                    <div class="numero">05</div>
-                    <div>MAY</div>
-                </div>
-                <div class="flex-item-3">
-
-                    <h4>Tiutlo Evento</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti saepe dolorum facilis iste explicabo
-                        atque ipsum fugiat aspernatur quaerat. At cupiditate soluta quisquam accusantium hic unde nostrum
-                        laudantium recusandae impedit.</p>
-                </div>
-
-            </div>
-            <div class="flex-item-c">
-                <div class="flex-item limpio cal">
-                    <div class="numero">05</div>
-                    <div>MAY</div>
-                </div>
-                <div class="flex-item-3">
-
-                    <h4>Tiutlo Evento</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti saepe dolorum facilis iste explicabo
-                        atque ipsum fugiat aspernatur quaerat. At cupiditate soluta quisquam accusantium hic unde nostrum
-                        laudantium recusandae impedit.</p>
-                </div>
-
-            </div>
+        <div id="eventos2" class="container-2">
+           
         </div>
     </div>
 
     <div class="fondo-blanco box-3">
         <h2 class="mini-banner calendar">CALENDAR</h2>
-        <table id="tb_horario" class="table">
-            <thead>
-                <tr>
-                    <th>Scope</th>
-                    <th>Topic</th>
-                    <th>Skill</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div id="calendar" class="sinEspacio">
 
-            </tbody>
-        </table>
+        </div>
     </div>
 
 </div>

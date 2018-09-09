@@ -8,7 +8,7 @@
 			FROM mensaje 
 			JOIN alumno t ON mensaje.tx = t.idAlumno
 			JOIN alumno r ON mensaje.rx = r.idAlumno
-			WHERE mensaje.tx = ".$id." OR mensaje.rx = ".$id)->fetchAll(PDO::FETCH_ASSOC);
+			WHERE mensaje.rx = ".$id)->fetchAll(PDO::FETCH_ASSOC);
 
         }
 
@@ -26,6 +26,15 @@
         public function editar($arry){
             $query = $this->con->prepare("UPDATE catmultimedia SET nombre=?, descrip=?,archivo=?  WHERE id=?");
             $exc = $query->execute(array($arry['nombre'],$arry['descrip'],$ruta,$arry['id']));
+            if ($exc) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+        public function visto($id){
+            $query = $this->con->prepare("UPDATE mensaje SET status = 1 WHERE mensaje.id = '$id'");
+            $exc = $query->execute(array($id));
             if ($exc) {
                 return true;
             }else{

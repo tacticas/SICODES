@@ -33,6 +33,22 @@ if (isset($_GET['precarga'])) {
 	
 	echo json_encode($data);
 }
+if (isset($_GET['visto'])) {
+	$data["data"] = array();
+	$id  = $_GET['visto'];
+
+	$datos = $Object->visto($id);
+	
+	if($datos != false){
+		foreach ($datos as $key) {
+			$data["data"][] = $key;
+		}
+	}else{
+		$data["data"] = array();
+	}
+	
+	echo json_encode($data);
+}
 
 
 if (isset($_POST['task'])) {

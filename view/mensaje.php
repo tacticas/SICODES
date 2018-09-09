@@ -4,7 +4,7 @@
         <div class="col-md-12"><br>
             <div class="row">
                 <div class="col-sm-8">
-                    <h3>Mensajes</h3>
+                    <h3>Messages</h3>
                 </div>
                 <div class="col-sm-4">
                     <button data-toggle="modal" onclick="add(this)" data-target="#md_add" type="button" class="agregar btn pull-right btn-primary sin-padding"><i
