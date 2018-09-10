@@ -99,6 +99,16 @@ class Dashboard extends Connection
 			return "0";
 		}
 	}
+	public function getInfo($id){
+		
+		$resultado = $this->con->query("SELECT * from alumno WHERE alumno.idAlumno = '$id'")->fetchAll(PDO::FETCH_ASSOC);
+		if ($resultado) {
+			return $resultado;
+		}else
+		{
+			return "0";
+		}
+	}
 
 
 

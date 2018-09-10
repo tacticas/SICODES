@@ -616,3 +616,6 @@ border-radius: 10px 10px 10px 10px;
  .boton-grande{
    color: white !important;
  }
+ .modal-open{
+   padding: 0 !important;
+ }

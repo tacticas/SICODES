@@ -75,6 +75,7 @@ if(!isset($_SESSION))
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="escuela.php">Escuelas</a>
                     <a class="dropdown-item" href="profesor.php">Profesores</a>
+                    <a class="dropdown-item" href="cambio-contra.php">Change Password</a>
                   </div>
                 </li>
               ');
@@ -99,7 +100,7 @@ if(!isset($_SESSION))
                       <i class="fa fa-cog"></i> Config
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    
+                  <a class="dropdown-item" href="cambio-contra.php">Change Password</a>
                   </div>
                 </li>
               ');
@@ -122,7 +123,7 @@ if(!isset($_SESSION))
                   <i class="fa fa-cog"></i> Config
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                
+              <a class="dropdown-item" href="cambio-contra.php">Change Password</a>
               </div>
             </li>
           ');

@@ -61,7 +61,7 @@ class Avance extends Connection
 	}
 	public function editGeneral($a) {
 		$query = $this->con->prepare("UPDATE avance SET book=? , dictation = ?, quiz =?, test =?,oral_quiz =?, oral_test=?  WHERE avance.id= ? ");
-		$exc = $query->execute(array($a['book'],$a['dictation'],$a['quiz'],$a['test'],$a['oral_quiz'],$a['oral_test'],$a['idAvance'],));
+		$exc = $query->execute(array($a['book'],$a['dictation'],$a['quiz'],$a['test'],$a['oral_quiz'],$a['oral_test'],$a['idAvance']));
 		if ($exc) {
 			return true;
 		}else

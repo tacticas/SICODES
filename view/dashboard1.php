@@ -12,7 +12,7 @@
             <p><strong>School: </strong><label for="" id="escuela"><?=$_SESSION['Escuela']?></label></p>
             <p><strong>Email: </strong><label for="" id="email"><?=$_SESSION['email']?></label></p>
             <p><strong>Phone: </strong><label for="" id="cel"><?=$_SESSION['cel']?></label></p>
-            <button class="btn btn-primary btn-block mb-2">More about me!</button>
+            <button onclick="myInfo()" class="btn btn-primary btn-block mb-2">More about me!</button>
         </div>
     </div>
     <div class="fondo-blanco box-1">
@@ -101,21 +101,21 @@
     <div class="fondo-blanco box-1">
         <h2 class="mini-banner msg">MESSAGES</h2>
         <div class="sinEspacio table-responsive">
-                <table id="tb_messages" class="table">
-                    <thead>
-                        <tr>
-                            <th>From</th>
-                            <th>Subjet</th>
-                            <th>Date</th>
-                            <th>status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-    
-                    </tbody>
-                </table>
-            </div>
+            <table id="tb_messages" class="table">
+                <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>Subjet</th>
+                        <th>Date</th>
+                        <th>status</th>
+                    </tr>
+                </thead>
+                <tbody>
 
+                </tbody>
+            </table>
+        </div>
+        <a class="boton-grande" href="mensaje.php"><button class="btn btn-primary btn-block mb-2 ">All Messages! </button></a>
     </div>
 </div>
 <div class="container-1">
@@ -142,7 +142,7 @@
     <div class="fondo-blanco box-3">
         <h2 class="mini-banner eventos">NEWS & EVENTS</h2>
         <div id="eventos2" class="container-2">
-           
+
         </div>
     </div>
 
@@ -153,4 +153,25 @@
         </div>
     </div>
 
+</div>
+
+<div class="modal" id="md_info" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">My information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="divInfo" class="modal-body">
+         
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -106,3 +106,15 @@ if (isset($_GET['precarga'])) {
 	echo json_encode($data);
 }
 
+if (isset($_GET['getInfo'])) {
+	$tabla = $obj->getInfo($_SESSION['idMaster']);
+	
+	if($tabla != "0"){
+		foreach ($tabla as $key) {
+			$data["data"][] = $key;
+		}
+	}else{
+		$data["data"] = array();
+	}
+	echo json_encode($data);
+}

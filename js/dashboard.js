@@ -372,3 +372,47 @@ function eventos() {
         }
     });
 }
+
+//info
+function myInfo(){
+    $("#md_info").modal("show");
+    $.ajax({
+        method: 'POST',
+        url: 'controller/dashboard.php?getInfo=1',
+        dataType: 'json',
+        success: function (data) {
+            var htmlInfo = '';
+            array = data['data'];
+            $.each(array, function (index, value) {
+                htmlInfo += `
+                    <div class="table-responsive sinEspacio">
+                        <table class="table">
+                            <tr>
+                                <td>Address</td>
+                                <td>${value.dir}</td>
+                            </tr>
+                            <tr>
+                                <td>Goal</td>
+                                <td>${value.meta}</td>
+                            </tr>
+                            <tr>
+                                <td>Evaluation</td>
+                                <td>${value.evaluacion}</td>
+                            </tr>
+                            <tr>
+                                <td>Fecha Pago</td>
+                                <td>${value.fechaPago}</td>
+                            </tr>
+                            <tr>
+                                <td>Fecha Ingreso</td>
+                                <td>${value.fIngreso}</td>
+                            </tr>
+                        </table>
+                </div>
+                
+                `;
+            });
+            $("#divInfo").html(htmlInfo);
+        }
+    });
+}

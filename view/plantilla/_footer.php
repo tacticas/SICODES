@@ -1,6 +1,6 @@
 <footer class="footer">
 	<div class="container-fluid text-center">
-        <span class="text-muted text-center">© Copyright 2018 - <a href="http://lawebapp.com/" target="_blanck" >Odisea</a> | Diseño y desarrollo Web. All rights reserved.</span>
+        <span class="text-muted text-center">Mi Escuela v.1.0 © Copyright 2018 - <a href="http://lawebapp.com/" target="_blanck" >Odisea</a> | Diseño y desarrollo Web. All rights reserved.</span>
     </div>
 </footer>
 <!-- SCRIPTS -->
