@@ -460,6 +460,15 @@ border-radius: 10px 10px 10px 10px;
   font-weight: 550; 
 }
 
+
+.banner-mini {
+  
+  background-color: red  !important;
+  font-size: 20pt !important;
+  padding: .1em !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+ }
 .matricula{
   color: #0275d8;
   text-align: center;

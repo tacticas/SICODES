@@ -101,7 +101,7 @@ class Dashboard extends Connection
 	}
 	public function getInfo($id){
 		
-		$resultado = $this->con->query("SELECT * from alumno WHERE alumno.idAlumno = '$id'")->fetchAll(PDO::FETCH_ASSOC);
+		$resultado = $this->con->query("SELECT alumno.*, date(now()) as fActual from alumno WHERE alumno.idAlumno = '$id'")->fetchAll(PDO::FETCH_ASSOC);
 		if ($resultado) {
 			return $resultado;
 		}else

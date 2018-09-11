@@ -3,6 +3,11 @@
         <h1 class="" id="welcome">Good Day!</h1>
     </div>
 </div>
+<div id="divFechaPago" style="display: none;" class="container-1">
+    <div class="banner">
+        <h1 class="banner-mini" id="fechaPago"></h1>
+    </div>
+</div>
 <div class="container-1">
     <div class="fondo-blanco box-1">
         <img class=" img-fluid" src="<?=$_SESSION['foto']?>" alt="">
@@ -132,7 +137,7 @@
                 <a href="mensaje.php" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Messages</div>
             </div>
             <div class="flex-item-c">
-                <a href="#" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Change Password</div>
+                <a href="cambio-contra.php" class="btn btn-primary flex-item">Go!</a><div class="flex-item-1">Change Password</div>
             </div>
 
 
@@ -169,7 +174,6 @@
                
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

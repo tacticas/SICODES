@@ -5,6 +5,7 @@ $(document).ready(function () {
     tb_cprogress();
     messages();
     eventos();
+    fechaPago();
     $("#nav_dash").addClass("active");
     $("#tb_horario_wrapper").css('padding: 0;');
 
@@ -373,6 +374,33 @@ function eventos() {
     });
 }
 
+function fechaPago(){
+    $.ajax({
+        method: 'POST',
+        url: 'controller/dashboard.php?getInfo=1',
+        dataType: 'json',
+        success: function (data) {
+            var fPago = data['data'][0].fechaPago;
+            var fActual  = data['data'][0].fActual;
+            var x1 = parseInt( fPago.substr(8,9));
+            var x2 = parseInt( fActual.substr(8,9));
+            var days = x2 - x1;
+            if(days >= 0 && days <6 ){
+                if(days == 0){
+                    $("#fechaPago").html('Your payment date is today');
+                }else{
+                    $("#fechaPago").html('Your payment date is next to '+days+' day(s)');
+                }
+                
+                $("#divFechaPago").show();
+                console.log('entre');
+            }
+           
+    
+          
+        }
+    });
+}
 //info
 function myInfo(){
     $("#md_info").modal("show");
