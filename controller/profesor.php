@@ -1,9 +1,10 @@
 <?php
 require_once('../model/Profesor.php');
+session_start();
 $obj = new Profesor();
 //genera el json para la tabla
 if (isset($_GET['get'])) {
-	$tabla = $obj->getAll();
+	$tabla = $obj->getAll($_SESSION['idEscuela']);
 	if($tabla != false){
 		foreach ($tabla as $key) {
 			$data["data"][] = $key;
@@ -29,7 +30,8 @@ if (isset($_POST['task'])) {
 			$user=$_POST['user'];
 			$pwd=$_POST['pwd'];
 			$escu=$_POST['idEscuela'];
-			$control = $obj->alta($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$user,$pwd,$escu);
+			$tipo=$_POST['tipo'];
+			$control = $obj->alta($nombre,$ap1,$ap2,$fnaci,$sexo,$dir,$tel,$cel,$user,$pwd,$escu,$tipo);
 			break;
 		case 'editar':
 			$id=$_POST['idProfesor'];

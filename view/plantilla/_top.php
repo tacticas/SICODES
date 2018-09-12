@@ -22,6 +22,7 @@ if(!isset($_SESSION))
       </li>
       <?php
       switch ($_SESSION['permiso']) {
+        //admin
         case '6':
             echo('
               <li class="nav-item dropdown">
@@ -77,13 +78,14 @@ if(!isset($_SESSION))
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="escuela.php">Escuelas</a>
-                    <a class="dropdown-item" href="profesor.php">Profesores</a>
+                    <a class="dropdown-item" href="profesor.php">Usuarios</a>
+                    <a class="dropdown-item" href="anuncio.php">Anuncio</a>
                     <a class="dropdown-item" href="cambio-contra.php">Change Password</a>
                   </div>
                 </li>
               ');
         break;
-
+        //alumno
         case '1':
             echo('
               <li class="nav-item">

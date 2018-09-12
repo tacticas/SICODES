@@ -8,9 +8,22 @@ $(document).ready(function () {
     fechaPago();
     $("#nav_dash").addClass("active");
     $("#tb_horario_wrapper").css('padding: 0;');
+    welcome();
 
 });
 
+function welcome(){
+
+	$.ajax({
+        method: 'POST',
+        url: 'controller/anuncio.php?get=1',
+        dataType: 'json'
+    }).success(function (data) {
+        var array = data['data'];
+        $("#welcome").html(array[0]);
+    });
+
+}
 
 function schedule() {
     var table = $('#tb_horario').DataTable({

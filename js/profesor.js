@@ -5,7 +5,6 @@ $(document).ready(function() {
         ajax: 'controller/profesor.php?get=1',
         dom: '<"col-xs-12 text-center"B><"row"<"col-sm-6"l><"col-sm-6"fr>>t<"row"<"col-xs-12 text-center"p>><"row"<"col-xs-12 pull-"i>>',
         columns: [
-            { data: 'idAlumno' },
             { data: 'nombre' },
             { data: 'ap1' },
             { data: 'ap2' },
@@ -15,6 +14,25 @@ $(document).ready(function() {
             { data: 'tel' },
             { data: 'cel' },
             { data: 'eNombre' },
+            {
+				data : 'tipo',
+				render: function(data, type, row) {
+					var r = "";
+					switch(data) {
+						case "6":
+							r = "Admin";
+							break;
+						case "2":
+							r = "Profesor";
+							break;
+						
+						default:
+							r = "No especificado";
+							break;
+					}
+					return r;
+				}
+			},
             
             { defaultContent: '<button data-toggle="modal" data-target="#editar" class="editar btn btn-warning btn-sm"><i class="fa fa-edit"></i></button> <button data-toggle="modal" data-target="#confirmar" class="eliminar btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>'},
         ],
@@ -91,6 +109,7 @@ $(document).ready(function() {
         $('#dir').val(data.dir);
         $('#tel').val(data.tel);
         $('#cel').val(data.cel);
+        $('#tipo').val(data.tipo);
     });
 
     $('#example tbody').on('click','button.eliminar', function(){

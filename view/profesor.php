@@ -3,7 +3,7 @@
 		<div class="col-md-12"><br>
 			<div class="row">
 				<div class="col-sm-8">
-					<h3>Lista de Profesores</h3>
+					<h3>Lista de Usuarios</h3>
 				</div>
 				<div class="col-sm-4">
 					<button data-toggle="modal" data-target="#editar" type="button" class="agregar btn pull-right btn-primary sin-padding"><i class="fa fa-plus"></i> Agregar</button>
@@ -14,7 +14,6 @@
 					<table data-order='[[ 0, "DESC" ]]' id="example" class="table table-bordered table-striped display" cellspacing="0" width="100%">
 								<thead class="thead-inverse">
 										<tr>
-											<th>id</th>
 											<th>Nombre</th>
 											<th>Paterno</th>
 											<th>Materno</th>
@@ -24,6 +23,7 @@
 											<th>Telefono</th>
 											<th>Celular</th>
 											<th>Escuela</th>
+											<th>Tipo</th>
 											<th></th>
 										</tr>
 								</thead>
@@ -48,6 +48,13 @@
 				<div class="modal-body">
 					<input class="form-control" id="accion" type="hidden" name="task" value="">
 					<input class="form-control" type="hidden" name="idProfesor" value="" id="idProfesor">
+					<div class="form-group">
+						<label for="escuela">Tipo:</label>
+						<select class="form-control" id="tipo" name="tipo" value="">
+						    <option value="2">Profesor</option>
+						    <option value="6">Admin</option>
+					    </select>
+					</div>
 					<div class="form-group">
 						<label for="nombre" >Usuario: </label>
 						<input class="form-control" required="" type="text" name="user" value="" id="user">
