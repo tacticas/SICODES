@@ -237,7 +237,7 @@
 				   	<input data-dismiss="modal" type="reset" class="btn btn-secondary" value="Cancelar">
 				   	
 				</div>
-			</form>
+			
     	</div>
   	</div>
 </div>
