@@ -47,7 +47,7 @@ $(document).ready(function() {
 		});
 	}
 
-	$(window).on('shown.bs.modal', function() { 
+	$(window).on('hide.bs.modal', function() { 
 		location.reload();
 	});
 
