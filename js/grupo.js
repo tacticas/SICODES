@@ -47,12 +47,11 @@ $(document).ready(function() {
 		});
 	}
 
-	$("#add").on('hidden.bs.modal', function () {
+	$(window).on('shown.bs.modal', function() { 
 		location.reload();
 	});
-	$("#del").on('hidden.bs.modal', function () {
-		location.reload();
-	});
+
+
 
 	$('button.agregar').click(function(){
 		$('#formGuardar')[0].reset();
@@ -190,7 +189,7 @@ $(document).ready(function() {
 	
 		});
     });
-	
+
 
 
 	//------------

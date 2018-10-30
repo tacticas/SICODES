@@ -177,9 +177,7 @@
    		<div class="modal-content">
       		<div class="modal-header">
         		<h5 class="modal-title" id="tituloModalh">Horario del Curso</h5>
-        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          			<span aria-hidden="true">&times;</span>
-        		</button>
+        		
       		</div>
       		<form id="formGuardarHora">
       			<div class="modal-body col-sm-12">
@@ -234,7 +232,7 @@
 					
 					</div>
 			    <div class="modal-footer">
-				   	<input data-dismiss="modal" type="reset" class="btn btn-secondary" value="Cancelar">
+				   	<input data-dismiss="modal" type="reset" class="btn btn-secondary" id="h_reset" value="Cancelar">
 				   	
 				</div>
 			
