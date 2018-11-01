@@ -3,7 +3,9 @@
     session_start(); 
 
 
-  if (!isset($_SESSION['permiso'])) {
+  if (isset($_SESSION['permiso'])) {
+   echo $_SESSION['permiso'];
+  }else{
     header("location: index.php");
   }
 ?>
@@ -141,7 +143,7 @@
     </ul>
 
 
-    <a class="btn btn-primary" href="index.php">Exit</a>
+    <a class="btn btn-primary" href="controller/logout.php">Exit</a>
 
   </div>
 </nav>

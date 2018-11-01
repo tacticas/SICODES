@@ -1,11 +1,4 @@
-<?php 
-      //terminar variables y la sessión
-      session_start(); 
-      $_SESSION = array();
-      session_destroy();   
-      
-     
-?>
+
 <div class="container form-padding">
 
  
