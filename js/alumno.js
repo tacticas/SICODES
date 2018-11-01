@@ -136,6 +136,7 @@ $(document).ready(function() {
 			console.log("No files selected.");
 		}
 		$('#dir').val(data.dir);
+		$('#fin').val(data.fIngreso);
 		$('#tel').val(data.tel);
 		$('#cel').val(data.cel);
 		$('#meta').val(data.meta);

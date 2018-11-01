@@ -26,7 +26,11 @@ if($consulta['matricula']==$u AND $consulta['contraseña']==$p){
 	
 	
 
-}//fin if de comprobar
+}else{
+	echo "error";
+}
+
+//fin if de comprobar
 /*if (isset($_SESSION['permiso'])) {
 	header("Location: dashboard.php");
 }*/

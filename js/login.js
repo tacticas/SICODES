@@ -9,8 +9,8 @@ $('#frmLogin').on('submit', function(e){
         url: "controller/login.php",
         data: frm,
         success: function(data){
-            var obj = jQuery.parseJSON(data);
-            if( obj.data['msg'] == "error" ){
+            console.log(data);
+            if(data == "error" ){
                 toastr.error('Usuario o contraseña incorrectos');
             }else{
                 toastr.success('Iniciando Sessión');
